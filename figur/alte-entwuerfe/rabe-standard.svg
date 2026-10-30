@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFE066" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FFC400" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beak" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a5a66"/>
+      <stop offset="100%" stop-color="#2b2b33"/>
+    </linearGradient>
+    <linearGradient id="hood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2c2c36"/>
+      <stop offset="100%" stop-color="#141419"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Körper / Hoodie -->
+  <path d="M96 512 C96 400 150 340 256 340 C362 340 416 400 416 512 Z" fill="url(#hood)"/>
+  <!-- Bauchtasche -->
+  <path d="M190 450 Q256 430 322 450 L332 512 L180 512 Z" fill="#101015"/>
+  <!-- Kordeln -->
+  <path d="M228 350 Q224 390 230 420" stroke="#d9d9e0" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M284 350 Q288 390 282 420" stroke="#d9d9e0" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="230" cy="424" r="6" fill="#FFC400"/>
+  <circle cx="282" cy="424" r="6" fill="#FFC400"/>
+
+  <!-- Federschopf, der oben aus der Kapuze schaut -->
+  <path d="M250 70 Q262 30 290 40 Q270 55 272 80 Z" fill="#0d0d12"/>
+  <path d="M236 78 Q232 44 252 34 Q246 60 256 84 Z" fill="#17171d"/>
+
+  <!-- Kapuze -->
+  <path d="M256 66 C150 66 104 150 110 240 C114 300 150 350 256 360 C362 350 398 300 402 240 C408 150 362 66 256 66 Z" fill="url(#hood)"/>
+  <!-- Kapuzen-Öffnung -->
+  <path d="M256 104 C180 104 150 168 154 230 C158 290 200 326 256 330 C312 326 354 290 358 230 C362 168 332 104 256 104 Z" fill="#08080b"/>
+
+  <!-- Rabenkopf -->
+  <ellipse cx="256" cy="220" rx="88" ry="92" fill="#121217"/>
+  <!-- Federn an der Stirn -->
+  <path d="M190 160 Q220 140 256 150 Q292 140 322 160 Q290 158 256 170 Q222 158 190 160 Z" fill="#1d1d24"/>
+
+  <!-- Augen-Glow -->
+  <circle cx="218" cy="206" r="34" fill="url(#glow)"/>
+  <circle cx="294" cy="206" r="34" fill="url(#glow)"/>
+  <!-- Augen -->
+  <ellipse cx="218" cy="208" rx="17" ry="14" fill="#FFC400"/>
+  <ellipse cx="294" cy="208" rx="17" ry="14" fill="#FFC400"/>
+  <circle cx="221" cy="209" r="6" fill="#0b0b0f"/>
+  <circle cx="297" cy="209" r="6" fill="#0b0b0f"/>
+  <circle cx="224" cy="205" r="2.2" fill="#fff"/>
+  <circle cx="300" cy="205" r="2.2" fill="#fff"/>
+  <!-- Schlaue, leicht schräge Brauen -->
+  <path d="M194 188 L240 198" stroke="#08080b" stroke-width="9" stroke-linecap="round"/>
+  <path d="M318 188 L272 198" stroke="#08080b" stroke-width="9" stroke-linecap="round"/>
+
+  <!-- Schnabel -->
+  <path d="M232 226 Q256 216 280 226 L262 292 Q256 300 250 292 Z" fill="url(#beak)"/>
+  <path d="M232 226 Q256 216 280 226 Q256 238 232 226 Z" fill="#6c6c78"/>
+  <path d="M256 236 L256 288" stroke="#1d1d24" stroke-width="2"/>
+
+  <!-- Akte in der Flügel-Hand -->
+  <g transform="rotate(-8 330 440)">
+    <rect x="288" y="392" width="118" height="88" rx="6" fill="#E9B23A"/>
+    <path d="M288 398 L288 392 Q288 386 294 386 L330 386 L338 392 Z" fill="#E9B23A"/>
+    <rect x="300" y="404" width="94" height="64" rx="3" fill="#F6CF6A"/>
+    <text x="347" y="444" font-family="Arial Black, Arial, sans-serif" font-size="22" font-weight="900" text-anchor="middle" fill="#141419">AKTE</text>
+    <rect x="318" y="452" width="58" height="5" rx="2" fill="#141419" opacity="0.5"/>
+  </g>
+  <!-- Flügel-Hand über der Akte -->
+  <path d="M276 470 Q292 440 330 446 Q312 456 320 470 Q306 462 300 478 Z" fill="#17171d"/>
+</svg>
