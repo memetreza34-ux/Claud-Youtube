@@ -29,7 +29,7 @@ def saetze(text: str) -> list[str]:
     teile = re.split(r"(?<=[.!?…])\s+", text.strip())
     stuecke, aktuell = [], ""
     for t in teile:
-        if len(aktuell) + len(t) < 150:
+        if len(aktuell) + len(t) < 90:
             aktuell = f"{aktuell} {t}".strip()
         else:
             if aktuell:
