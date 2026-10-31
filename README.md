@@ -9,7 +9,7 @@ YouTube- & Social-Media-Kanal: **Betrug, Hacks & Skandale** – erklärt von ein
 | 20 Video-Ideen | ✅ `planung/video-ideen.md` |
 | Skript Video 01 (Enkeltrick 2.0) | ✅ `skripte/` |
 | Stimme | ✅ eigene Stimme |
-| Figur | 🔄 Detektiv (Hut mit orangem Band, hoher Kragen, Lupe) – Master-Bild fehlt noch |
+| Figur | ✅ Stickman-Detektiv – `figur/master.jpg` |
 | Name | ⏳ offen |
 | Tools einrichten | ⏳ offen |
 
