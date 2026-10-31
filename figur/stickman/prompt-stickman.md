@@ -60,3 +60,11 @@ Premium high quality 3D render of a mysterious STICKMAN detective mascot, styliz
 ```
 Same stickman, same style. Make him mysterious and serious instead of funny: remove the smile, make the black coat collar tall so it covers his mouth and nose completely, only the eyes stay visible with a subtle orange glow, pull the hat lower over the eyes. Keep the orange hat band, the magnifying glass and the white background.
 ```
+
+## v7 – Echter Stickman (Strichmännchen) auf Schwarz ⭐⭐⭐⭐⭐⭐
+Feedback v6: zu komisch / zu viel Mantel. → Zurück zum klassischen Strichmännchen. Detektiv nur durch Hut, Schal und Lupe.
+Eigene Zeichnung: `stickman-echt.svg`
+
+```
+Classic stickman, a real simple stick figure: a perfectly round white circle head and thin white lines for body, arms and legs, NO coat, NO clothes on the body, NOT a 3D character, NOT a human. He is a detective: black fedora hat with a bright orange band, a small bright orange scarf around the neck, holding a magnifying glass up next to his face. Face: two simple black oval eyes, one eyebrow raised, small confident smirk, clever and curious look. Pose: one hand on his hip, relaxed confident stance, full body, centered. Clean premium 2D vector style, smooth thick consistent lines, subtle soft glow, subtle orange rim light on the hat. Pure solid black background with a very soft dark orange spotlight behind him. Iconic YouTube channel mascot, square format.
+```

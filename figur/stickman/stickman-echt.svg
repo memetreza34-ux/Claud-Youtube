@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="spot" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#2a1a10"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#spot)"/>
+
+  <!-- Strichmännchen -->
+  <g stroke="#f4f4f4" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <line x1="256" y1="236" x2="256" y2="360"/>
+    <line x1="256" y1="360" x2="222" y2="456"/>
+    <line x1="256" y1="360" x2="290" y2="456"/>
+    <!-- Arm in die Hüfte gestemmt -->
+    <polyline points="256,272 212,306 240,334"/>
+    <!-- Arm hält Lupe vors Auge -->
+    <polyline points="256,272 304,288 316,236"/>
+  </g>
+
+  <!-- Schal (Detektiv-Akzent) -->
+  <path d="M232 232 Q256 246 280 232 L282 246 Q256 260 230 246 Z" fill="#FF5A1F"/>
+  <path d="M270 246 L284 290 L272 292 L262 252 Z" fill="#FF5A1F"/>
+
+  <!-- Kopf -->
+  <circle cx="256" cy="176" r="56" fill="#f4f4f4"/>
+  <!-- Augen -->
+  <ellipse cx="236" cy="182" rx="7" ry="10" fill="#0a0a0a"/>
+  <ellipse cx="276" cy="182" rx="7" ry="10" fill="#0a0a0a"/>
+  <!-- Brauen: eine hoch, eine runter -->
+  <path d="M224 162 Q236 154 248 160" stroke="#0a0a0a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M265 168 L288 164" stroke="#0a0a0a" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- Mund: kleiner schräger Strich -->
+  <path d="M244 210 Q258 214 270 206" stroke="#0a0a0a" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- Hut -->
+  <g filter="url(#glow)">
+    <path d="M172 140 Q256 118 340 140 Q348 150 336 154 Q256 136 176 154 Q164 150 172 140 Z" fill="#141414" stroke="#FF7A3D" stroke-width="2"/>
+    <path d="M204 140 C202 92 224 70 256 70 C288 70 310 92 308 140 Q256 126 204 140 Z" fill="#141414" stroke="#FF7A3D" stroke-width="2"/>
+  </g>
+  <path d="M205 122 Q256 110 307 122 L308 139 Q256 126 204 139 Z" fill="#FF5A1F"/>
+  <path d="M238 78 Q256 92 274 78" stroke="#2a2a2a" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Lupe -->
+  <line x1="316" y1="236" x2="330" y2="212" stroke="#8a5a32" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="344" cy="184" r="32" fill="#cfe8ff" fill-opacity="0.18" stroke="#d9d9d9" stroke-width="8"/>
+  <path d="M328 174 Q334 162 348 160" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8"/>
+</svg>
