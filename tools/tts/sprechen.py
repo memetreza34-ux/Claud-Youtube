@@ -29,7 +29,7 @@ def saetze(text: str) -> list[str]:
     teile = re.split(r"(?<=[.!?…])\s+", text.strip())
     stuecke, aktuell = [], ""
     for t in teile:
-        if len(aktuell) + len(t) < 220:
+        if len(aktuell) + len(t) < 150:
             aktuell = f"{aktuell} {t}".strip()
         else:
             if aktuell:
@@ -44,7 +44,8 @@ def main() -> None:
     quelle, ziel = sys.argv[1], sys.argv[2]
     text = open(quelle, encoding="utf-8").read() if os.path.isfile(quelle) else quelle
 
-    geraet = "mps" if torch.backends.mps.is_available() else "cpu"
+    # Auf 16-GB-Macs lief MPS voll und wurde vom System beendet → Standard CPU.
+    geraet = os.environ.get("GERAET", "cpu")
     print(f"Lade Modell auf {geraet} …", flush=True)
     try:
         modell = ChatterboxMultilingualTTS.from_pretrained(device=geraet)

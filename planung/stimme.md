@@ -29,3 +29,9 @@ Nur Stimmen, die man nutzen **darf**:
 - Chatterbox Multilingual (MIT, 23 Sprachen inkl. Deutsch): https://deepinfra.com/ResembleAI/chatterbox-multilingual
 - Thorsten-Voice (CC0): https://github.com/thorstenMueller/Thorsten-Voice
 - Piper Thorsten (CC0): https://huggingface.co/Trelis/piper-de-de-thorsten-medium
+
+## Stand 31.10.2026
+- Chatterbox läuft lokal: `tools/tts/` (`sprechen.py`), Referenz = Thorsten (CC0)
+- Auf **CPU** (MPS lief bei 16 GB RAM voll und wurde beendet). Tempo: ~35 s Rechenzeit pro Satzblock, 23 s Audio in ~100 s.
+- Test: `tools/tts/ausgabe/01-hook-test.wav` – gut verständlich
+- Aussprache-Tipp: „KI“ als **„Ka-I“** schreiben, sonst liest er „Kie“.
