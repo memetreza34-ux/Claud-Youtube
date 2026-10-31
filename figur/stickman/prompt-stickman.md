@@ -45,6 +45,17 @@ Analyse:
 Premium high quality 3D render of a mysterious STICKMAN detective mascot, stylized like a polished 3D emoji, NOT a human, NOT a snowman, NOT cute. Smooth matte white sphere head with no hair, no nose, no ears. A black felt fedora hat with a glossy bright orange band is pulled low over the forehead, casting a soft shadow over the upper head. The tall upturned collar of a black wool trench coat covers his mouth and the lower half of the head completely, only the eyes are visible between hat and collar. Eyes: two simple solid black oval cartoon eyes, NOT glowing, one eyebrow raised in a skeptical, clever "hmm, interesting" look, calm and intelligent, NOT angry, NOT evil. Thin black stick arms as smooth 3D tubes, a black leather glove holds a metal magnifying glass casually raised beside his head at eye level. Slight head tilt, relaxed confident posture, slightly leaning toward the viewer. Straight front view, centered upper body. Pure solid black background, strong bright orange rim light from behind outlining the hat brim and coat collar, cinematic premium lighting, iconic YouTube channel mascot, square format.
 ```
 
+## v6 – Feinschliff von v5 ⭐⭐⭐⭐⭐
+v5 = richtige Richtung. Fehler:
+- Körper ist eine **Röhre** ohne Schultern, Arme kommen unten aus dem Mantel → komisch
+- Kopf eher **Ei** als Kugel, etwas zu groß
+- nur **eine** Augenbraue
+- Kragen verdeckt den Mund nicht ganz
+
+```
+Premium high quality 3D render of a mysterious STICKMAN detective mascot, stylized like a polished 3D emoji, NOT a human, NOT a snowman, NOT cute. Perfectly round smooth matte white sphere head, medium size, no hair, no nose, no ears. A black felt fedora hat with a glossy bright orange band, tilted slightly to one side and pulled low over the forehead. He wears a well tailored black wool trench coat with clearly defined shoulders, belt and lapels, the tall upturned collar covers his mouth and the lower half of the head completely, only the eyes are visible between hat and collar. Eyes: two simple solid black oval cartoon eyes with two short black eyebrows, the left eyebrow raised high and the right eyebrow lowered, a skeptical clever "hmm, interesting" look, calm and intelligent, NOT angry, NOT evil. His thin black stick arms come out of the coat sleeves at the shoulders, black leather gloves. One hand holds a metal magnifying glass raised beside his head at eye level, the lens reflects orange light. The other hand rests in his coat pocket. Slight head tilt, relaxed confident posture. Straight front view, centered upper body with space around it. Pure solid black background, strong bright orange rim light from behind outlining the hat brim, shoulders and collar, cinematic premium lighting, high detail, iconic YouTube channel mascot, square format.
+```
+
 ## Bearbeiten (aktuelles Flow-Bild)
 ```
 Same stickman, same style. Make him mysterious and serious instead of funny: remove the smile, make the black coat collar tall so it covers his mouth and nose completely, only the eyes stay visible with a subtle orange glow, pull the hat lower over the eyes. Keep the orange hat band, the magnifying glass and the white background.
