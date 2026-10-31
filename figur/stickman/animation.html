@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stickman Animation</title>
+<style>
+  :root { --bg: #050505; --text: #f4f4f4; --accent: #FF5A1F; --muted: #2a2a2a; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: system-ui, sans-serif; display: flex; flex-direction: column; align-items: center; padding: 16px; }
+  #stage { width: min(512px, 100%); aspect-ratio: 1; }
+  #stage svg { width: 100%; height: 100%; display: block; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 12px; }
+  button { background: var(--muted); color: var(--text); border: 1px solid #444; border-radius: 8px; padding: 8px 14px; font-size: 15px; cursor: pointer; }
+  button.active { background: var(--accent); border-color: var(--accent); color: #000; }
+  label { margin-top: 10px; font-size: 14px; opacity: .8; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div class="buttons" id="buttons"></div>
+<label><input type="checkbox" id="auto" checked> Posen automatisch wechseln</label>
+<script src="stickman.js"></script>
+<script>
+  const { svg, POSES } = Stickman;
+  const names = Object.keys(POSES);
+  let current = 'standard', lastSwitch = 0;
+  const stage = document.getElementById('stage');
+  const btns = document.getElementById('buttons');
+  const auto = document.getElementById('auto');
+
+  names.forEach(n => {
+    const b = document.createElement('button');
+    b.textContent = n;
+    b.onclick = () => { current = n; lastSwitch = performance.now(); auto.checked = false; mark(); };
+    btns.appendChild(b);
+  });
+  function mark() { [...btns.children].forEach(b => b.classList.toggle('active', b.textContent === current)); }
+  mark();
+
+  function frame(t) {
+    if (auto.checked && t - lastSwitch > 2200) {
+      current = names[(names.indexOf(current) + 1) % names.length];
+      lastSwitch = t; mark();
+    }
+    const bob = Math.sin(t / 400) * 3;               // leichtes Atmen
+    const blink = (t % 3200) < 140;                   // Blinzeln alle 3,2 s
+    stage.innerHTML = svg(current, { bob, blink });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+</script>
+</body>
+</html>
