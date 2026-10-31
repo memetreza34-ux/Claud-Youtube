@@ -35,3 +35,16 @@ Nur Stimmen, die man nutzen **darf**:
 - Auf **CPU** (MPS lief bei 16 GB RAM voll und wurde beendet). Tempo: ~35 s Rechenzeit pro Satzblock, 23 s Audio in ~100 s.
 - Test: `tools/tts/ausgabe/01-hook-test.wav` – gut verständlich
 - Aussprache-Tipp: „KI“ als **„Ka-I“** schreiben, sonst liest er „Kie“.
+
+## Neuer Plan: Qwen3-TTS (Alibaba, Apache 2.0) ⭐
+Chatterbox klang zu schlecht (v1 robotisch, v2 schlechter).
+- Lizenz **Apache 2.0** (offizielle Modellkarte) → kommerziell erlaubt
+- Kann Deutsch, 0.6B/1.7B Modelle (kleiner als Chatterbox)
+- **VoiceDesign**: Stimme aus einer Beschreibung erfinden → keine fremde Stimme nötig, gehört uns
+- Erst kostenlos im Browser testen: https://huggingface.co/spaces/Qwen/Qwen3-TTS-Voice-Design
+- Deutsche Klon-Anleitung macOS: https://github.com/yauh/qwen3-tts-german-clones
+
+### Stimm-Beschreibung (VoiceDesign)
+A deep, calm, mysterious male narrator voice, around 35 years old, speaking German with a clear standard German accent, slightly raspy and warm, like a true-crime documentary storyteller, confident and intriguing, medium-slow pace with dramatic pauses.
+
+Andere Kandidaten: Kartoffel-Orpheus 3B (deutsch, Lizenz unklar, 3B = zu schwer für 16 GB), IndexTTS 2.5 German (Bilibili-Lizenz, nicht frei).
