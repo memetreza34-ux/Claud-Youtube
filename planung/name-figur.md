@@ -75,5 +75,7 @@ Verfügbarkeit (YouTube-Handle, TikTok, Instagram) noch NICHT geprüft.
 | Aufgedeckt | @Aufgedeckt | ❌ belegt (1,57 Mio.) |
 | Unter der Lupe, Schattenakte, Der Aufdecker | – | ❌ belegt |
 
+> **ENTSCHIEDEN (31.10.2026): Der Strichermittler**
+
 Empfehlung: **Der Strichermittler** (Strich + Ermittler) – Wortspiel, einzigartig, sagt Figur + Thema.
 TikTok / Instagram noch NICHT geprüft.

@@ -1,4 +1,4 @@
-# Claud-Youtube
+# Der Strichermittler (Claud-Youtube)
 
 YouTube- & Social-Media-Kanal: **Betrug, Hacks & Skandale** – erklärt von einer anonymen Detektiv-Figur.
 
@@ -10,7 +10,7 @@ YouTube- & Social-Media-Kanal: **Betrug, Hacks & Skandale** – erklärt von ein
 | Skript Video 01 (Enkeltrick 2.0) | ✅ `skripte/` |
 | Stimme | ✅ eigene Stimme |
 | Figur | ✅ Stickman-Detektiv – `figur/master.jpg` |
-| Name | ⏳ offen |
+| Name | ✅ **Der Strichermittler** (@Strichermittler) |
 | Tools einrichten | ⏳ offen |
 
 ## Ordner
