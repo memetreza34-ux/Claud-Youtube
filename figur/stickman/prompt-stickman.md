@@ -68,3 +68,12 @@ Eigene Zeichnung: `stickman-echt.svg`
 ```
 Classic stickman, a real simple stick figure: a perfectly round white circle head and thin white lines for body, arms and legs, NO coat, NO clothes on the body, NOT a 3D character, NOT a human. He is a detective: black fedora hat with a bright orange band, a small bright orange scarf around the neck, holding a magnifying glass up next to his face. Face: two simple black oval eyes, one eyebrow raised, small confident smirk, clever and curious look. Pose: one hand on his hip, relaxed confident stance, full body, centered. Clean premium 2D vector style, smooth thick consistent lines, subtle soft glow, subtle orange rim light on the hat. Pure solid black background with a very soft dark orange spotlight behind him. Iconic YouTube channel mascot, square format.
 ```
+
+## v8 – Bildaufbau wie das Hood-Informatik-Profilbild ⭐
+Aufbau wie dort: 3D-Emoji-Optik, Brustbild, leicht schräg, Gesicht unten verdeckt, nur Augen sichtbar, Requisit über der Schulter, schlichter Hintergrund.
+
+```
+High quality 3D emoji style mascot, polished and glossy like a premium Apple emoji, upper body bust portrait, slightly turned three quarter view. The character is a STICKMAN detective: a smooth round white sphere head with no hair, no nose, no ears, and thin black stick arms, NOT a human. He wears a black fedora hat with a bright orange band, and a black detective trench coat with a tall upturned collar that covers his mouth and the lower half of the head, only the eyes are visible. Eyes: big expressive cartoon eyes with orange irises and black pupils, focused and clever look, eyebrows slightly furrowed. He rests a large metal magnifying glass on his shoulder like a sword, holding the handle with a black gloved stick hand. Simple clean shapes, soft studio lighting, subtle shadow, centered, plain solid white background, iconic YouTube profile picture mascot, square format.
+```
+
+Variante schwarzer Hintergrund: am Ende `plain solid white background` ersetzen durch `plain solid black background with a soft orange rim light`.
