@@ -60,3 +60,20 @@ Verfügbarkeit (YouTube-Handle, TikTok, Instagram) noch NICHT geprüft.
 2. Verfügbarkeit prüfen (YouTube, TikTok, Instagram, Domain)
 3. Figur als Bild erstellen (3–5 Posen: zeigt, denkt, schockiert, lacht, erklärt)
 4. Banner, Profilbild, Thumbnail-Vorlage
+
+---
+
+# Namen für den Stickman-Detektiv (YouTube-Check 31.10.2026)
+| Name | @Handle | Ergebnis |
+|---|---|---|
+| **Der Strichermittler** ⭐ | @Strichermittler / @DerStrichermittler | ✅ frei |
+| Kommissar Strich | @KommissarStrich | ✅ frei |
+| Lupenblick | @Lupenblick | ✅ frei |
+| Spurensucher | @Spurensucher | ✅ frei |
+| Inspektor Strich | @InspektorStrich | ✅ frei |
+| Fallakte | @Fallakte | ❌ belegt (6.700 Abos) |
+| Aufgedeckt | @Aufgedeckt | ❌ belegt (1,57 Mio.) |
+| Unter der Lupe, Schattenakte, Der Aufdecker | – | ❌ belegt |
+
+Empfehlung: **Der Strichermittler** (Strich + Ermittler) – Wortspiel, einzigartig, sagt Figur + Thema.
+TikTok / Instagram noch NICHT geprüft.
