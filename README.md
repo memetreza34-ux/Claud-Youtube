@@ -8,7 +8,7 @@ YouTube- & Social-Media-Kanal: **Betrug, Hacks & Skandale** – erklärt von ein
 | Nische | ✅ Betrug, Hacks & Skandale |
 | 20 Video-Ideen | ✅ `planung/video-ideen.md` |
 | Skript Video 01 (Enkeltrick 2.0) | ✅ `skripte/` |
-| Stimme | ✅ eigene Stimme |
+| Stimme | 🔄 Open Source: Chatterbox (MIT) – `planung/stimme.md` |
 | Figur | ✅ Stickman-Detektiv – `figur/master.jpg` |
 | Name | ✅ **Der Strichermittler** (@Strichermittler) |
 | Tools einrichten | ⏳ offen |
