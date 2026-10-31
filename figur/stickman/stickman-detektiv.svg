@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <g stroke="#111" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <!-- Körper -->
+    <line x1="256" y1="250" x2="256" y2="370"/>
+    <!-- Beine -->
+    <line x1="256" y1="370" x2="214" y2="470"/>
+    <line x1="256" y1="370" x2="298" y2="470"/>
+    <!-- Linker Arm (locker) -->
+    <polyline points="256,285 214,330 200,380"/>
+    <!-- Rechter Arm hält Lupe -->
+    <polyline points="256,285 304,304 318,280"/>
+  </g>
+
+  <!-- Mantel-Kragen (zwei Dreiecke am Hals) -->
+  <path d="M256 250 L226 236 L236 280 Z" fill="#111"/>
+  <path d="M256 250 L286 236 L276 280 Z" fill="#111"/>
+  <!-- Krawatte -->
+  <path d="M250 258 L262 258 L264 300 L256 312 L248 300 Z" fill="#FF5A1F"/>
+
+  <!-- Kopf -->
+  <circle cx="256" cy="178" r="62" fill="#fff" stroke="#111" stroke-width="12"/>
+  <!-- Augen: schmal, misstrauisch -->
+  <path d="M222 186 L246 190" stroke="#111" stroke-width="11" stroke-linecap="round"/>
+  <path d="M266 190 L290 186" stroke="#111" stroke-width="11" stroke-linecap="round"/>
+  <!-- Grinsen -->
+  <path d="M238 216 Q258 226 278 212" stroke="#111" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <!-- Hut: Krempe -->
+  <path d="M168 146 Q256 124 344 146 Q352 156 340 160 Q256 142 172 160 Q160 156 168 146 Z" fill="#111"/>
+  <!-- Hut: Krone -->
+  <path d="M200 146 C198 96 222 74 256 74 C290 74 314 96 312 146 Q256 132 200 146 Z" fill="#111"/>
+  <!-- Delle -->
+  <path d="M236 82 Q256 98 276 82" stroke="#333" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- Hutband -->
+  <path d="M201 128 Q256 116 311 128 L312 145 Q256 132 200 145 Z" fill="#FF5A1F"/>
+
+  <!-- Lupe -->
+  <line x1="318" y1="280" x2="346" y2="232" stroke="#5b3a22" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="366" cy="198" r="38" fill="#DDEFFF" fill-opacity="0.7" stroke="#111" stroke-width="12"/>
+  <path d="M348 186 Q356 172 372 170" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
+</svg>
