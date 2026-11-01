@@ -21,7 +21,11 @@ pc = modell.create_voice_clone_prompt(ref_audio=wav_c, ref_text=vorlagen_text)[0
 mix_emb = GEWICHT_B * pb.ref_spk_embedding + (1 - GEWICHT_B) * pc.ref_spk_embedding
 
 os.makedirs(ziel, exist_ok=True)
+RHYTHMUS = os.environ.get("RHYTHMUS", "BC")  # welche Vorlage den Sprechrhythmus liefert
 for name, basis in (("mix-rhythmus-B", pb), ("mix-rhythmus-C", pc)):
+    if name[-1] not in RHYTHMUS:
+        continue
+    name = os.environ.get("NAME", name)
     t0 = time.time()
     item = dataclasses.replace(basis, ref_spk_embedding=mix_emb)
     wavs, sr = modell.generate_voice_clone(text=neuer_text, language="German", voice_clone_prompt=[item])
