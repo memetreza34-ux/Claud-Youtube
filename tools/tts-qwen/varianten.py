@@ -12,11 +12,11 @@ import soundfile as sf
 import torch
 from qwen_tts import Qwen3TTSModel
 
-TEST = (
-    "Stell dir vor, dein Handy klingelt. Am anderen Ende: die Polizei. "
-    "Dein Sohn hatte einen Unfall, und du sollst sofort zahlen. Klingt echt? Ist es nicht. "
-    "Heute decken wir auf, wie diese Masche funktioniert."
-)
+TEST = os.environ.get("TEST", (
+    "Hacker, Betrüger und Skandale. Ich zeige dir, was wirklich dahintersteckt. "
+    "Und glaub mir: Das ist krasser, als du denkst. "
+    "Denn diese Masche? Die hat schon tausende Menschen erwischt."
+))
 
 liste, ziel = sys.argv[1], sys.argv[2]
 geraet = os.environ.get("GERAET", "mps")
