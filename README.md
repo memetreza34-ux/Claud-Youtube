@@ -17,3 +17,8 @@ YouTube- & Social-Media-Kanal: **Betrug, Hacks & Skandale** – erklärt von ein
 - `planung/` – Kanal-Plan, Nische, Ideen, Produktion, Namen
 - `skripte/` – Video-Skripte
 - `figur/` – Figur: aktueller Prompt (`detektiv-final.md`), Master-Bild, alte Entwürfe
+
+## Speicherorte
+- **Code & Texte:** dieses Repo (GitHub)
+- **Medien (Audio, Bilder, Videos):** Google Drive → `Meine Ablage/Der Strichermittler/` (audio/, bilder/, videos/)
+- **KI-Modelle & Python-Umgebungen:** lokal auf dem Mac (`~/.cache/huggingface`, `tools/*/.venv`) – brauchen schnellen Zugriff
