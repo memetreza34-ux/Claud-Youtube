@@ -48,3 +48,16 @@ Chatterbox klang zu schlecht (v1 robotisch, v2 schlechter).
 A deep, calm, mysterious male narrator voice, around 35 years old, speaking German with a clear standard German accent, slightly raspy and warm, like a true-crime documentary storyteller, confident and intriguing, medium-slow pace with dramatic pauses.
 
 Andere Kandidaten: Kartoffel-Orpheus 3B (deutsch, Lizenz unklar, 3B = zu schwer für 16 GB), IndexTTS 2.5 German (Bilibili-Lizenz, nicht frei).
+
+## Neustart (02.11.2026): Warum alles „komisch“ klang
+- Qwen3-TTS und Chatterbox sind **mehrsprachige** Modelle, vor allem auf Chinesisch/Englisch trainiert → Deutsch klingt leicht fremd (Betonung, Melodie).
+- Dazu waren die Stimmen **von der KI erfunden** → doppelt künstlich.
+- **Neuer Ansatz:** Modell, das auf **deutschen Muttersprachlern** nachtrainiert ist + **echte deutsche Stimme** als Vorlage.
+
+### Kandidat: Kartoffelbox (SebastianBodza, MIT, Basis Chatterbox, deutsch nachtrainiert)
+- Online-Demo: https://huggingface.co/spaces/SebastianBodza/Kartoffelbox
+- Skript: `tools/tts-qwen/kartoffelbox.py`
+- Vorlage: echte Thorsten-Aufnahmen (CC BY 4.0) oder eigene Stimme
+- Problem: kostenloses Online-Kontingent ohne Konto schnell leer → kostenloses Hugging-Face-Konto nötig
+
+Weitere: Kokoro German Martin (Apache 2.0, sehr klein, aber auf synthetischen Daten trainiert), Kartoffel-Orpheus 3B (Llama-Lizenz, zu schwer lokal).
