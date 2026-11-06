@@ -61,3 +61,13 @@ Andere Kandidaten: Kartoffel-Orpheus 3B (deutsch, Lizenz unklar, 3B = zu schwer 
 - Problem: kostenloses Online-Kontingent ohne Konto schnell leer → kostenloses Hugging-Face-Konto nötig
 
 Weitere: Kokoro German Martin (Apache 2.0, sehr klein, aber auf synthetischen Daten trainiert), Kartoffel-Orpheus 3B (Llama-Lizenz, zu schwer lokal).
+
+## Aktueller Plan (06.11.2026): eigene Stimme nachbauen
+Stimme ist **noch nicht fertig**. Entscheidung: keine Thorsten-Vorlage mehr, sondern die eigene Stimme.
+1. Text aus `planung/aufnahme-text.md` einlesen (offen).
+2. Beste Stellen zurechtschneiden.
+3. Stimme zuerst mit Kartoffelbox nachbauen (`tools/tts-qwen/kartoffelbox.py`).
+4. Hörprobe mit dem Hook aus Video 01 erstellen (`tools/tts-qwen/texte/01-hook.txt`).
+5. Klingt es nicht gut genug: anderes Open-Source-Modell mit derselben Aufnahme testen.
+
+Weiterarbeit erfolgt ab jetzt auf einem anderen Rechner statt auf dem Mac. Die Mac-Angaben oben (MPS, 16 GB RAM, Tempo) gelten dort nicht unbedingt, die Python-Umgebungen und Modelle müssen dort neu eingerichtet werden.
