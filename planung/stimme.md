@@ -71,3 +71,14 @@ Stimme ist **noch nicht fertig**. Entscheidung: keine Thorsten-Vorlage mehr, son
 5. Klingt es nicht gut genug: anderes Open-Source-Modell mit derselben Aufnahme testen.
 
 Weiterarbeit erfolgt ab jetzt auf einem anderen Rechner statt auf dem Mac. Die Mac-Angaben oben (MPS, 16 GB RAM, Tempo) gelten dort nicht unbedingt, die Python-Umgebungen und Modelle müssen dort neu eingerichtet werden.
+
+
+## Stand 07.11.2026: Qwen3-TTS mit der eigenen Stimme, weiter auf dem Mac
+Die Aufnahme ist gemacht. Das Windows-Notebook (i3, 7,8 GB) ist zu langsam, deshalb geht es auf dem Mac (M4, 16 GB) weiter. Damit ist die Notiz oben zum „anderen Rechner“ überholt.
+- **Gewählt:** Qwen3-TTS 0.6B (Apache 2.0, lokal, ohne Konto), Variante A: Vorlage `vorlage.wav`, Temperatur 0,6, gekürzte Pausen, Lautstärke -16 LUFS. Urteil des Nutzers zur ersten Probe: richtige Richtung, aber noch unpassend. Danach hat er Variante A gewählt.
+- **Abgelehnt:** Piper + OpenVoice, MOSS-TTS-Nano. Kartoffelbox klang gut („Passt so“), die Online-Demo braucht aber ein Konto und das Modell eine Zugangsfreigabe.
+- **Ursache für „unpassend“:** Grundton und Klangfarbe passten, Qwen machte aber zu lange Pausen und schwankte stärker in der Tonhöhe.
+- **Weiter:** `tools/tts-qwen-mac/LIES-MICH.txt`. Erst Test mit 0.6B und 1.7B, dann volles Voiceover aus `voiceover-01-sprechtext.txt`. Das Paket ist auf einem Mac noch ungetestet.
+- **Stimmaufnahmen:** Das Repo ist öffentlich, deshalb liegen `vorlage.wav` und die Aufnahme nicht hier. Sie kommen per USB-Stick auf den Mac.
+- **Windows-Skripte der Versuche:** `tools/stimme-windows/`.
+- **Noch offen:** Der weinende Anruf am Videoanfang braucht eine eigene Aufnahme oder Stimme mit Erlaubnis. Der Satz „Fake-Shop-Video kommt als Nächstes“ muss bei Veröffentlichung stimmen. `planung/produktion.md` ist veraltet. „dreihundert Millionen“ im Aufnahme-Text ist ungeprüfter Übungstext und steht nicht im Sprechtext.

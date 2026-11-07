@@ -1,0 +1,72 @@
+DER STRICHERMITTLER: STIMME AUF DEM MAC
+=======================================
+
+Für: MacBook mit M4-Chip und 16 GB RAM.
+Alles läuft lokal. Deine Stimme wird nicht hochgeladen, du brauchst kein Konto.
+Aus dem Internet kommen nur die Programme und das Stimm-Modell.
+
+Freier Speicher: mindestens 12 GB.
+Der Mac sollte am Strom hängen. Das Skript hält ihn wach, solange es rechnet.
+
+
+WEG A: MIT CLAUDE AUF DEM MAC (am einfachsten)
+----------------------------------------------
+1. Kopiere den Ordner "mac-paket" per USB-Stick auf den Mac,
+   zum Beispiel in deinen Benutzerordner.
+2. Öffne die Claude-App, gehe auf "Code" und wähle den Ordner "mac-paket".
+3. Schreibe: Lies LIES-MICH.txt und starte Punkt 1.
+
+
+WEG B: OHNE CLAUDE
+------------------
+1. Kopiere den Ordner "mac-paket" per USB-Stick auf den Mac.
+2. Öffne das Programm "Terminal".
+3. Tippe:  bash   (danach ein Leerzeichen)
+4. Ziehe die Datei "start.sh" in das Terminal-Fenster und drücke Enter.
+5. Wähle Punkt 1.
+
+
+WENN DU DEN ORDNER AUS GITHUB HAST
+----------------------------------
+Dort liegt er unter tools/tts-qwen-mac, aber ohne deine Stimme.
+Das Repo ist öffentlich, deshalb ist vorlage.wav absichtlich nicht dabei.
+Kopiere vorlage.wav per USB-Stick vom Windows-Laptop in diesen Ordner.
+Du findest sie dort unter Strichvermittler/mac-paket/vorlage.wav.
+
+
+DIE DREI PUNKTE
+---------------
+1 = Test: der kurze Hook mit beiden Modellen. Lädt beim ersten Mal etwa 6,5 GB.
+2 = Volles Voiceover mit dem kleinen Modell 0.6B.
+3 = Volles Voiceover mit dem großen Modell 1.7B.
+
+Starte zuerst Punkt 1 und höre dir danach diese zwei Dateien im Ordner "ergebnis" an:
+  test-0.6B.wav
+  test-1.7B.wav
+Nimm für das volle Voiceover das Modell, das mehr nach dir klingt.
+
+Bricht etwas ab, starte denselben Punkt einfach noch einmal.
+Fertige Stücke bleiben erhalten.
+
+
+WICHTIG
+-------
+- Der Klang kann etwas anders sein als bei Variante A auf dem Windows-Laptop.
+  Bitte deshalb zuerst den Test anhören.
+- Das Paket wurde auf dem Windows-Laptop vorbereitet und noch nicht auf einem Mac getestet.
+- Gib den Ordner nicht weiter und lade ihn nirgends hoch: Er enthält deine Stimmaufnahme.
+
+
+HINWEISE FÜR CLAUDE AUF DEM MAC
+-------------------------------
+- Skript: start.sh (Aufruf mit 1, 2 oder 3), dahinter qwen_mac.py.
+- Das sind die Einstellungen der vom Nutzer gewählten Variante A: Vorlage vorlage.wav,
+  Temperatur 0,6, gekürzte Pausen, Lautstärke -16 LUFS.
+- Keine Lösung mit Hugging-Face-Konto oder Login vorschlagen.
+- Die Stimme nicht an Online-Dienste senden und keine Audiodatei des Nutzers ins
+  öffentliche GitHub-Repo legen, außer der Nutzer entscheidet das ausdrücklich.
+- Laut planung/stimme.md lief Chatterbox auf diesem Mac über die Mac-Grafik (MPS) bei
+  16 GB voll und wurde beendet. Beim Modell 1.7B den Speicher beobachten und wenn nötig
+  mit --geraet cpu oder dem Modell 0.6B arbeiten.
+- Lange Läufe im Hintergrund starten. Text danach per Abschrift prüfen.
+  Den Klang beurteilt der Nutzer.

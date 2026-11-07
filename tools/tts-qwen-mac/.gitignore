@@ -1,0 +1,8 @@
+# Stimme und große Dateien gehören nicht ins öffentliche Repo
+*.wav
+*.mp3
+*.mp4
+*.m4a
+.venv/
+modelle/
+ergebnis/
