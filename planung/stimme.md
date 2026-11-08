@@ -82,3 +82,11 @@ Die Aufnahme ist gemacht. Das Windows-Notebook (i3, 7,8 GB) ist zu langsam, desh
 - **Stimmaufnahmen:** Das Repo ist öffentlich, deshalb liegen `vorlage.wav` und die Aufnahme nicht hier. Sie kommen per USB-Stick auf den Mac.
 - **Windows-Skripte der Versuche:** `tools/stimme-windows/`.
 - **Noch offen:** Der weinende Anruf am Videoanfang braucht eine eigene Aufnahme oder Stimme mit Erlaubnis. Der Satz „Fake-Shop-Video kommt als Nächstes“ muss bei Veröffentlichung stimmen. `planung/produktion.md` ist veraltet. „dreihundert Millionen“ im Aufnahme-Text ist ungeprüfter Übungstext und steht nicht im Sprechtext.
+
+## Stand 08.11.2026: Voiceover 01 fertig (MLX auf dem Mac)
+- **Neue Vorlage:** Auf dem Mac neu aufgenommen (15,7 s, Text aus `vorlage-text.txt`), die alte Vorlage liegt auf einem USB-Stick, den der Mac nicht erkennt. Nicht im Repo.
+- **Test PyTorch (`start.sh`):** 0.6B und 1.7B liefen, der Nutzer fand **1.7B besser**. Zu langsam: 1.7B brauchte etwa 8 Minuten zum Laden und etwa 3 s Rechenzeit pro Sekunde Audio.
+- **Gewählt: MLX** (`qwen_mlx.py`, Modell `mlx-community/Qwen3-TTS-12Hz-1.7B-Base-8bit`, Apache 2.0, ohne Konto). Hook in 72 s statt 556 s. Der Nutzer fand den Klang gleich gut.
+- **Voiceover 01:** 4:45 min, in knapp 8 min berechnet, -16,9 LUFS, alle 39 Stücke per Abschrift geprüft. Vom Nutzer als „passt“ abgenommen. Die Datei liegt nur lokal unter `tools/tts-qwen-mac/ergebnis/`.
+- **Modelle** liegen auf der externen SSD T7 (`/Volumes/T7/strichermittler-modelle`, Aufruf mit `HF_HOME=...`). Die SSD ist exFAT: macOS legt dort `._`-Dateien an, die mlx-audio als Modelldateien liest und dann scheitert („Speech tokenizer not loaded“). Abhilfe: `dot_clean -m` auf den Modellordner.
+- **Aufruf:** `HF_HOME=/Volumes/T7/strichermittler-modelle .venv-mlx/bin/python qwen_mlx.py --modell 1.7B-8bit --text <text> --ziel ergebnis/<name>.wav` (Umgebung: `uv venv --python 3.12 .venv-mlx` und `uv pip install mlx-audio==0.6.4 soundfile`). Bis zu 12 GB Arbeitsspeicher.

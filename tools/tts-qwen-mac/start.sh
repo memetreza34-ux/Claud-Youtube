@@ -15,7 +15,7 @@ if [ ! -f vorlage.wav ]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
-export HF_HOME="$PWD/modelle"
+export HF_HOME="${HF_HOME:-$PWD/modelle}"
 export HF_HUB_DISABLE_SYMLINKS_WARNING=1
 export PYTORCH_ENABLE_MPS_FALLBACK=1
 export PYTHONUTF8=1
