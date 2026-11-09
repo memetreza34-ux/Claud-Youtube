@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "remotion-studio",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "cd animationen && exec npx remotion studio --no-open --port 3002"],
+      "port": 3002,
+      "autoPort": false
+    }
+  ]
+}
