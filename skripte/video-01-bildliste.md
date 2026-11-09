@@ -12,6 +12,21 @@ Screenshots liegen lokal in `video-01/screenshots/` (3840×2160, nicht im Repo, 
 | 3:01.6–3:07.6 | „In den USA warnt die Verbraucherschutzbehörde …“ | **Kein Screenshot** (FTC blockt automatische Browser), Zitat-Einblendung in Zeitungsausschnitt-Optik | [FTC Consumer Alert, 20.03.2023](https://consumer.ftc.gov/consumer-alerts/2023/03/scammers-use-ai-enhance-their-family-emergency-schemes) |
 | 3:07.7–3:12 | „… warnen Polizei und Polizeigewerkschaft …“ | `06-polizeigewerkschaft-webde.png`, markiert Zitat Ralf Kusterer (DPolG) | [WEB.DE](https://web.de/magazine/ratgeber/finanzen-verbraucher/polizei-warnt-betruegerischen-schockanrufen-kuenstlicher-intelligenz-38543724), aktualisiert 28.02.2024 |
 
+## Animationen (Remotion, `animationen/`)
+Gerendert als MP4 (1920×1080, 30 fps) in `video-01/animationen/`, nicht im Repo. Jede Animation an der Startzeit anlegen, dann fallen Zahlen und Wörter auf das gesprochene Wort.
+
+| Start | Datei | Länge | Inhalt |
+|---|---|---|---|
+| 0:36.5 | `BkaZahlen.mp4` | 11 s | 49 Mio. € Enkeltrick/Schockanrufe, dann + 49,5 Mio. € falsche Polizisten |
+| 0:47.2 | `Eisberg.mp4` | 4,5 s | Spitze „angezeigt“, darunter „Dunkelfeld – Scham · Schweigen“ |
+| 1:08.4 | `McAfeeBalken.mp4` | 10 s | 3–4 Sek. Audio → 85 %, mehr Aufnahmen → 95 % |
+| 1:50.4 | `SiebzigProzent.mp4` | 7 s | 70 % nicht sicher, ob sie eine KI-Stimme erkennen |
+| 2:00.4 | `AnrufTreppe.mp4` | 43 s | „NACHGESTELLT“, 5 Stufen, jede leuchtet bei „Schritt 1–5“ auf |
+| 2:51.2 | `DreiWorte.mp4` | 7,5 s | SCHOCK · ZEITDRUCK · GEHEIMNIS |
+| 3:25.9 | `Codewort.mp4` | 15,5 s | Schloss, „Ananas-Fahrrad“, „Wie lautet unser Codewort?“, „Eine KI kann das nicht wissen.“ |
+
+Kommt der weinende Anruf vor das Voiceover, verschieben sich alle Startzeiten um dessen Länge.
+
 ## Offen
 - Lichtenfels: Original-Pressemitteilung der Polizei Oberfranken nicht gefunden, nur dpa. Im Sprechtext wird der Ort nicht genannt, der Screenshot zeigt ihn aber.
 - Tagesspiegel (Polizeigewerkschaft) nicht verwendet: nur „Alle akzeptieren“ oder Abo.
