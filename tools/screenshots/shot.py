@@ -14,7 +14,7 @@ from playwright.sync_api import sync_playwright
 
 ABLEHNEN = re.compile(
     r"^\s*(alle ablehnen|ablehnen|nur notwendige|nur erforderliche|nur essenzielle|reject all|reject|decline|"
-    r"necessary only|only necessary|verweigern|nicht zustimmen)",
+    r"necessary only|only necessary|verweigern|nicht zustimmen|do not consent|don't consent|reject optional)",
     re.I,
 )
 EINSTELLUNGEN = re.compile(r"^\s*(einstellungen|anpassen|optionen|mehr optionen|cookie-einstellungen|manage)\s*$", re.I)
@@ -63,6 +63,27 @@ MARKIEREN = """(t) => {
   } return false; }"""
 
 
+VERPIXELN = """(begriffe) => {
+  let n = 0;
+  for (const b of begriffe) {
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const treffer = [];
+    let k; while ((k = w.nextNode())) { if (k.data.includes(b)) treffer.push(k); }
+    for (const t of treffer) {
+      let rest = t;
+      let i;
+      while ((i = rest.data.indexOf(b)) >= 0) {
+        const r = document.createRange(); r.setStart(rest, i); r.setEnd(rest, i + b.length);
+        const s = document.createElement('span');
+        s.style.cssText = 'filter:blur(7px);background:#888;color:#888;border-radius:4px';
+        r.surroundContents(s); n++;
+        rest = s.nextSibling; if (!rest || rest.nodeType !== 3) break;
+      }
+    }
+  }
+  return n; }"""
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("url")
@@ -71,6 +92,7 @@ def main():
     p.add_argument("--voll", action="store_true")
     p.add_argument("--breite", type=int, default=1920)
     p.add_argument("--hoehe", type=int, default=1080)
+    p.add_argument("--verpixeln", action="append", default=[], help="Begriff unkenntlich machen (mehrfach möglich)")
     a = p.parse_args()
     with sync_playwright() as pw:
         browser = pw.chromium.launch(channel="chrome", headless=True)
@@ -82,9 +104,12 @@ def main():
         banner_ablehnen(page)
         time.sleep(3)
         banner_ablehnen(page)  # manche Banner erscheinen erst verzögert
+        if a.verpixeln:
+            print("Verpixelt:", page.evaluate(VERPIXELN, a.verpixeln), "Stellen")
         if a.text:
             print("Text gefunden:", page.evaluate(MARKIEREN, a.text))
             time.sleep(1)
+        banner_ablehnen(page)  # letzte Prüfung direkt vor dem Bild
         page.screenshot(path=a.ziel, full_page=a.voll)
         print("gespeichert:", a.ziel)
         browser.close()

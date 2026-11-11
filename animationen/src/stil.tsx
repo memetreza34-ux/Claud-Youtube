@@ -1,5 +1,6 @@
 import { loadFont as ladeBebas } from "@remotion/google-fonts/BebasNeue";
 import { loadFont as ladeInter } from "@remotion/google-fonts/Inter";
+import { loadFont as ladeAnton } from "@remotion/google-fonts/Anton";
 import { AbsoluteFill, Easing, Interactive, interpolate, useCurrentFrame } from "remotion";
 
 // Kanal-Stil "Der Strichermittler": dunkel, Gelb für Zahlen, Rot für Warnungen
@@ -14,6 +15,8 @@ export const FARBE = {
 
 export const { fontFamily: ZAHLEN_SCHRIFT } = ladeBebas("normal", { weights: ["400"], subsets: ["latin", "latin-ext"] });
 export const { fontFamily: TEXT_SCHRIFT } = ladeInter("normal", { weights: ["500", "700", "800"], subsets: ["latin", "latin-ext"] });
+
+export const { fontFamily: ANTON_SCHRIFT } = ladeAnton("normal", { weights: ["400"], subsets: ["latin", "latin-ext"] });
 
 export const WEICH = Easing.bezier(0.16, 1, 0.3, 1);
 export const CLAMP = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
