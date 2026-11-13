@@ -1,2 +1,4 @@
 .DS_Store
 video-01/
+__pycache__/
+*.pyc

@@ -1,6 +1,11 @@
 # Nische + Video-Arten
 
-> **ENTSCHIEDEN (30.10.2026): Option A – Betrug, Hacks & Skandale**
+> **AKTUELL (seit 09.11.2026): breiter, seriöser Erklär- und News-Kanal**
+> News, Politik, KI, Tech-Skandale und aktuelle Fälle, Vorbild Hood Informatik. Einheitlich und seriös, keine albernen Themen.
+> Bei laufenden Fällen immer trennen: Was wir wissen, was nicht. Verdächtige Privatpersonen werden nicht genannt und nicht gezeigt.
+> Start mit Reels (60–100 s), daneben lange Videos wie Video 01.
+>
+> *Früher entschieden (30.10.2026): Option A – Betrug, Hacks & Skandale. Diese Themen bleiben ein Teil des Kanals. Der Text unten ist die damalige Abwägung.*
 
 ## Grundregel
 Am Anfang **eng** starten, später breiter werden. YouTube muss erst verstehen, für wen der Kanal ist.

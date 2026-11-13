@@ -99,7 +99,7 @@ const SZENEN: Szene[] = [
   { ab: T.aktie, inhalt: (s) => <Kurs ab={rel(T.verliert, s)} /> },
   // Stand
   { ab: T.was_bleibt, inhalt: (s) => <Beleg bild="reel-nvidia/nvidia-verwaltungsrat.png" quelle="Nvidia, Erklärung des Verwaltungsrats" markierung={[320, 607, 940, 977]} mitteY={1023} kreisAb={rel(T.hinweis, s)} /> },
-  { ab: T.achtzehnten, inhalt: (s) => <Beleg bild="reel-nvidia/kongress-brief.png" quelle="US-Repräsentantenhaus, 4.11.2026" markierung={[450, 673, 932, 985]} mitteY={1098} kreisAb={0.3} /> },
+  { ab: T.achtzehnten, inhalt: () => <Beleg bild="reel-nvidia/kongress-brief.png" quelle="US-Repräsentantenhaus, 4.11.2026" markierung={[450, 673, 932, 985]} mitteY={1098} kreisAb={0.3} /> },
   // Schluss: Band weg, der Strichermittler stellt die offene Frage
   { ab: T.frage, inhalt: () => <Chip text="Stand: 10.11.2026" oben={BAND_TOP + BAND_HOEHE - 70} /> },
 ];

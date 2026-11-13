@@ -1,54 +1,34 @@
-# Remotion video
+# Animationen (Remotion)
 
-<p align="center">
-  <a href="https://github.com/remotion-dev/logo">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng">
-      <img alt="Animated Remotion Logo" src="https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif">
-    </picture>
-  </a>
-</p>
+Alle Animationen und Reels des Strichermittlers, gebaut mit [Remotion](https://www.remotion.dev).
 
-Welcome to your Remotion project!
-
-## Commands
-
-**Install Dependencies**
-
-```console
-npm i --loglevel=error
+## Befehle
+```bash
+npm i --loglevel=error   # einmalig: Pakete installieren
+npm run dev              # Vorschau im Browser (Remotion Studio)
+npm run lint             # Code prüfen (ESLint + TypeScript)
+npx remotion render ReelNvidia4 ../video-01/reels/reel-02-nvidia-v4.mp4
 ```
 
-**Start Preview**
+## Kompositionen
+| Ordner im Studio | ID | Wofür |
+|---|---|---|
+| Video01 | `BkaZahlen`, `McAfeeBalken`, `SiebzigProzent`, `Eisberg`, `AnrufTreppe`, `DreiWorte`, `Codewort` | Einblendungen für „Enkeltrick 2.0“ |
+| Reels | `ReelCodewort` | Reel 01 (Test) |
+| Reels | `ReelNvidia4` | **Reel 02, aktuelle Version** |
+| Reels | `ReelNvidia`, `ReelNvidia2`, `ReelNvidia3` | ältere Fassungen von Reel 02, nur zum Vergleich |
 
-```console
-npm run dev
-```
+## Bausteine
+| Datei | Inhalt |
+|---|---|
+| `stil.tsx` | Farben, Schriften, Hintergrund |
+| `ruhig.tsx` | Vorlage für Reels: Figur als Hintergrund, Belege mit rotem Rahmen, Fotos mit Nachweis, Steckbrief, Lieferweg, Kursbalken |
+| `begruessung.tsx` | Ballon-Begrüßung „Willkommen beim Strichermittler“ |
+| `band.tsx` | Band in der Bildmitte und Quellen-Chip |
+| `Untertitel.tsx` | Untertitel aus Whisper-Wortzeiten, Wechsel am Satzende |
 
-**Render video**
+## Medien
+Ton, Untertitel-JSON und Screenshots liegen in `public/reel-*/`. Der Ordner ist absichtlich nicht im Repo, weil das Repo öffentlich ist (eigene Stimme, fremde Inhalte). Erzeugt werden sie mit `tools/tts-qwen-mac/` und `tools/screenshots/`.
 
-```console
-npx remotion render
-```
-
-**Upgrade Remotion**
-
-```console
-npx remotion upgrade
-```
-
-## Docs
-
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
-
-## Help
-
-We provide help on our [Discord server](https://discord.gg/6VzzNDwUwV).
-
-## Issues
-
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Note that for some entities a company license is needed. [Read the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+## Lizenz
+Remotion ist für Einzelpersonen und kleine Teams kostenlos. Für größere Firmen braucht es eine Firmenlizenz: [Bedingungen](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).

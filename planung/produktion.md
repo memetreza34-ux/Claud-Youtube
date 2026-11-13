@@ -3,12 +3,12 @@
 ## Stand
 | Punkt | Status |
 |---|---|
-| Nische (Betrug, Hacks & Skandale) | ✅ |
+| Ausrichtung (breiter News-Kanal, siehe `nische.md`) | ✅ |
 | 20 Video-Ideen | ✅ |
 | Skript Video 01 (Enkeltrick 2.0) | ✅ |
-| Name + Figur | ⏳ offen |
-| Stimme | ✅ eigene Stimme |
-| Tools einrichten | ⏳ offen |
+| Name + Figur | ✅ Der Strichermittler |
+| Stimme | ✅ eigene Stimme (Qwen3-TTS, lokal auf dem Mac) |
+| Tools einrichten | ✅ Remotion, Whisper, Screenshot-Werkzeug |
 
 ## Bild-Mix pro Video (Ziel)
 | Art | Anteil | Woher |
