@@ -11,6 +11,9 @@ import { REEL_NVIDIA_FRAMES, ReelNvidia } from "./ReelNvidia";
 import { REEL_NVIDIA2_SEK, ReelNvidia2 } from "./ReelNvidia2";
 import { REEL_NVIDIA3_SEK, ReelNvidia3 } from "./ReelNvidia3";
 import { REEL_NVIDIA4_SEK, ReelNvidia4 } from "./ReelNvidia4";
+import { REEL_OUTLOOK_SEK, ReelOutlook } from "./ReelOutlook";
+import { REEL_OUTLOOK2_SEK, ReelOutlook2 } from "./ReelOutlook2";
+import { REEL_OUTLOOK3_SEK, ReelOutlook3 } from "./ReelOutlook3";
 
 // Start im Voiceover (voiceover-01-mlx-1.7B-8bit.wav): BkaZahlen 0:36.5, Eisberg 0:47.2, McAfeeBalken 1:08.4,
 // SiebzigProzent 1:50.4, AnrufTreppe 2:00.4, DreiWorte 2:51.2, Codewort 3:25.9
@@ -112,6 +115,30 @@ export const RemotionRoot: React.FC = () => {
           id="ReelNvidia4"
           component={ReelNvidia4}
           durationInFrames={Math.round(REEL_NVIDIA4_SEK * 30)}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="ReelOutlook"
+          component={ReelOutlook}
+          durationInFrames={Math.round(REEL_OUTLOOK_SEK * 30)}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="ReelOutlook2"
+          component={ReelOutlook2}
+          durationInFrames={Math.round(REEL_OUTLOOK2_SEK * 30)}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
+        <Composition
+          id="ReelOutlook3"
+          component={ReelOutlook3}
+          durationInFrames={Math.round(REEL_OUTLOOK3_SEK * 30)}
           fps={30}
           width={1080}
           height={1920}

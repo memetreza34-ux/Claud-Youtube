@@ -2,3 +2,4 @@
 video-01/
 __pycache__/
 *.pyc
+.venv/

@@ -1,0 +1,17 @@
+Donnerstag, zwölfter November. Outlook funktioniert nicht. Teams, SharePoint, Copilot, alles gestört. Und zwar weltweit. Was ist passiert?
+---
+Willkommen beim Strichermittler.
+---
+Kurz vor neunzehn Uhr deutscher Zeit meldet Microsoft: Nutzer kommen nicht mehr an ihre Postfächer.
+---
+Und das betrifft nicht nur Outlook. Auch die Kalender in Teams, SharePoint und Copilot fallen aus. Am Handy, am Rechner, sogar in Apple Mail.
+---
+Microsoft stoppt alle Updates und startet die Server neu. Doch sobald wieder Last drauf ist, brechen sie erneut zusammen.
+---
+In New York warnt sogar der Katastrophenschutz: Städtische Dienste könnten sich verzögern.
+---
+War das ein Hackerangriff? Laut Microsoft nicht. Manager Charles Lamanna sagt: Es gibt keinen Hinweis auf einen Cyberangriff. Und er entschuldigt sich bei den Kunden.
+---
+Erst am Samstag kommt die Entwarnung: Der Dienst ist für alle Kunden und Regionen wiederhergestellt. Über einen Tag Stillstand.
+---
+Bleibt die Frage: Wie kann ein einziger Fehler so viele Büros auf einmal lahmlegen? Das ermittle ich im nächsten Teil.

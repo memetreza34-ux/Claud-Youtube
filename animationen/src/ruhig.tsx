@@ -24,7 +24,7 @@ export const FigurStill: React.FC = () => (
   </>
 );
 
-const Rahmen: React.FC<{ children: React.ReactNode; hintergrund?: string }> = ({ children, hintergrund = "#101015" }) => (
+export const Rahmen: React.FC<{ children: React.ReactNode; hintergrund?: string }> = ({ children, hintergrund = "#101015" }) => (
   <div
     style={{
       position: "absolute",
@@ -42,7 +42,7 @@ const Rahmen: React.FC<{ children: React.ReactNode; hintergrund?: string }> = ({
 );
 
 // Blendet ein Element ab einer Sekunde (relativ zur Szene) kurz ein
-const useEin = (ab: number) => {
+export const useEin = (ab: number) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return interpolate(frame, [ab * fps, (ab + 0.2) * fps], [0, 1], CLAMP);
@@ -51,7 +51,7 @@ const useEin = (ab: number) => {
 // Screenshot (1080x1920): Ausschnitt um die Markierung, roter Kreis zeichnet sich, wenn das Wort fällt
 export const Beleg: React.FC<{
   bild: string;
-  quelle: string;
+  quelle?: string;
   markierung: [number, number, number, number];
   kreisAb?: number;
   ohneKreis?: boolean;
@@ -94,7 +94,7 @@ export const Beleg: React.FC<{
           />
         </svg>
       )}
-      <Chip text={quelle} />
+      {quelle ? <Chip text={quelle} /> : null}
     </Rahmen>
   );
 };
