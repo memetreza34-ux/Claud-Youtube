@@ -1,6 +1,8 @@
-"""Wie qwen_mac.py, aber mit MLX (Apple-eigene Technik) statt PyTorch, meist deutlich schneller.
+"""Sprechtext mit der eigenen Stimme vertonen (Qwen3-TTS über MLX, lokal auf dem Mac).
 
-  qwen_mlx.py --modell 1.7B-8bit --text hook.txt --ziel ergebnis/mlx-hook-1.7B-8bit.wav
+  qwen_mlx.py --modell 1.7B-8bit --text ../../skripte/sprechtexte/NAME.txt --ziel ergebnis/NAME.wav
+
+Vorlage: vorlage.wav (eigene Stimme, nur lokal) mit dem Text aus vorlage-text.txt.
 
 Abschnitte im Text werden mit einer Zeile "---" getrennt. Fertige Stücke bleiben im
 Ordner ZIEL-teile, ein neuer Start macht dort weiter.

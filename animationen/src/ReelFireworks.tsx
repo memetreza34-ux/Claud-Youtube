@@ -9,7 +9,7 @@ import { Untertitel } from "./Untertitel";
 
 // Reel 04: Hack bei Fireworks AI trifft Uber und Notion (Lieferketten-Angriff).
 // Hood-Stil: Hook unter 7 s, Bilder 4–8 s, eigene Posen statt Memes, keine Text-Einblendungen.
-// Quellen und Bildnachweise: skripte/reel-04-fireworks-beschreibung.md
+// Quellen und Bildnachweise: skripte/reel-04-fireworks.md
 export const REEL_FIREWORKS_SEK = 76.0;
 const f = (s: number) => Math.round(s * 30);
 

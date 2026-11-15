@@ -1,142 +1,375 @@
-import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { BAND_HOEHE, Chip } from "./band";
-import { Rahmen, useEin } from "./ruhig";
-import { CLAMP, FARBE, TEXT_SCHRIFT, WEICH, ZAHLEN_SCHRIFT } from "./stil";
+import { Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { BAND_HOEHE } from "./band";
+import { Buehne, Rahmen } from "./ruhig";
+import { CLAMP, TEXT_SCHRIFT, WEICH } from "./stil";
 
-const GRUEN = "#3ddc84";
+// Reel 03 Outlook: Bilder statt Text. Schlichte Erklärgrafik (dunkel, dünne Linien, wenig Farbe), keine Quellen-Chips.
+const LINIE = "#5b5f6b";
+const FLAECHE = "#16181f";
+const OK = "#4ade80";
+const FEHLER = "#ef4444";
+const AKZENT = "#ff8a1f";
 
-// Hook: Postfach lädt nicht, dann „Keine Mails, keine Termine“ und die Dauer
-export const PostfachLeer: React.FC<{ keineAb: number; termineAb: number; dauerAb: number }> = ({ keineAb, termineAb, dauerAb }) => {
+const useSek = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const mails = useEin(keineAb);
-  const termine = useEin(termineAb);
-  const dauer = interpolate(frame, [dauerAb * fps, (dauerAb + 0.35) * fps], [0, 1], { ...CLAMP, easing: WEICH });
-  const drehung = (frame / fps) * 360;
+  return frame / fps;
+};
+const weich = (s: number, a: number, dauer = 0.5) => interpolate(s, [a, a + dauer], [0, 1], { ...CLAMP, easing: WEICH });
+
+// ---------- Hook: Handy mit echter Fehlerseite vor dunklem Büro ----------
+export const HandyFehler: React.FC = () => {
+  const s = useSek();
   return (
     <Rahmen>
-      <div style={{ position: "absolute", top: 50, left: 60, right: 60, height: 300, border: "4px solid #2c2c35", borderRadius: 18, backgroundColor: "#16161c" }}>
-        <div style={{ position: "absolute", top: 26, left: 34, fontFamily: TEXT_SCHRIFT, fontSize: 34, fontWeight: 800, color: FARBE.grau }}>Posteingang</div>
-        <svg width={90} height={90} style={{ position: "absolute", top: 105, left: 34, rotate: `${drehung}deg` }}>
-          <circle cx={45} cy={45} r={34} fill="none" stroke="#3a3a44" strokeWidth={9} />
-          <path d="M45 11 A34 34 0 0 1 79 45" fill="none" stroke={FARBE.gelb} strokeWidth={9} strokeLinecap="round" />
-        </svg>
-        <div style={{ position: "absolute", top: 118, left: 150, fontFamily: TEXT_SCHRIFT, fontSize: 46, fontWeight: 800, color: FARBE.weiss }}>Verbindung wird hergestellt …</div>
-        <div style={{ position: "absolute", top: 210, left: 34, display: "flex", gap: 40, fontFamily: TEXT_SCHRIFT, fontSize: 44, fontWeight: 800 }}>
-          <span style={{ color: FARBE.rot, opacity: mails }}>✕ Keine Mails</span>
-          <span style={{ color: FARBE.rot, opacity: termine }}>✕ Keine Termine</span>
+      <Img
+        src={staticFile("reel-outlook/computerraum.jpg")}
+        style={{ position: "absolute", inset: -40, width: 1160, height: BAND_HOEHE + 80, objectFit: "cover", filter: "blur(10px) brightness(0.35)" }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: 280,
+          top: -70 - s * 5,
+          width: 520,
+          height: 1060,
+          borderRadius: 64,
+          backgroundColor: "#0a0a0a",
+          padding: 16,
+          boxShadow: "0 40px 90px rgba(0,0,0,0.8), inset 0 0 0 3px #3a3a3a",
+          rotate: "-2deg",
+        }}
+      >
+        <div style={{ position: "relative", width: "100%", height: "100%", borderRadius: 50, overflow: "hidden", backgroundColor: "#fff" }}>
+          <div style={{ height: 112, backgroundColor: "#f1f3f4", display: "flex", alignItems: "flex-end", padding: "0 20px 14px" }}>
+            <div style={{ flex: 1, height: 48, borderRadius: 24, backgroundColor: "#fff", display: "flex", alignItems: "center", padding: "0 20px", fontFamily: TEXT_SCHRIFT, fontSize: 22, fontWeight: 500, color: "#202124" }}>
+              outlook.live.com
+            </div>
+          </div>
+          <Img src={staticFile("reel-outlook/handy-fehler.png")} style={{ width: "100%", display: "block" }} />
+          <div style={{ position: "absolute", left: "50%", top: 14, width: 110, height: 32, marginLeft: -55, borderRadius: 16, backgroundColor: "#000" }} />
         </div>
       </div>
-      <div style={{ position: "absolute", top: 380, left: 60, right: 60, opacity: dauer, display: "flex", alignItems: "baseline", gap: 24 }}>
-        <div style={{ fontFamily: ZAHLEN_SCHRIFT, fontSize: 150, lineHeight: 1, color: FARBE.gelb }}>über 24 Std.</div>
-        <div style={{ fontFamily: TEXT_SCHRIFT, fontSize: 36, fontWeight: 800, color: FARBE.weiss }}>gestört</div>
-      </div>
-      <Chip text="Quelle: Microsoft, laut Digital Trends" oben={BAND_HOEHE - 70} />
     </Rahmen>
   );
 };
 
-// Dienste-Raster: Kacheln werden rot, wenn sie genannt werden
-type Dienst = { name: string; ab: number };
-const Kachel: React.FC<Dienst> = ({ name, ab }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const rot = interpolate(frame, [ab * fps, (ab + 0.25) * fps], [0, 1], CLAMP);
+// ---------- Cloud mit Diensten ----------
+const Wolke: React.FC<{ x: number; y: number; sicht: number }> = ({ x, y, sicht }) => (
+  <div style={{ position: "absolute", left: x - 190, top: y - 95, width: 380, height: 190, opacity: sicht, scale: String(0.9 + 0.1 * sicht) }}>
+    <svg width={380} height={190} viewBox="0 0 380 190">
+      <path
+        d="M95 170 C40 170 20 125 45 95 C35 50 85 25 125 45 C140 10 210 0 240 40 C280 15 345 40 335 95 C370 110 360 170 300 170 Z"
+        fill={FLAECHE}
+        stroke={AKZENT}
+        strokeWidth={4}
+      />
+    </svg>
+    <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", paddingTop: 20, fontFamily: TEXT_SCHRIFT, fontSize: 30, fontWeight: 700, color: "#d6d8de" }}>
+      Exchange Online
+    </div>
+  </div>
+);
+
+type Dienst = { icon: string; ab: number; ausAb: number };
+export const DiensteWolke: React.FC<{ dienste: Dienst[] }> = ({ dienste }) => {
+  const s = useSek();
+  const wolke = weich(s, 0, 0.6);
+  const cx = 540;
+  const cy = 520;
+  const breite = 860;
+  return (
+    <Buehne>
+      <Wolke x={cx} y={cy} sicht={wolke} />
+      <svg width={1080} height={1400} style={{ position: "absolute", inset: 0 }}>
+        {dienste.map((d, i) => {
+          const x = cx - breite / 2 + (breite / (dienste.length - 1)) * i;
+          const y = 900;
+          const l = weich(s, d.ab, 0.45);
+          const aus = s >= d.ausAb;
+          return (
+            <path
+              key={d.icon}
+              d={`M${cx} ${cy + 95} C ${cx} ${cy + 220}, ${x} ${y - 200}, ${x} ${y - 85}`}
+              fill="none"
+              stroke={aus ? FEHLER : LINIE}
+              strokeWidth={4}
+              strokeDasharray={aus ? "10 10" : "600"}
+              strokeDashoffset={aus ? 0 : 600 * (1 - l)}
+            />
+          );
+        })}
+      </svg>
+      {dienste.map((d, i) => {
+        const x = cx - breite / 2 + (breite / (dienste.length - 1)) * i;
+        const l = weich(s, d.ab + 0.3, 0.4);
+        const aus = s >= d.ausAb;
+        return (
+          <div
+            key={d.icon}
+            style={{
+              position: "absolute",
+              left: x - 80,
+              top: 900 - 80,
+              width: 160,
+              height: 160,
+              borderRadius: 36,
+              backgroundColor: FLAECHE,
+              border: `3px solid ${aus ? FEHLER : "#2a2d38"}`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              opacity: l,
+              scale: String(0.85 + 0.15 * l),
+            }}
+          >
+            <Img src={staticFile(`reel-outlook/${d.icon}`)} style={{ width: 96, height: 96, objectFit: "contain", filter: aus ? "grayscale(0.4) brightness(0.75)" : undefined }} />
+            {aus ? (
+              <div style={{ position: "absolute", right: -16, top: -16, width: 52, height: 52, borderRadius: 26, backgroundColor: FEHLER, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <svg width={26} height={26}>
+                  <path d="M5 5 L21 21 M21 5 L5 21" stroke="#fff" strokeWidth={5} strokeLinecap="round" />
+                </svg>
+              </div>
+            ) : null}
+          </div>
+        );
+      })}
+    </Buehne>
+  );
+};
+
+// ---------- Health Checks und Load Balancer ----------
+// Phasen (Sekunden relativ zur Szene): Server erscheinen → Checks laufen → einer fällt → LB verteilt → viele fallen → Last wandert → alles kippt
+export type ServerZeiten = { checks: number; einer: number; lb: number; viele: number; last: number; kippen: number };
+
+const SPALTEN = 4;
+const ZEILEN = 3;
+const SX = 140;
+const SY = 760;
+const SB = 180;
+const SH = 120;
+const GX = 40;
+const GY = 46;
+const serverPos = (i: number) => ({ x: SX + (i % SPALTEN) * (SB + GX), y: SY + Math.floor(i / SPALTEN) * (SH + GY) });
+const VIELE = [1, 2, 4, 6, 7, 9, 11];
+const LETZTE = [0, 3, 5, 8, 10];
+
+const serverStatus = (i: number, s: number, z: ServerZeiten): "aus" | "ok" | "fehler" | "heiss" => {
+  if (s < z.checks + i * 0.12) return "aus";
+  if (s >= z.kippen + LETZTE.indexOf(i) * 0.25 && LETZTE.includes(i)) return "fehler";
+  if (i === 6 && s >= z.einer) return "fehler";
+  if (VIELE.includes(i) && s >= z.viele + VIELE.indexOf(i) * 0.15) return "fehler";
+  if (LETZTE.includes(i) && s >= z.last) return "heiss";
+  return "ok";
+};
+
+const Server: React.FC<{ i: number; z: ServerZeiten }> = ({ i, z }) => {
+  const s = useSek();
+  const { x, y } = serverPos(i);
+  const st = serverStatus(i, s, z);
+  const ein = weich(s, z.checks * 0 + i * 0.05, 0.4);
+  const rand = st === "fehler" ? FEHLER : st === "heiss" ? AKZENT : "#2a2d38";
+  const zittern = st === "heiss" ? Math.sin(s * 60 + i) * 3 : 0;
+  const lastBreite = st === "heiss" ? interpolate(s, [z.last, z.last + 1.2], [0.35, 0.98], CLAMP) : st === "ok" ? 0.35 : st === "fehler" ? 0 : 0;
   return (
     <div
       style={{
-        width: 300,
-        height: 118,
-        borderRadius: 14,
-        border: `4px solid ${rot > 0.5 ? FARBE.rot : "#3a3a44"}`,
-        backgroundColor: rot > 0.5 ? "rgba(230,57,70,0.18)" : "#16161c",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 12,
-        whiteSpace: "nowrap",
-        fontFamily: TEXT_SCHRIFT,
-        fontSize: 32,
-        fontWeight: 800,
-        color: rot > 0.5 ? FARBE.weiss : FARBE.grau,
+        position: "absolute",
+        left: x + zittern,
+        top: y,
+        width: SB,
+        height: SH,
+        borderRadius: 16,
+        backgroundColor: FLAECHE,
+        border: `3px solid ${rand}`,
+        opacity: ein * (st === "fehler" ? 0.75 : 1),
+        padding: "16px 18px",
       }}
     >
-      <span style={{ width: 20, height: 20, borderRadius: 10, backgroundColor: rot > 0.5 ? FARBE.rot : GRUEN }} />
-      {name}
+      {[0, 1].map((r) => (
+        <div key={r} style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+          <span style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: st === "fehler" ? FEHLER : st === "aus" ? LINIE : OK }} />
+          <span style={{ flex: 1, height: 8, borderRadius: 4, backgroundColor: "#2a2d38" }} />
+        </div>
+      ))}
+      <div style={{ height: 10, borderRadius: 5, backgroundColor: "#2a2d38", overflow: "hidden" }}>
+        <div style={{ width: `${lastBreite * 100}%`, height: "100%", backgroundColor: st === "heiss" ? AKZENT : OK }} />
+      </div>
+      {st === "fehler" || st === "ok" ? (
+        <div
+          style={{
+            position: "absolute",
+            right: -14,
+            top: -14,
+            width: 40,
+            height: 40,
+            borderRadius: 20,
+            backgroundColor: st === "fehler" ? FEHLER : OK,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <svg width={22} height={22}>
+            {st === "fehler" ? (
+              <path d="M5 5 L17 17 M17 5 L5 17" stroke="#fff" strokeWidth={4} strokeLinecap="round" />
+            ) : (
+              <path d="M4 11 L9 16 L18 6" fill="none" stroke="#0c0d12" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
+            )}
+          </svg>
+        </div>
+      ) : null}
     </div>
   );
 };
 
-export const DiensteRaster: React.FC<{ dienste: Dienst[]; geraeteAb: number }> = ({ dienste, geraeteAb }) => {
-  const geraete = useEin(geraeteAb);
+export const HealthChecks: React.FC<{ z: ServerZeiten }> = ({ z }) => {
+  const s = useSek();
+  const lb = weich(s, z.lb, 0.5);
+  const lbX = 540;
+  const lbY = 470;
+  // Herzschlag-Linie über den Servern während der Checks
+  const puls = s >= z.checks && s < z.lb + 1 ? weich(s, z.checks, 0.5) : s >= z.lb + 1 ? Math.max(0, 1 - (s - z.lb - 1) * 2) : 0;
+  const pulsVersatz = (s * 260) % 1080;
+  // Anfragen: Punkte vom LB zu den Servern
+  const ziele = Array.from({ length: SPALTEN * ZEILEN }, (_, i) => i).filter((i) => serverStatus(i, s, z) !== "fehler" && serverStatus(i, s, z) !== "aus");
+  const punkte = s >= z.lb + 0.4 && ziele.length ? Array.from({ length: 14 }, (_, k) => k) : [];
   return (
-    <Rahmen>
-      <div style={{ position: "absolute", top: 40, left: 60, fontFamily: ZAHLEN_SCHRIFT, fontSize: 84, lineHeight: 1, color: FARBE.gelb }}>Betroffene Dienste</div>
-      <div style={{ position: "absolute", top: 150, left: 60, right: 60, display: "flex", flexWrap: "wrap", gap: 20 }}>
-        {dienste.map((d) => (
-          <Kachel key={d.name} {...d} />
-        ))}
+    <Buehne>
+      <svg width={1080} height={200} style={{ position: "absolute", left: 0, top: 560, opacity: puls }}>
+        <defs>
+          <linearGradient id="pulsfade" x1="0" x2="1">
+            <stop offset="0" stopColor={OK} stopOpacity={0} />
+            <stop offset="0.5" stopColor={OK} stopOpacity={1} />
+            <stop offset="1" stopColor={OK} stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <path
+          d={`M${-1080 + pulsVersatz} 100 ${Array.from({ length: 8 }, (_, k) => {
+            const b = -1080 + pulsVersatz + k * 270;
+            return `L${b + 90} 100 L${b + 115} 40 L${b + 140} 160 L${b + 165} 70 L${b + 185} 100 L${b + 270} 100`;
+          }).join(" ")}`}
+          fill="none"
+          stroke="url(#pulsfade)"
+          strokeWidth={5}
+        />
+      </svg>
+      {/* Load Balancer */}
+      <div
+        style={{
+          position: "absolute",
+          left: lbX - 150,
+          top: lbY - 70,
+          width: 300,
+          height: 140,
+          borderRadius: 24,
+          backgroundColor: FLAECHE,
+          border: `4px solid ${AKZENT}`,
+          opacity: lb,
+          scale: String(0.9 + 0.1 * lb),
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <svg width={150} height={90} viewBox="0 0 150 90">
+          <circle cx={30} cy={45} r={14} fill={AKZENT} />
+          <path d="M44 45 L120 15 M44 45 L120 45 M44 45 L120 75" stroke={AKZENT} strokeWidth={6} strokeLinecap="round" />
+          <circle cx={128} cy={15} r={8} fill={AKZENT} />
+          <circle cx={128} cy={45} r={8} fill={AKZENT} />
+          <circle cx={128} cy={75} r={8} fill={AKZENT} />
+        </svg>
       </div>
-      <div style={{ position: "absolute", top: 452, left: 60, right: 60, opacity: geraete, fontFamily: TEXT_SCHRIFT, fontSize: 36, fontWeight: 800, color: FARBE.weiss }}>
-        <span style={{ color: FARBE.gelb }}>Überall:</span> Handy · Rechner · Web · Apple Mail
-      </div>
-      <Chip text="Quelle: Microsoft-Status, laut Borncity, 12.11.2026" oben={BAND_HOEHE - 70} />
-    </Rahmen>
-  );
-};
-
-// Server: Neustart, dann fallen sie unter Last wieder aus
-export const ServerNeustart: React.FC<{ lastAb: number; ausAb: number }> = ({ lastAb, ausAb }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const last = useEin(lastAb);
-  return (
-    <Rahmen>
-      <div style={{ position: "absolute", top: 40, left: 60, fontFamily: ZAHLEN_SCHRIFT, fontSize: 84, lineHeight: 1, color: FARBE.gelb }}>Neustart – und wieder weg</div>
-      <div style={{ position: "absolute", top: 160, left: 60, right: 60, display: "flex", gap: 22 }}>
-        {[0, 1, 2, 3, 4, 5].map((i) => {
-          const aus = frame >= (ausAb + i * 0.18) * fps;
+      <svg width={1080} height={1400} style={{ position: "absolute", inset: 0, opacity: lb }}>
+        {Array.from({ length: SPALTEN * ZEILEN }, (_, i) => {
+          const { x, y } = serverPos(i);
+          const st = serverStatus(i, s, z);
           return (
-            <div key={i} style={{ flex: 1, height: 250, borderRadius: 12, border: `4px solid ${aus ? FARBE.rot : "#3a3a44"}`, backgroundColor: "#16161c", padding: "18px 14px" }}>
-              {[0, 1, 2, 3].map((z) => (
-                <div key={z} style={{ display: "flex", alignItems: "center", gap: 10, height: 52 }}>
-                  <span style={{ width: 16, height: 16, borderRadius: 8, backgroundColor: aus ? FARBE.rot : GRUEN }} />
-                  <span style={{ flex: 1, height: 10, borderRadius: 5, backgroundColor: "#2c2c35" }} />
-                </div>
-              ))}
-            </div>
+            <line
+              key={i}
+              x1={lbX}
+              y1={lbY + 70}
+              x2={x + SB / 2}
+              y2={y}
+              stroke={st === "fehler" ? FEHLER : LINIE}
+              strokeOpacity={st === "fehler" ? 0.25 : 0.5}
+              strokeWidth={3}
+              strokeDasharray={st === "fehler" ? "6 10" : undefined}
+            />
           );
         })}
-      </div>
-      <div style={{ position: "absolute", top: 440, left: 60, right: 60, opacity: last, fontFamily: TEXT_SCHRIFT, fontSize: 38, fontWeight: 800, color: FARBE.weiss }}>
-        Unter neuer Last: <span style={{ color: FARBE.rot }}>wieder nicht erreichbar</span>
-      </div>
-      <Chip text="Quelle: Stuttgarter Nachrichten, 13.11.2026" oben={BAND_HOEHE - 70} />
-    </Rahmen>
+        {punkte.map((k) => {
+          const ziel = ziele[(k * 7 + Math.floor(s * 2)) % ziele.length];
+          const { x, y } = serverPos(ziel);
+          const p = ((s * 0.9 + k / 14) % 1 + 1) % 1;
+          return <circle key={k} cx={lbX + (x + SB / 2 - lbX) * p} cy={lbY + 70 + (y - lbY - 70) * p} r={9} fill={AKZENT} opacity={0.9} />;
+        })}
+      </svg>
+      {Array.from({ length: SPALTEN * ZEILEN }, (_, i) => (
+        <Server key={i} i={i} z={z} />
+      ))}
+    </Buehne>
   );
 };
 
-// Entwarnung am Samstag
-export const Wiederhergestellt: React.FC<{ hakenAb: number }> = ({ hakenAb }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const haken = interpolate(frame, [hakenAb * fps, (hakenAb + 0.4) * fps], [0, 1], { ...CLAMP, easing: WEICH });
+// ---------- Verfügbarkeitskurve: fällt, kommt kurz zurück, fällt, dann stabil ----------
+export const Kurve: React.FC<{ neustartAb: number; kippAb: number; patchAb: number; samstagAb: number }> = ({ neustartAb, kippAb, patchAb, samstagAb }) => {
+  const s = useSek();
+  const L = 110;
+  const R = 970;
+  const O = 520;
+  const U = 1000;
+  // Stützpunkte (x in 0..1, y in 0..1 mit 1 = alles läuft)
+  const pkt: [number, number][] = [
+    [0, 1],
+    [0.12, 1],
+    [0.16, 0.12],
+    [0.3, 0.1],
+    [0.36, 0.7],
+    [0.41, 0.72],
+    [0.45, 0.08],
+    [0.58, 0.1],
+    [0.66, 0.6],
+    [0.76, 0.85],
+    [0.88, 0.97],
+    [1, 0.98],
+  ];
+  // wie weit die Kurve gezeichnet ist, gekoppelt an den Text
+  const fortschritt = interpolate(s, [0, 0.35, Math.max(0.4, neustartAb), Math.max(0.4, neustartAb) + 0.8, kippAb, kippAb + 0.6, patchAb, patchAb + 1.5, samstagAb, samstagAb + 1], [0, 0.3, 0.3, 0.42, 0.42, 0.58, 0.58, 0.8, 0.8, 1], CLAMP);
+  const xy = ([x, y]: [number, number]) => [L + x * (R - L), U - y * (U - O)] as const;
+  const sichtbar: [number, number][] = [];
+  for (let i = 0; i < pkt.length; i++) {
+    if (pkt[i][0] <= fortschritt) sichtbar.push(pkt[i]);
+    else {
+      const [a, b] = [pkt[i - 1], pkt[i]];
+      const t = (fortschritt - a[0]) / (b[0] - a[0]);
+      sichtbar.push([fortschritt, a[1] + (b[1] - a[1]) * t]);
+      break;
+    }
+  }
+  const d = sichtbar.map((p, i) => `${i ? "L" : "M"}${xy(p)[0]} ${xy(p)[1]}`).join(" ");
+  const ende = xy(sichtbar[sichtbar.length - 1]);
+  const gut = sichtbar[sichtbar.length - 1][1] > 0.5;
   return (
-    <Rahmen>
-      <div style={{ position: "absolute", top: 40, left: 60, fontFamily: TEXT_SCHRIFT, fontSize: 40, fontWeight: 800, color: FARBE.grau }}>Microsoft 365 Status · Samstag, 14.11.</div>
-      <div style={{ position: "absolute", top: 110, left: 60, right: 60, borderLeft: `8px solid ${FARBE.gelb}`, paddingLeft: 30 }}>
-        <div style={{ fontFamily: TEXT_SCHRIFT, fontSize: 46, fontWeight: 800, color: FARBE.weiss, lineHeight: 1.25 }}>
-          „restored service to the remaining impacted customers and regions“
+    <Buehne>
+      <div style={{ position: "absolute", left: L - 30, top: O - 90, width: R - L + 60, height: U - O + 160, borderRadius: 28, backgroundColor: FLAECHE, border: "2px solid #23262f" }} />
+      <svg width={1080} height={1400} style={{ position: "absolute", inset: 0 }}>
+        {[0, 0.5, 1].map((g) => (
+          <line key={g} x1={L} x2={R} y1={U - g * (U - O)} y2={U - g * (U - O)} stroke="#23262f" strokeWidth={2} />
+        ))}
+        <path d={d} fill="none" stroke={gut ? OK : FEHLER} strokeWidth={8} strokeLinejoin="round" strokeLinecap="round" />
+        <circle cx={ende[0]} cy={ende[1]} r={14} fill={gut ? OK : FEHLER} />
+        <circle cx={ende[0]} cy={ende[1]} r={14 + ((s * 30) % 30)} fill="none" stroke={gut ? OK : FEHLER} strokeWidth={3} opacity={1 - ((s * 30) % 30) / 30} />
+      </svg>
+      {[
+        ["Do", 0.05],
+        ["Fr", 0.5],
+        ["Sa", 0.92],
+      ].map(([t, x]) => (
+        <div key={t} style={{ position: "absolute", top: U + 30, left: L + (x as number) * (R - L) - 40, width: 80, textAlign: "center", fontFamily: TEXT_SCHRIFT, fontSize: 30, fontWeight: 700, color: "#7d818d" }}>
+          {t}
         </div>
-      </div>
-      <div style={{ position: "absolute", top: 360, left: 60, display: "flex", alignItems: "center", gap: 28, opacity: haken > 0 ? 1 : 0 }}>
-        <svg width={120} height={120}>
-          <circle cx={60} cy={60} r={54} fill="none" stroke={GRUEN} strokeWidth={8} />
-          <path d="M33 62 L52 81 L88 42" fill="none" stroke={GRUEN} strokeWidth={11} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={90} strokeDashoffset={90 * (1 - haken)} />
-        </svg>
-        <div style={{ fontFamily: ZAHLEN_SCHRIFT, fontSize: 110, lineHeight: 1, color: GRUEN }}>Wiederhergestellt</div>
-      </div>
-      <Chip text="Quelle: @MSFT365Status, laut Digital Trends, 14.11.2026" oben={BAND_HOEHE - 70} />
-    </Rahmen>
+      ))}
+    </Buehne>
   );
 };

@@ -7,13 +7,8 @@ import { AnrufTreppe } from "./AnrufTreppe";
 import { DreiWorte } from "./DreiWorte";
 import { Codewort } from "./Codewort";
 import { ReelCodewort } from "./ReelCodewort";
-import { REEL_NVIDIA_FRAMES, ReelNvidia } from "./ReelNvidia";
-import { REEL_NVIDIA2_SEK, ReelNvidia2 } from "./ReelNvidia2";
-import { REEL_NVIDIA3_SEK, ReelNvidia3 } from "./ReelNvidia3";
-import { REEL_NVIDIA4_SEK, ReelNvidia4 } from "./ReelNvidia4";
+import { REEL_NVIDIA_SEK, ReelNvidia } from "./ReelNvidia";
 import { REEL_OUTLOOK_SEK, ReelOutlook } from "./ReelOutlook";
-import { REEL_OUTLOOK2_SEK, ReelOutlook2 } from "./ReelOutlook2";
-import { REEL_OUTLOOK3_SEK, ReelOutlook3 } from "./ReelOutlook3";
 import { REEL_FIREWORKS_SEK, ReelFireworks } from "./ReelFireworks";
 
 // Start im Voiceover (voiceover-01-mlx-1.7B-8bit.wav): BkaZahlen 0:36.5, Eisberg 0:47.2, McAfeeBalken 1:08.4,
@@ -80,78 +75,14 @@ export const RemotionRoot: React.FC = () => {
         />
       </Folder>
       <Folder name="Reels">
-        <Composition
-          id="ReelCodewort"
-          component={ReelCodewort}
-          durationInFrames={1007}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelNvidia"
-          component={ReelNvidia}
-          durationInFrames={REEL_NVIDIA_FRAMES}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelNvidia2"
-          component={ReelNvidia2}
-          durationInFrames={Math.round(REEL_NVIDIA2_SEK * 30)}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelNvidia3"
-          component={ReelNvidia3}
-          durationInFrames={Math.round(REEL_NVIDIA3_SEK * 30)}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelNvidia4"
-          component={ReelNvidia4}
-          durationInFrames={Math.round(REEL_NVIDIA4_SEK * 30)}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelOutlook"
-          component={ReelOutlook}
-          durationInFrames={Math.round(REEL_OUTLOOK_SEK * 30)}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelOutlook2"
-          component={ReelOutlook2}
-          durationInFrames={Math.round(REEL_OUTLOOK2_SEK * 30)}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelOutlook3"
-          component={ReelOutlook3}
-          durationInFrames={Math.round(REEL_OUTLOOK3_SEK * 30)}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
-        <Composition
-          id="ReelFireworks"
-          component={ReelFireworks}
-          durationInFrames={Math.round(REEL_FIREWORKS_SEK * 30)}
-          fps={30}
-          width={1080}
-          height={1920}
-        />
+        {/* Reel 01: Codewort (Test) */}
+        <Composition id="ReelCodewort" component={ReelCodewort} durationInFrames={1007} fps={30} width={1080} height={1920} />
+        {/* Reel 02: Nvidia-Spionage */}
+        <Composition id="ReelNvidia" component={ReelNvidia} durationInFrames={Math.round(REEL_NVIDIA_SEK * 30)} fps={30} width={1080} height={1920} />
+        {/* Reel 03: Outlook-Ausfall */}
+        <Composition id="ReelOutlook" component={ReelOutlook} durationInFrames={Math.round(REEL_OUTLOOK_SEK * 30)} fps={30} width={1080} height={1920} />
+        {/* Reel 04: Fireworks AI (Uber, Notion) */}
+        <Composition id="ReelFireworks" component={ReelFireworks} durationInFrames={Math.round(REEL_FIREWORKS_SEK * 30)} fps={30} width={1080} height={1920} />
       </Folder>
     </>
   );

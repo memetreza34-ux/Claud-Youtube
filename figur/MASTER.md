@@ -1,10 +1,18 @@
-# Master-Figur ✅ (31.10.2026)
+# Der Strichermittler – Figur
 
-- `master.jpg` – Original aus Google Flow
+**Aussehen:** Stickman-Detektiv in 3D – glatter weißer Kugelkopf, schwarze ovale Augen, schwarzer Fedora mit glänzendem orangem Band, hoher schwarzer Mantelkragen bis unter die Augen, schwarze Handschuhe, schwarzer Hintergrund mit orangem Kantenlicht. Nie ein Mensch, nie Kinder-Cartoon.
+
+## Dateien
+
+- `master.jpg` – Original aus Google Flow (31.10.2026), Referenz für jedes neue Bild
 - `profilbild-rund.png` / `profilbild-quadrat.png` – Profilbild 800×800
+- `posen/` – 56 fertige Posen (14.11.2026, nur lokal, nicht im öffentlichen Repo):
+  - `b-…` (32 Bilder) = **Stil B**, passt zur Master-Figur → bevorzugen
+  - `a-…` (24 Bilder) = Stil A, Kragen tiefer und Mund sichtbar → nur Bilder mit Requisiten, wo es kaum auffällt; `a-4-schockiert` (mit Brille) nicht verwenden
+  - Einsatz und Beispiele: `planung/reel-regeln.md`, Abschnitt Bilder
 
-## Posen für Thumbnails (Master als Referenz/Zutat in Flow hochladen)
-Immer kompletter Prompt, Format 1:1.
+## Neue Posen erzeugen (Google Flow, `figur/master.jpg` als Referenz)
+Immer kompletter Prompt. Format 1:1 für Posen, 16:9 bzw. 9:16 für Szenen und Cover. Ablauf: `PRODUKTION.md`, Schritt 4–5.
 
 ### Schockiert
 ```

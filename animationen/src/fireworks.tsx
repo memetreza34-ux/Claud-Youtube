@@ -1,6 +1,6 @@
 import { Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { BAND_HOEHE } from "./band";
-import { Buehne } from "./outlook3";
+import { Buehne } from "./ruhig";
 import { CLAMP, TEXT_SCHRIFT, WEICH } from "./stil";
 
 // Reel 04 Fireworks AI: Lieferketten-Angriff als ruhige Erklärgrafik. Wenig Text, nur kleine Beschriftungen.

@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "flow": {
+      "command": "node",
+      "args": [
+        "/Users/arman/flow-mcp/dist/index.js"
+      ]
+    }
+  }
+}
