@@ -1,0 +1,17 @@
+Hacker brechen bei einem KI-Anbieter ein, den kaum jemand kennt, und erbeuten Daten von Uber und Notion. Wie geht das?
+---
+Willkommen beim Strichermittler.
+---
+Der Anbieter heißt Fireworks AI. Firmen wie Notion lassen dort ihre KI-Funktionen laufen. Wer in Notion die KI benutzt, schickt seine Texte also teilweise an Fireworks.
+---
+Am sechsten Oktober bemerkt Fireworks fremde Zugriffe mit internen Zugangsdaten. Die Angreifer kommen an API-Schlüssel von Kunden. Das sind digitale Schlüssel, mit denen sich Programme bei anderen Diensten anmelden.
+---
+Am dreiundzwanzigsten Oktober folgt der zweite Einbruch, diesmal über einen Cloud-Anbieter, bei dem Fireworks Rechner gemietet hat.
+---
+Das nennt man einen Lieferketten-Angriff. Man knackt nicht Uber oder Notion selbst, sondern einen kleineren Dienstleister, dem beide vertrauen.
+---
+Bei Notion liegen KI-Chats von weniger als einem Prozent der Nutzer offen. Bei Uber sind es Führerscheindaten von tausenden Fahrern in den USA.
+---
+Das Ziel der Angreifer laut Fireworks: KI-Zugänge. Mit gestohlenen Schlüsseln nutzt man teure KI-Modelle auf fremde Rechnung, oder verkauft den Zugang weiter. Das nennt sich LLM-Jacking.
+---
+Notion rät Betroffenen, Passwörter und Schlüssel zu ändern, die sie in die KI kopiert haben. Und genau das ist die Lehre: Was du einer KI gibst, landet vielleicht bei einer Firma, von der du noch nie gehört hast. Ich bleibe dran.

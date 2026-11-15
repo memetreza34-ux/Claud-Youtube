@@ -18,7 +18,7 @@ const useSek = () => {
 const weich = (s: number, a: number, dauer = 0.5) => interpolate(s, [a, a + dauer], [0, 1], { ...CLAMP, easing: WEICH });
 
 // Ganze Fläche über den Untertiteln, Figur ausgeblendet (wie Erklärteil bei Hood Informatik)
-const Buehne: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+export const Buehne: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: BAND_TOP + BAND_HOEHE, backgroundColor: "#0c0d12", overflow: "hidden" }}>
     <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 45%, rgba(255,138,31,0.07), rgba(0,0,0,0) 60%)" }} />
     {children}
