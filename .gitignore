@@ -1,4 +1,6 @@
 .DS_Store
-video-01/
+video-*/
 __pycache__/
 *.pyc
+.venv/
+figur/posen/

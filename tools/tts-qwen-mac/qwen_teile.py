@@ -1,6 +1,6 @@
 """Aufteilen und Zusammensetzen für qwen_mlx.py, ohne PyTorch.
 
-Gleiche Werte wie in qwen_mac.py (Variante A). Bei Änderungen beide Dateien anpassen.
+Einstellungen der gewählten Variante A: Temperatur 0,6, gekürzte Pausen, Lautstärke -16 LUFS.
 """
 import re
 import shutil

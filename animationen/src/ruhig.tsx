@@ -1,4 +1,4 @@
-import { CanvasImage, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
+import { CanvasImage, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { BAND_HOEHE, BAND_TOP, Chip } from "./band";
 import { CLAMP, FARBE, TEXT_SCHRIFT, WEICH, ZAHLEN_SCHRIFT } from "./stil";
 
@@ -24,7 +24,7 @@ export const FigurStill: React.FC = () => (
   </>
 );
 
-const Rahmen: React.FC<{ children: React.ReactNode; hintergrund?: string }> = ({ children, hintergrund = "#101015" }) => (
+export const Rahmen: React.FC<{ children: React.ReactNode; hintergrund?: string }> = ({ children, hintergrund = "#101015" }) => (
   <div
     style={{
       position: "absolute",
@@ -42,7 +42,7 @@ const Rahmen: React.FC<{ children: React.ReactNode; hintergrund?: string }> = ({
 );
 
 // Blendet ein Element ab einer Sekunde (relativ zur Szene) kurz ein
-const useEin = (ab: number) => {
+export const useEin = (ab: number) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   return interpolate(frame, [ab * fps, (ab + 0.2) * fps], [0, 1], CLAMP);
@@ -51,7 +51,7 @@ const useEin = (ab: number) => {
 // Screenshot (1080x1920): Ausschnitt um die Markierung, roter Kreis zeichnet sich, wenn das Wort fällt
 export const Beleg: React.FC<{
   bild: string;
-  quelle: string;
+  quelle?: string;
   markierung: [number, number, number, number];
   kreisAb?: number;
   ohneKreis?: boolean;
@@ -94,7 +94,7 @@ export const Beleg: React.FC<{
           />
         </svg>
       )}
-      <Chip text={quelle} />
+      {quelle ? <Chip text={quelle} /> : null}
     </Rahmen>
   );
 };
@@ -284,6 +284,38 @@ export const Kurs: React.FC<{ ab: number }> = ({ ab }) => {
         </div>
       ))}
       <Chip text="Quelle: ORF, 9.11.2026" oben={BAND_HOEHE - 70} />
+    </Rahmen>
+  );
+};
+
+// Ganze Fläche über den Untertiteln, Figur ausgeblendet (wie Erklärteil bei Hood Informatik)
+export const Buehne: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: BAND_TOP + BAND_HOEHE, backgroundColor: "#0c0d12", overflow: "hidden" }}>
+    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 45%, rgba(255,138,31,0.07), rgba(0,0,0,0) 60%)" }} />
+    {children}
+  </div>
+);
+
+// Foto ohne Text, langsame Fahrt
+export const BildFahrt: React.FC<{ bild: string; fokus?: [number, number]; dunkel?: number }> = ({ bild, fokus = [50, 50], dunkel = 0 }) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = frame / fps;
+  return (
+    <Rahmen>
+      <Img
+        src={staticFile(bild)}
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: `${fokus[0]}% ${fokus[1]}%`,
+          scale: String(1.03 + s * 0.015),
+          filter: dunkel ? `brightness(${1 - dunkel})` : undefined,
+        }}
+      />
     </Rahmen>
   );
 };

@@ -1,0 +1,15 @@
+Donnerstag, zwölfter November: Outlook ist weltweit down, über einen Tag lang. Und schuld ist ausgerechnet ein Schutzsystem von Microsoft. Aber was steckt dahinter?
+---
+Willkommen beim Strichermittler.
+---
+Kurz vor neunzehn Uhr deutscher Zeit kommen viele nicht mehr an ihre Mails. Im Browser, am Rechner und auf dem Handy. Mit betroffen: die Kalender in Teams, SharePoint und Copilot.
+---
+Interessant ist, warum der Ausfall so groß wurde. Microsoft testet seine Server ständig mit sogenannten Health Checks. Das sind automatische Prüfungen, ob ein Server noch richtig antwortet. Fällt einer durch, schickt der Load Balancer keine Anfragen mehr dorthin. Das ist der Verteiler, der die Arbeit auf alle Server aufteilt.
+---
+Das soll eigentlich schützen. Am Donnerstag fallen aber viele Server gleichzeitig durch. Ihre ganze Arbeit landet auf den restlichen. Und die brechen unter der Last ebenfalls zusammen.
+---
+Laut Microsoft lag es an einem Fehler bei einem früheren Netzwerk-Upgrade. Der fiel erst auf, als das Netzwerk erneut geändert wurde.
+---
+Microsoft startet Server neu, doch unter Last kippen sie sofort wieder. Erst ein Patch an der Anmelde- und Weiterleitungstechnik hilft. Am Samstag meldet Microsoft: Alle Kunden sind wieder online. Einen Hackerangriff schließt der Konzern aus.
+---
+Und wer in seiner Firma alles bei einem einzigen Anbieter hat, hat gerade gesehen, was das heißt: kompletter Stillstand. Den genauen Bericht will Microsoft noch nachliefern. Ich bleibe dran.
