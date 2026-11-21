@@ -1,7 +1,7 @@
 import { Audio } from "@remotion/media";
 import { Sequence, staticFile } from "remotion";
 import { BAND_HOEHE, BAND_TOP } from "./band";
-import { BallonBegruessung } from "./begruessung";
+import { NoirBegruessung } from "./intro-noir";
 import { Lieferkette, Pose } from "./fireworks";
 import { Beleg, FigurStill } from "./ruhig";
 import { Hintergrund } from "./stil";
@@ -49,7 +49,7 @@ const R = "reel-fireworks";
 const SZENEN: Szene[] = [
   // Hook: echte Schlagzeile
   { ab: 0, inhalt: (s) => <Beleg bild={`${R}/tc-titel.png`} markierung={[24, 1040, 955, 1180]} mitteY={950} kreisAb={rel(T.uber, s)} /> },
-  { ab: T.willkommen, inhalt: (s) => <BallonBegruessung nameAb={rel(T.name, s)} ende={rel(T.anbieter, s)} /> },
+  { ab: T.willkommen, inhalt: (s) => <NoirBegruessung nameAb={rel(T.name, s)} ende={rel(T.anbieter, s)} bild="figur/intro-noir.jpg" /> },
   // Wer ist Fireworks?
   { ab: T.anbieter, inhalt: () => <Beleg bild={`${R}/fireworks-seite.png`} markierung={[0, 1080, 0, 10]} mitteY={420} ohneKreis /> },
   {

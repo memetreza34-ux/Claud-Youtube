@@ -25,7 +25,8 @@ npx remotion render ReelFireworks ../video-01/reels/reel-04-fireworks.mp4 --conc
 | `stil.tsx` | Farben, Schriften, Hintergrund |
 | `band.tsx` | Maße des Bands (`BAND_TOP`, `BAND_HOEHE`) und kleines Etikett (`Chip`) |
 | `ruhig.tsx` | Figur als Hintergrund, `Bühne` (ganze Fläche), `Beleg` (Screenshot mit Markierung), `BildFahrt` (Foto ohne Text), dazu die Nvidia-Grafiken |
-| `begruessung.tsx` | Ballon-Begrüßung „Willkommen beim Strichermittler“ |
+| `intro-noir.tsx` | Begrüßung „Willkommen beim Strichermittler“ im Noir-Stil (Bild: `public/figur/intro-noir.jpg`, Test: `IntroNoir`) |
+| `begruessung.tsx` | alte Ballon-Begrüßung (nur noch Reel 02/03) |
 | `Untertitel.tsx` | Untertitel aus Whisper-Wortzeiten |
 | `outlook.tsx` | Handy mit Fehlerseite, Cloud mit Diensten, Health Checks/Load Balancer, Verfügbarkeitskurve |
 | `fireworks.tsx` | Lieferketten-Grafik, Pose ganzflächig |

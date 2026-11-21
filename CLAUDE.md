@@ -1,5 +1,7 @@
 # Der Strichermittler — Verbindlicher Arbeitsvertrag
 
+> Gemeinsame Anleitung für alle Agenten (Claude und Codex): [AGENTS.md](AGENTS.md).
+
 > **Verbindlicher 1-Phasen-Vollautopilot mit Google Flow:** Siehe [PRODUKTION.md](file:///Volumes/Mac-Projekte/Home/Strichvermittler/PRODUKTION.md). Der Agent führt Produktionen von Skript, lokaler Stimme (`tools/tts-qwen-mac/`), Flow MCP-Bilderzeugung mit `figur/master.jpg` als Referenz, Cover-Auswahl und Bildkontrolle bis zum finalen Render komplett autonom in einem durchgehenden Lauf aus.
 
 ## Kanal & Ausrichtung

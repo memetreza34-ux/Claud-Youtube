@@ -79,8 +79,11 @@ video-<n>/
 | Fertige Videos | `video-<n>/` (nur lokal); Reels 01–04 in `video-01/reels/`, alte Fassungen in `video-01/archiv/` |
 | Posen der Figur | `figur/posen/` (nur lokal) |
 | Stimm-Vorlage und Modelle | `tools/tts-qwen-mac/vorlage.wav` (nur lokal), SSD T7 `strichermittler-modelle/` |
-| Flow-Ausgaben | `~/flow-mcp-out/` |
+| Flow-Ausgaben | `/Volumes/T7/flow-mcp-out/` (`~/flow-mcp-out` ist nur ein Verweis dorthin) |
+| Test-Renders, Kontaktbögen, Zwischendateien | `/Volumes/T7/strichermittler-tmp/` |
 | Medien-Sicherung | Google Drive, `Meine Ablage/Der Strichermittler/` |
+
+**Alles auf der SSD T7, nie auf dem Mac-Speicher** – auch Zwischendateien und Test-Renders.
 
 Das Projekt liegt im Laufwerk „Mac-Projekte“ (`/Volumes/T7/Mac-Projekte.sparsebundle`). Ist es nicht eingebunden: `hdiutil attach /Volumes/T7/Mac-Projekte.sparsebundle`.
 

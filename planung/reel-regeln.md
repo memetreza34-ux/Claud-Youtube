@@ -6,7 +6,7 @@ Gelernt aus dem Feedback zu Reel 02–04 und der Analyse von Hood Informatik (Ou
 
 ## Aufbau
 1. **Hook (unter 7 s):** Neuigkeit + Grund in einem Satz, dann eine Frage. Beispiel: „Hacker brechen bei einem KI-Anbieter ein, den kaum jemand kennt, und erbeuten Daten von Uber und Notion. Wie geht das?“ Keine gespielte Szene („Du öffnest Outlook …“).
-2. **Begrüßung:** „Willkommen beim Strichermittler.“ mit der Ballon-Animation.
+2. **Begrüßung:** „Willkommen beim Strichermittler.“ mit der Noir-Intro (`animationen/src/intro-noir.tsx`): Lampe flackert an, orangefarbener Strich legt den Namen frei. Die Ballon-Animation ist abgelöst.
 3. **Fakten:** wann, wer, was betroffen ist.
 4. **Das Warum:** Überleitung mit Neugier („Interessant ist …“), Fachwörter sofort im Satz erklären („Das nennt man …“, „also …“), Ursache als Kette.
 5. **Stand:** was bestätigt ist, was offen ist.
