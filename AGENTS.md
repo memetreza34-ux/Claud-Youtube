@@ -1,6 +1,6 @@
 # Der Strichermittler – Anleitung für KI-Agenten (Codex, Claude & Co.)
 
-Diese Datei ist der Einstieg für **jeden** Agenten, der hier Shorts/Reels oder lange Videos baut. Codex liest sie automatisch, Claude liest `CLAUDE.md` – beide gelten gleich. Mit Arman immer **auf Deutsch**, kurz und klar.
+Diese Datei ist der Einstieg für **jeden** Agenten, der hier Shorts/Reels oder lange Videos baut. Codex und Antigravity lesen sie automatisch. In Claude gilt `CLAUDE.md`. Mit Arman immer **auf Deutsch**, kurz und klar.
 
 ## 1. Zuerst lesen (verbindlich, in dieser Reihenfolge)
 1. [`PRODUKTION.md`](PRODUKTION.md) – der komplette Ablauf in 7 Schritten (Autopilot, keine Freigabestopps).
@@ -10,6 +10,8 @@ Diese Datei ist der Einstieg für **jeden** Agenten, der hier Shorts/Reels oder 
 5. [`planung/stimme.md`](planung/stimme.md) – Stimme und Aussprache.
 
 Widersprüche nicht mit neuen Notizdateien lösen, sondern in diesen Dateien beheben.
+
+In Antigravity kannst du die Produktion mit `/strichermittler-video` im lokalen Projekt starten. Der [Projekt-Skill](.agents/skills/strichermittler-video/SKILL.md) prüft die Werkzeuge und verweist auf die Stilreferenz.
 
 ## 2. Speicherorte – alles auf der SSD T7, nie auf dem Mac-Speicher
 | Was | Wo |

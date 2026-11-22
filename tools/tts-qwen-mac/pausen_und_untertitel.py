@@ -46,9 +46,16 @@ else:
 subprocess.run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", quelle, "-af", filter_, ziel_wav], check=True)
 print("Pausen gekürzt:", len(schnitte), "· gespart:", round(sum(b - a for a, b in schnitte), 2), "s")
 
+whisper_befehl = [
+    "whisper", ziel_wav, "--model", "small", "--language", "de", "--word_timestamps", "True",
+    "--output_format", "json", "--output_dir", arbeits, "--fp16", "False", "--verbose", "False",
+]
+modellordner = "/Volumes/T7/strichermittler-modelle/whisper"
+if os.path.isfile(os.path.join(modellordner, "small.pt")):
+    whisper_befehl.extend(["--model_dir", modellordner])
+
 subprocess.run(
-    ["whisper", ziel_wav, "--model", "small", "--language", "de", "--word_timestamps", "True",
-     "--output_format", "json", "--output_dir", arbeits, "--fp16", "False", "--verbose", "False"],
+    whisper_befehl,
     check=True,
     capture_output=True,
 )

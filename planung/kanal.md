@@ -27,7 +27,7 @@ YouTube- und Social-Media-Kanal (Shorts/Reels, dazu lange Videos): **News, Polit
 Themen-Liste: `video-ideen.md`.
 
 ## Aufgabenteilung
-- **Claude oder Codex** (Anleitung `AGENTS.md`): Themen, Recherche, Skript, Stimme erzeugen, Belege, Bilder, Animationen, Schnitt in Remotion, Beschreibung mit Quellen.
+- **Claude, Codex oder Antigravity** (Anleitung `AGENTS.md`): Themen, Recherche, Skript, Stimme erzeugen, Belege, Bilder, Animationen, Schnitt in Remotion, Beschreibung mit Quellen.
 - **Arman:** Thema und Fassung freigeben, anhören, hochladen, Community.
 
 ## Geld verdienen (später)

@@ -12,6 +12,8 @@ YouTube- und Social-Media-Kanal: **News, Politik, KI, Tech-Skandale und aktuelle
 | `planung/video-ideen.md` | Themen-Ideen |
 | `figur/MASTER.md` | Figur, Posen, Prompts |
 
+Öffne das lokale Projekt auf der T7 in Antigravity. Starte einen Auftrag mit `/strichermittler-video`, zum Beispiel `/strichermittler-video Mach mir einen Short über [Thema]`. Der [Skill](.agents/skills/strichermittler-video/SKILL.md) nutzt die vorhandene Qwen3-Stimme, Flow und Remotion.
+
 ## Stand (15.11.2026)
 | Video | Status |
 |---|---|
