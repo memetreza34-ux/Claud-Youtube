@@ -1,5 +1,6 @@
 .DS_Store
 video-*/
+reels/
 __pycache__/
 *.pyc
 .venv/

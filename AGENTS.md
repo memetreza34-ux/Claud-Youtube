@@ -21,7 +21,8 @@ In Antigravity kannst du die Produktion mit `/strichermittler-video` im lokalen 
 | Zwischendateien, Test-Renders, Kontaktbögen, Whisper-Ordner | `/Volumes/T7/strichermittler-tmp/` – **nicht** `/tmp` |
 | Flow-Ausgaben | `/Volumes/T7/flow-mcp-out/` |
 | Stimm-Modelle | `/Volumes/T7/strichermittler-modelle/` |
-| Fertige Videos, Cover | `video-<n>/` im Repo (gitignored) |
+| Fertige Reels (nach Woche) | `reels/<Jahr>-KW<WW>/<reel-name>/` im Repo (gitignored) |
+| Lange Videos, Cover | `video-<n>/` im Repo (gitignored) |
 | Ton, Screenshots, Fotos eines Reels | `animationen/public/reel-<name>/` |
 
 Die T7 ist exFAT: macOS legt `._`-Dateien an. Stören sie (Modell lädt nicht, Renders zeigen Müll): `dot_clean -m <ordner>`.

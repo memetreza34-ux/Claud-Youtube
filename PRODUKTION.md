@@ -58,9 +58,11 @@ Es gibt **keine getrennten Nutzer-Phasen, keine manuellen Zwischenfragen und kei
 
 ### 7. Endkontrolle & Saubere Übergabe
 - Der Agent prüft das fertige MP4: Kontaktbogen alle 2–4 s, Lautstärke um -14 LUFS, Bild-Ton-Synchronität, Lesbarkeit der Belege.
-- Saubere Dateiablage im Zielordner (**nur lokal**, `video-*/` ist in `.gitignore`, weil das Repo öffentlich ist):
+- **Unabhängiger Zuschauercheck:** Den Kontaktbogen / Rohschnitt durch den Subagenten `short-zuschauercheck` ohne Storyboard-Vorwissen auf Einstieg, Verständlichkeit und Blickführung prüfen lassen und sichtbare Schwächen beheben.
+- **Verbindliche visuelle Selbstverbesserung:** Den Kontaktbogen aktiv gegen die Qualität der vorigen Videos vergleichen (volle Flächennutzung bis über die Untertitel, keine abgeschnittene Hintergrund-Figur, Motion Graphics aus `noir-kit.tsx` / `@remotion/three` / `@iconify-json/logos` / `lucide-react` / `@remotion/paths`, kein AI-Slop). Schwache Szenen sofort selbst verbessern und neu rendern, bevor übergeben wird.
+- Saubere Dateiablage im Zielordner (**nur lokal**, `reels/` und `video-*/` sind in `.gitignore`, weil das Repo öffentlich ist):
 ```text
-video-<n>/
+reels/<Jahr>-KW<WW>/<reel-name>/    (bzw. video-<n>/ für lange Videos)
   FINAL-VIDEO.mp4       (Fertig gerendertes & geprüftes Video)
   cover.png             (Vom Agenten ausgewähltes Sieger-Cover, Verlierer gelöscht)
   caption.txt           (Titel, Beschreibung, Quellen, Bildnachweise, Hashtags)
