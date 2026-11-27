@@ -1,0 +1,15 @@
+Hacker infizieren Kassenterminals in über zwanzig Ländern, auch in Deutschland, und stehlen über eine Million Kartendaten. Wie geht das?
+---
+Willkommen beim Strichermittler.
+---
+Sicherheitsforscher von Cybernews finden im August einen offenen Server der Täter. Darauf liegen die Daten von über einer Million Kredit- und Debitkarten von fast achthundert gekaperten Windows-Kassen, die meisten in Brasilien, aber auch vier Geräte in Deutschland.
+---
+Interessant ist der Weg in die Kassen. Die Angreifer nutzten eine Lücke in einem Windows-Systemtreiber, die Microsoft bereits im Dezember zweitausendvierundzwanzig geschlossen hatte.
+---
+Weil die Kassen fast zwei Jahre lang kein Update bekamen, verschafften sich die Hacker über diese Lücke volle Systemrechte und schalteten ein Fernwartungsprogramm für Angreifer scharf, einen sogenannten Trojaner.
+---
+Bei jeder Kartenzahlung las dieses Programm heimlich die Kartennummer, das Ablaufdatum und die Bankdaten mit und schickte alles direkt an das Kontrollfeld der Täter.
+---
+Der Server der Bande ist inzwischen abgeschaltet und die Sicherheitslücke dokumentiert. Ob alle betroffenen Händler ihre Kassen mittlerweile aktualisiert haben und wer genau hinter dem Angriff steckt, bleibt aber offen.
+---
+Achte deshalb regelmäßig auf deine Kontoauszüge und melde fremde Abbuchungen sofort deiner Bank. Ich bleibe dran.

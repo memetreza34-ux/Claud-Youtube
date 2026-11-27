@@ -1,0 +1,15 @@
+Hacker schleusen Schadcode auf Webseiten von Zoom, der BBC und IKEA ein, ohne diese Firmen überhaupt zu knacken. Wie geht das?
+---
+Willkommen beim Strichermittler.
+---
+Am sechzehnten November schlägt der Sicherheitsforscher Scott Helme Alarm. In einhundertachtundachtzig Programmteilen von einhundertachtundsiebzig bekannten Organisationen steckt plötzlich Schadcode, darunter bei Zoom, der BBC, CNN, IKEA und zweiunddreißig Finanzseiten.
+---
+Interessant ist der Weg dorthin. Alle diese Seiten nutzen den Dienst Optimizely für Web-Tests und laden dafür ein kleines Programmstück, ein sogenanntes Skript, direkt von deren Server.
+---
+Laut Optimizely nutzten Angreifer eine Lücke bei der Konto-Anmeldung aus, gaben sich als Firmenkunden aus und schrieben eigenen Schadcode direkt in deren Projekte. Weil der Browser die Datei weiter vom echten Server von Optimizely lud, merkte kaum ein Schutzsystem etwas.
+---
+Einmal im Browser aktiv, tauschte der Code Krypto-Adressen aus, griff Kartendaten ab, stahl Cookies und Bildschirmfotos und schickte älteren iPhones eigene Schadsoftware.
+---
+Optimizely hat die Lücke nach eigenen Angaben binnen drei Stunden geschlossen und den Code entfernt. Wie viele Karten oder Geräte in dieser Zeit betroffen waren und wer dahintersteckt, bleibt aber offen.
+---
+Und genau das ist die Lehre: Selbst große Webseiten laden fremde Bausteine nach, also halte deinen Browser und dein Handy aktuell. Ich bleibe dran.

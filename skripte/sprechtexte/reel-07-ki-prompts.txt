@@ -1,0 +1,17 @@
+Hacker lesen heimlich deine KI-Chats mit und stehlen API-Schlüssel aus laufenden Anfragen. Wie geht das?
+---
+Willkommen beim Strichermittler.
+---
+Sicherheitsforscher von Dragos schicken zwei Millionen Test-Anfragen mit Lockvögeln an bekannte KI-Plattformen. Das Ergebnis: Mindestens drei Anbieter waren heimlich gehackt.
+---
+Interessant ist der Weg deiner Anfrage. Viele Apps leiten deinen Text nicht direkt zum großen Modell, sondern über günstige Zwischenhändler.
+---
+Dort standen die Täter schon an der Haustür und schnitten jede Nachricht mit, noch bevor sie überhaupt beantwortet wurde.
+---
+Aus den Lockvögeln stahlen sie rund zweihundert Cloud-Schlüssel und griffen innerhalb von Stunden tausende Server ab.
+---
+Besonders brisant: Selbst Anbieter mit strengem Lösch-Versprechen speicherten Anfragen mit, und manche Daten landeten sogar in China.
+---
+Plattformen wie OpenRouter haben die drei betroffenen Anbieter inzwischen rausgeworfen. Wie viele echte Firmengeheimnisse davor abgeflossen sind, bleibt aber offen.
+---
+Schreib deshalb niemals echte Passwörter oder Firmen-Schlüssel in einen KI-Chat. Ich bleibe dran.
