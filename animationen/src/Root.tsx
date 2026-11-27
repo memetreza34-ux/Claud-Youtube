@@ -10,6 +10,10 @@ import { ReelCodewort } from "./ReelCodewort";
 import { REEL_NVIDIA_SEK, ReelNvidia } from "./ReelNvidia";
 import { REEL_OUTLOOK_SEK, ReelOutlook } from "./ReelOutlook";
 import { REEL_FIREWORKS_SEK, ReelFireworks } from "./ReelFireworks";
+import { REEL_OPTIMIZELY_SEK, ReelOptimizely } from "./ReelOptimizely";
+import { REEL_KASSENHACK_SEK, ReelKassenhack } from "./ReelKassenhack";
+import { REEL_KI_PROMPTS_SEK, ReelKiPrompts } from "./ReelKiPrompts";
+import { REEL_TODOIST_SEK, ReelTodoist } from "./ReelTodoist";
 import { NoirBegruessung } from "./intro-noir";
 
 // Start im Voiceover (voiceover-01-mlx-1.7B-8bit.wav): BkaZahlen 0:36.5, Eisberg 0:47.2, McAfeeBalken 1:08.4,
@@ -84,6 +88,14 @@ export const RemotionRoot: React.FC = () => {
         <Composition id="ReelOutlook" component={ReelOutlook} durationInFrames={Math.round(REEL_OUTLOOK_SEK * 30)} fps={30} width={1080} height={1920} />
         {/* Reel 04: Fireworks AI (Uber, Notion) */}
         <Composition id="ReelFireworks" component={ReelFireworks} durationInFrames={Math.round(REEL_FIREWORKS_SEK * 30)} fps={30} width={1080} height={1920} />
+        {/* Reel 05: Optimizely Supply-Chain-Hack (Zoom, BBC, IKEA) */}
+        <Composition id="ReelOptimizely" component={ReelOptimizely} durationInFrames={Math.round(REEL_OPTIMIZELY_SEK * 30)} fps={30} width={1080} height={1920} />
+        {/* Reel 06: Kassenterminal-Hack (CVE-2024-49138) */}
+        <Composition id="ReelKassenhack" component={ReelKassenhack} durationInFrames={Math.round(REEL_KASSENHACK_SEK * 30)} fps={30} width={1080} height={1920} />
+        {/* Reel 07: 2 Millionen KI-Prompts als Falle (Dragos) */}
+        <Composition id="ReelKiPrompts" component={ReelKiPrompts} durationInFrames={Math.round(REEL_KI_PROMPTS_SEK * 30)} fps={30} width={1080} height={1920} />
+        {/* Reel 08: Todoist gehackt – Passwörter in Aufgaben gesucht */}
+        <Composition id="ReelTodoist" component={ReelTodoist} durationInFrames={Math.round(REEL_TODOIST_SEK * 30)} fps={30} width={1080} height={1920} />
       </Folder>
       <Folder name="Bausteine">
         {/* Begrüßung im Noir-Stil, Zeiten wie in Reel 04 */}

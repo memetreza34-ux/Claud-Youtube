@@ -1,0 +1,13 @@
+Hacker brechen bei einer der beliebtesten To-do-Apps der Welt ein und durchsuchen private Aufgaben gezielt nach Passwörtern. Wie konnte das passieren?
+---
+Willkommen beim Strichermittler.
+---
+Am zweiundzwanzigsten und dreiundzwanzigsten November greift ein Unbekannter die Server von Todoist an. Laut eigener Mitteilung landen rund sechs Prozent aller Nutzerkonten samt E-Mail-Adressen und alten Passwort-Einträgen beim Täter.
+---
+Interessant ist der Weg hinein. Über einen gestohlenen Entwickler-Schlüssel manipuliert der Täter automatische Code-Abläufe in drei Projekten. Das sind feste Prüf-Programme im Hintergrund, und genau dort greift er Admin-Zugänge ab und schaltet sich in die Cloud.
+---
+Dort liegt noch eine Altlast: Konten, deren Passwort seit über zehn Jahren nicht geändert wurde, stecken in veralteten SHA-Eins-Verfahren. Besonders brisant: Bei einem Teil der Nutzer durchforstet der Angreifer echte Aufgaben, Kommentare und Outlook-Postfächer nach geheimen Schlüsseln.
+---
+Todoist blockiert den Zugang kurz nach der Entdeckung, schaltet die alten Verfahren ab und warnt Betroffene per Mail. Ob aus den gestohlenen Alt-Daten schon Passwörter geknackt wurden, bleibt offen.
+---
+Speicher niemals Passwörter oder geheime Schlüssel im Klartext in To-do-Listen oder Notizen. Ich bleibe dran.
