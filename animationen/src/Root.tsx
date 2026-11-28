@@ -18,7 +18,7 @@ import { CoverTodoist, PROBE_TODOIST_SEK, ProbeTodoist } from "./ProbeTodoist";
 import { CoverVideo02, Video02, VIDEO02_SEK } from "./Video02";
 import { DOKU_DEMO_SEK, DokuDemo } from "./DokuDemo";
 import { DOKU_DEMO2_SEK, DokuDemo2 } from "./DokuDemo2";
-import { REGIE_DEMO_LANG_SEK, REGIE_DEMO_SHORT_SEK, RegieDemoLang, RegieDemoShort } from "./RegieDemos";
+import { MEME_DEMO_SEK, MemeDemo, REGIE_DEMO_LANG_SEK, REGIE_DEMO_SHORT_SEK, RegieDemoLang, RegieDemoShort } from "./RegieDemos";
 import { NoirBegruessung } from "./intro-noir";
 
 // Start im Voiceover (voiceover-01-mlx-1.7B-8bit.wav): BkaZahlen 0:36.5, Eisberg 0:47.2, McAfeeBalken 1:08.4,
@@ -113,6 +113,8 @@ export const RemotionRoot: React.FC = () => {
         {/* Regie-System: Szenenplan → Video, beide Formate */}
         <Composition id="RegieDemoShort" component={RegieDemoShort} durationInFrames={Math.round(REGIE_DEMO_SHORT_SEK * 30)} fps={30} width={1080} height={1920} />
         <Composition id="RegieDemoLang" component={RegieDemoLang} durationInFrames={Math.round(REGIE_DEMO_LANG_SEK * 30)} fps={30} width={1920} height={1080} />
+        <Composition id="MemeDemoShort" component={MemeDemo} durationInFrames={Math.round(MEME_DEMO_SEK * 30)} fps={30} width={1080} height={1920} />
+        <Composition id="MemeDemoLang" component={MemeDemo} durationInFrames={Math.round(MEME_DEMO_SEK * 30)} fps={30} width={1920} height={1080} />
       </Folder>
       <Folder name="Bausteine">
         {/* Begrüßung im Noir-Stil, Zeiten wie in Reel 04 */}

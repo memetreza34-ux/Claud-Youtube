@@ -62,6 +62,10 @@ Danach `pausen_und_untertitel.py` für Pausen und Wortzeiten, Whisper-Abschrift 
 - **Bewegung prüfen:** `python3 tools/bewegung.py <video.mp4> [--von S --bis S]` (Stillstand, harte Starts, Sprünge, Ruckeln)
 - **Eigene Klänge:** `python3 tools/klang.py --liste` / `python3 tools/klang.py <art> [--name --dauer --hoehe --hall]` → `animationen/public/klang/`, im Szenenplan `klaenge`/`atmo`; Ton ansehen mit `--ansehen <wav>`
 - **Kontaktbogen:** `tools/kontaktbogen.sh <video.mp4> [alle_s] [spalten]`
+- **Tonprüfung:** `python3 tools/tonpruefung.py <video.mp4> <sprechtext.txt> [--stimme audio.wav]` (Whisper-Abschrift gegen Skript: Aussprache, überdeckte Wörter)
+- **Fotos/Clips mit Lizenz:** `python3 tools/bilder.py suche "<begriff>" [--video] [--quelle wikimedia|pexels|pixabay]`, dann `hole <nr> --ziel …` (schreibt `bildnachweise.txt`)
+- **Musik unter die Stimme:** `python3 tools/musik.py <stück> <audio.wav> <ziel.wav> [--laut -24]` (automatisches Ducking), in `<Regie musik=…>`
+- **Faktencheck:** Agent `faktenpruefer` (Claude) – jede Behauptung des Skripts gegen Quellen, vor der Vertonung
 - **Endkontrolle:** `tools/endkontrolle.sh <video.mp4>` (Auflösung, Länge, −14 LUFS, schwarze/stille Stellen)
 - **Zeitmarken:** `python3 tools/zeitmarken.py <untertitel.json> <marken.txt> <zeiten.ts>`
 - Rendern bricht mit Zeitüberschreitung ab? `--concurrency=3 --timeout=400000` (Bilder laden langsam von der SSD).

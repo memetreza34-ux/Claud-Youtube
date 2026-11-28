@@ -3,7 +3,7 @@ import * as Icons from "lucide-react";
 import { Audio } from "@remotion/media";
 import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
 import { ArtikelSchraeg, BauplanBox, BauplanGrund, DatenPaket, FilmLook, GluehLinie, Pinnwand } from "../doku-bausteine";
-import { BrowserFenster, ChatVerlauf, Fallakte, KarteRaum, ladeLand, MemeKlassisch, MemeZweiFelder, ReaktionsPop, Terminal } from "../doku-bausteine2";
+import { BrowserFenster, ChatVerlauf, Fallakte, KarteRaum, ladeLand, MemeChaos, MemeErwartung, MemeKlassisch, MemeStufen, MemeZoom, MemeZweiFelder, ReaktionsPop, Terminal } from "../doku-bausteine2";
 import { useFlaeche } from "../format";
 import { klang, klemm, NOIR_ORANGE, NOIR_ROT, rein, SANFT, sfx } from "../noir-buehne";
 import { TEXT_SCHRIFT, ZAHLEN_SCHRIFT } from "../stil";
@@ -93,6 +93,9 @@ const KLANG: Partial<Record<Szene["typ"], Parameters<typeof sfx>[0]>> = {
   pinnwand: "pop",
   meme: "stempel",
   memeZwei: "pop",
+  memeStufen: "pop",
+  memeErwartung: "pop",
+  memeZoom: "whoosh",
   chat: "pop",
   terminal: "tick",
   akte: "schnipp",
@@ -104,9 +107,10 @@ const KLANG: Partial<Record<Szene["typ"], Parameters<typeof sfx>[0]>> = {
 export const Regie: React.FC<{
   plan: Szene[];
   audio?: string;
+  musik?: string; // fertige Musik aus tools/musik.py (duckt schon unter der Stimme)
   untertitel?: { datei: string; ohne?: [number, number][] };
   eigeneSzenen?: Record<string, (s: number, sz: Szene) => React.ReactNode>;
-}> = ({ plan, audio, untertitel, eigeneSzenen = {} }) => {
+}> = ({ plan, audio, musik, untertitel, eigeneSzenen = {} }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const { H, hoch } = useFlaeche();
@@ -134,6 +138,14 @@ export const Regie: React.FC<{
         return <MemeKlassisch s={s} ab={sz.ab} pose={sz.pose} oben={sz.oben} unten={sz.unten} untenAb={sz.untenAb} />;
       case "memeZwei":
         return <MemeZweiFelder s={s} ab={sz.ab} nein={sz.nein} ja={sz.ja} />;
+      case "memeStufen":
+        return <MemeStufen s={s} stufen={sz.stufen} />;
+      case "memeErwartung":
+        return <MemeErwartung s={s} ab={sz.ab} erwartung={sz.erwartung} realitaet={sz.realitaet} />;
+      case "memeChaos":
+        return <MemeChaos s={s} ab={sz.ab} pose={sz.pose} oben={sz.oben} unten={sz.unten} untenAb={sz.untenAb} art={sz.art} />;
+      case "memeZoom":
+        return <MemeZoom s={s} ab={sz.ab} pose={sz.pose} text={sz.text} ziel={sz.ziel} />;
       case "chat":
         return <ChatVerlauf s={s} ab={sz.ab} titel={sz.titel} nachrichten={sz.nachrichten} />;
       case "terminal":
@@ -154,6 +166,7 @@ export const Regie: React.FC<{
   return (
     <AbsoluteFill style={{ backgroundColor: "#050506" }}>
       {audio ? <Audio src={staticFile(audio)} /> : null}
+      {musik ? <Audio src={staticFile(musik)} /> : null}
       {plan.map((p, i) =>
         KLANG[p.typ] && !p.stumm ? (
           <Sequence key={`k${i}`} from={Math.round(p.ab * fps)} durationInFrames={30}>

@@ -30,6 +30,10 @@ Gilt für **alle** Videos: lange Videos (16:9) und Reels/Shorts (9:16).
 | `akte` | Täter, Ermittlung, Geheimes |
 | `karte` | Orte, Länder, Wege |
 | `meme`, `memeZwei`, `reaktion` | Humor, falsch gegen richtig, kurze Reaktion |
+| `memeStufen` | Eskalation/„Galaxy Brain“: 3–4 Stufen, jede glüht stärker (vom Harmlosen zum Absurden) |
+| `memeErwartung` | Erwartung vs. Realität: Erwartung füllt erst alles, dann knallt die Realität rein |
+| `memeChaos` | „Alles in Ordnung“: ruhige Pose, drumherum Feuer (`art: "feuer"`) oder Störung (`"glitch"`) |
+| `memeZoom` | dramatischer Dreifach-Zoom aufs Gesicht als Reaktion auf eine Enthüllung (dazu `klaenge` einschlag) |
 | `figur` | Begrüßung, Wendepunkt, Schluss |
 | `eigen` | **alles andere: die eigens gebaute, beste Lösung für genau diese Szene** |
 
@@ -42,6 +46,13 @@ Ich höre nicht, darum: Klänge auf exakte Wortzeiten setzen und das Ergebnis al
 - **Faustregeln:** Klang auf das Wort, nicht davor. Atmo leise (0,08–0,15), Ereignisse 0,25–0,5, harte Klänge (alarm, glitch) eher 0,2–0,3. Nicht jede Sekunde klingeln: ein starker Klang pro Aussage.
 - **Prüfen:** Ton der gerenderten Szene als Bild: `ffmpeg -i <szene.mp4> -vn <ton.wav>` und `python3 tools/klang.py --ansehen <ton.wav>` (Wellenform + Spektrum: sitzt der Klang an der richtigen Stelle, übertönt er die Stimme?). Am Ende `tools/endkontrolle.sh` (−14 LUFS).
 - **ElevenLabs** (`generate_sound_effect`) klingt realistischer, **kostet aber Geld** → nur mit Armans OK.
+
+## Memes
+Nur eigene Posen (`animationen/public/posen/`, 56 Stück, z. B. `b-kaffee-alles-brennt`, `b-mind-blown`, `b-panik`, `b-mic-drop`, `b-aktie-steigt`). Bekannte Meme-**Formate** nachbauen ist erlaubt, fremde Meme-**Bilder** nie (Urheberrecht, echte Gesichter). Fehlt eine Pose: mit Flow (0 Credits, `figur/master.jpg` als Referenz) eine neue erzeugen, selbst prüfen, nach `figur/posen/` und `animationen/public/posen/`. Vorführung: Kompositionen `MemeDemoShort`/`MemeDemoLang`.
+
+## Echte Fotos, Clips und Musik
+- **Fotos/Clips:** `python3 tools/bilder.py suche "<begriff>" [--video]` → Vorschau ansehen → `python3 tools/bilder.py hole <nr> --ziel animationen/public/<ordner>/<name>.jpg` (Nachweis landet in `bildnachweise.txt` → Caption). Wikimedia ohne Schlüssel; Pexels/Pixabay mit kostenlosem Schlüssel in `/Volumes/T7/strichermittler-schluessel/`. Nur Orte, Technik, Gebäude, Objekte – keine Gesichter als Hauptmotiv. Downloads nur von diesen Quellen und nur mit Armans (Dauer-)OK.
+- **Musik:** `python3 tools/musik.py <stück> <stimme audio.wav> animationen/public/<ordner>/musik.wav` → Musik passt sich der Länge an und wird unter der Stimme automatisch leiser; in der Komposition `<Regie … musik="<ordner>/musik.wav" />`. Stücke: YouTube Audio Library (Arman lädt nach `/Volumes/T7/strichermittler-musik/`) oder eigener Teppich `tools/klang.py spannung --dauer 60`.
 
 ## Bewegung prüfen
 `tools/szene.sh` erstellt neben dem Kontaktbogen automatisch `…-bewegung.jpg` (10 Bilder je Sekunde + Kurve der bewegten Fläche) und einen Bericht (`python3 tools/bewegung.py <video> [--von --bis]` geht auch für ganze Videos):

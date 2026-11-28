@@ -67,6 +67,150 @@ export const ReaktionsPop: React.FC<{ s: number; ab: number; bis: number; pose: 
   );
 };
 
+// Eskalations-Meme („Galaxy Brain“): Stufen untereinander, jede Stufe leuchtet stärker als die davor
+export type MemeStufe = { pose: string; text: string; ab: number };
+export const MemeStufen: React.FC<{ s: number; stufen: MemeStufe[] }> = ({ s, stufen }) => {
+  const { W, H, hoch } = useFlaeche();
+  const n = stufen.length;
+  // Hochformat: Stufen untereinander (Text links, Pose rechts). Querformat: Stufen nebeneinander (Pose oben, Text unten).
+  const zw = hoch ? W : W / n;
+  const zh = hoch ? H / n : H;
+  const posB = hoch ? W * 0.46 : zw;
+  const posH = hoch ? zh : H * 0.68;
+  return (
+    <AbsoluteFill style={{ background: "#050506" }}>
+      {stufen.map((st, i) => {
+        const x = hoch ? 0 : i * zw;
+        const y = hoch ? i * zh : 0;
+        const rahmen: React.CSSProperties = { position: "absolute", left: x, top: y, width: zw, height: zh, display: "flex", flexDirection: hoch ? "row" : "column", borderBottom: hoch ? "4px solid #050506" : undefined, borderRight: hoch ? undefined : "4px solid #050506" };
+        if (s < st.ab) {
+          // leere Stufe: Platzhalter baut Spannung auf, Fläche bleibt gefüllt
+          return (
+            <div key={i} style={{ ...rahmen, alignItems: "center", justifyContent: "center", background: "#0d0d10" }}>
+              <div style={{ fontFamily: ANTON_SCHRIFT, fontSize: hoch ? 150 : 200, color: "rgba(255,138,31,0.18)" }}>?</div>
+            </div>
+          );
+        }
+        const k = Math.min(1.08, schwung(s, st.ab));
+        const glut = (i + 1) / n;
+        const puls = 0.85 + 0.15 * Math.sin(s * 6 + i);
+        const textBox = (
+          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: hoch ? "flex-start" : "center", padding: hoch ? "0 32px" : "0 34px", background: `linear-gradient(${hoch ? 90 : 180}deg, rgba(255,138,31,${0.05 + 0.35 * glut * puls}), rgba(255,138,31,${0.02 + 0.12 * glut}))` }}>
+            <div style={{ fontFamily: TEXT_SCHRIFT, fontWeight: 800, fontSize: hoch ? Math.min(60, zh * 0.2) : 52, lineHeight: 1.15, textAlign: hoch ? "left" : "center", color: "#fff", textShadow: glut > 0.7 ? `0 0 ${30 * glut}px ${NOIR_ORANGE}` : "none", transform: `translate${hoch ? "X" : "Y"}(${(1 - Math.min(1, k)) * -50}px)` }}>{st.text}</div>
+          </div>
+        );
+        const bild = (
+          <div style={{ width: posB, height: posH, overflow: "hidden", position: "relative", flexShrink: 0 }}>
+            <Img src={staticFile(`posen/${st.pose}`)} style={{ width: posB, height: posH, objectFit: "cover", transform: `scale(${0.92 + 0.08 * Math.min(1, k)})`, filter: `brightness(${0.75 + 0.5 * glut}) saturate(${0.8 + 0.6 * glut})` }} />
+            <AbsoluteFill style={{ boxShadow: `inset 0 0 ${60 + 80 * glut}px rgba(255,138,31,${0.25 + 0.6 * glut * puls})` }} />
+          </div>
+        );
+        return (
+          <div key={i} style={{ ...rahmen, opacity: Math.min(1, k * 1.6) }}>
+            {hoch ? textBox : bild}
+            {hoch ? bild : textBox}
+          </div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// Erwartung vs. Realität: links/oben die Erwartung, dann knallt die Realität rein (Wackler, Rotstich)
+export const MemeErwartung: React.FC<{ s: number; ab: number; erwartung: { pose: string; text?: string }; realitaet: { pose: string; text?: string; ab: number } }> = ({ s, ab, erwartung, realitaet }) => {
+  const { W, H, hoch } = useFlaeche();
+  const k1 = rein(s, ab, 0.35);
+  const k2 = Math.min(1.1, schwung(s, realitaet.ab));
+  const teil = rein(s, realitaet.ab, 0.3); // 0 = Erwartung allein (volle Fläche), 1 = geteilt
+  const fw = hoch ? W : W - (W / 2) * teil;
+  const fh = hoch ? H - (H / 2) * teil : H;
+  const wackel = s > realitaet.ab ? Math.exp(-10 * (s - realitaet.ab)) * 14 : 0;
+  const feld = (pose: string, label: string, text: string | undefined, x: number, y: number, k: number, real: boolean) => {
+    const bw = real ? (hoch ? W : W / 2) : fw;
+    const bh = real ? (hoch ? H / 2 : H) : fh;
+    return (
+    <div style={{ position: "absolute", left: x, top: y, width: bw, height: bh, overflow: "hidden", opacity: Math.min(1, k * 1.4), borderRight: !hoch && !real ? "6px solid #050506" : undefined, borderBottom: hoch && !real ? "6px solid #050506" : undefined }}>
+      <Img src={staticFile(`posen/${pose}`)} style={{ width: bw, height: bh, objectFit: "cover", transform: `scale(${1.12 - 0.12 * Math.min(1, k)})`, filter: real ? "saturate(0.6) contrast(1.15)" : "saturate(1.05)" }} />
+      {real ? <AbsoluteFill style={{ background: "rgba(239,68,68,0.16)", mixBlendMode: "multiply" }} /> : null}
+      <div style={{ ...MEME_TEXT, position: "absolute", left: 0, right: 0, top: hoch ? 34 : 50, fontSize: hoch ? 72 : 84, color: real ? "#ff6b6b" : "#fff" }}>{label}</div>
+      {text ? <div style={{ ...MEME_TEXT, position: "absolute", left: 30, right: 30, bottom: hoch ? 40 : 60, fontSize: hoch ? 56 : 62 }}>{text}</div> : null}
+    </div>
+    );
+  };
+  return (
+    <AbsoluteFill style={{ background: "#050506", transform: `translate(${wackel * Math.sin(s * 90)}px, ${wackel * Math.cos(s * 70)}px)` }}>
+      {feld(erwartung.pose, "Erwartung", erwartung.text, 0, 0, k1, false)}
+      {s >= realitaet.ab ? feld(realitaet.pose, "Realität", realitaet.text, hoch ? 0 : W - (W / 2) * teil, hoch ? H - (H / 2) * teil : 0, k2, true) : null}
+    </AbsoluteFill>
+  );
+};
+
+// Chaos-Meme („alles in Ordnung“): Pose ruhig, drumherum flackert Feuer bzw. Störung; Text oben/unten
+export const MemeChaos: React.FC<{ s: number; ab: number; pose: string; oben?: string; unten?: string; untenAb?: number; art?: "feuer" | "glitch" }> = ({ s, ab, pose, oben, unten, untenAb, art = "feuer" }) => {
+  const { W, H, hoch } = useFlaeche();
+  const gr = Math.max(W, H * (hoch ? 0.62 : 1));
+  const k = rein(s, ab, 0.3);
+  const flacker = 0.75 + 0.25 * Math.sin(s * 23) * Math.sin(s * 7.3);
+  const funken = Array.from({ length: 34 }, (_, i) => {
+    const t = (s * (0.25 + random(`v${i}`) * 0.35) + random(`p${i}`)) % 1;
+    return { x: random(`x${i}`) * W, y: H * (1.05 - t * 1.2), r: 3 + random(`r${i}`) * 6, o: Math.sin(t * Math.PI) };
+  });
+  const versatz = art === "glitch" && random(`g${Math.floor(s * 12)}`) > 0.7 ? 14 : 0;
+  return (
+    <AbsoluteFill style={{ background: "#0b0b0d", opacity: k }}>
+      <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
+        <Img src={staticFile(`posen/${pose}`)} style={{ width: hoch ? W : gr, height: hoch ? H : gr, objectFit: "cover", filter: art === "feuer" ? `brightness(${0.9 + 0.15 * flacker})` : undefined, transform: `translateX(${versatz}px)` }} />
+      </AbsoluteFill>
+      {art === "feuer" ? (
+        <>
+          <AbsoluteFill style={{ background: `radial-gradient(ellipse at 50% 110%, rgba(255,110,20,${0.45 * flacker}), transparent 60%)`, mixBlendMode: "screen" }} />
+          {funken.map((f, i) => (
+            <div key={i} style={{ position: "absolute", left: f.x, top: f.y, width: f.r, height: f.r, borderRadius: f.r, background: "#ffb347", opacity: f.o * 0.9, boxShadow: "0 0 12px #ff8a1f" }} />
+          ))}
+        </>
+      ) : (
+        <>
+          {versatz ? <AbsoluteFill style={{ background: "rgba(0,255,255,0.08)", transform: "translateX(-10px)", mixBlendMode: "screen" }} /> : null}
+          {Array.from({ length: 6 }, (_, i) => {
+            const an = random(`l${i}-${Math.floor(s * 10)}`) > 0.6;
+            return an ? <div key={i} style={{ position: "absolute", left: 0, right: 0, top: random(`y${i}-${Math.floor(s * 10)}`) * H, height: 4 + random(`h${i}`) * 18, background: "rgba(255,255,255,0.12)" }} /> : null;
+          })}
+        </>
+      )}
+      <AbsoluteFill style={{ boxShadow: "inset 0 0 220px rgba(0,0,0,0.85)" }} />
+      {oben ? <div style={{ ...MEME_TEXT, position: "absolute", left: hoch ? 50 : 120, right: hoch ? 50 : 120, top: hoch ? 260 : 50, fontSize: hoch ? 84 : 92 }}>{oben}</div> : null}
+      {unten && s >= (untenAb ?? ab) ? <div style={{ ...MEME_TEXT, position: "absolute", left: hoch ? 50 : 120, right: hoch ? 50 : 120, bottom: hoch ? 380 : 60, fontSize: hoch ? 104 : 96, transform: `scale(${Math.min(1.08, schwung(s, untenAb ?? ab))})` }}>{unten}</div> : null}
+    </AbsoluteFill>
+  );
+};
+
+// Dramatischer Zoom: drei harte Zoom-Stöße auf die Pose (Reaktion auf eine Enthüllung)
+export const MemeZoom: React.FC<{ s: number; ab: number; pose: string; text?: string; ziel?: [x: number, y: number] }> = ({ s, ab, pose, text, ziel = [0.5, 0.36] }) => {
+  const { W, H, hoch } = useFlaeche();
+  const gr = Math.max(W, H);
+  const d = s - ab;
+  const stufe = d < 0.35 ? 0 : d < 0.7 ? 1 : d < 1.05 ? 2 : 3;
+  const zoom = [1, 1.35, 1.8, 2.5][stufe] * (1 + 0.02 * Math.max(0, d - stufe * 0.35));
+  const blitz = stufe > 0 ? Math.exp(-14 * (d - stufe * 0.35)) : 0;
+  return (
+    <AbsoluteFill style={{ background: "#050506", overflow: "hidden" }}>
+      {(() => {
+        const tx = ziel[0] * gr - (gr - W) / 2; // Zielpunkt in Bildschirm-Koordinaten
+        const ty = ziel[1] * gr - (gr - H) / 2;
+        const m = Math.min(1, stufe); // ab dem ersten Stoß sitzt das Ziel in der Mitte
+        return (
+          <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", transform: `translate(${(W / 2 - tx) * m}px, ${(H / 2 - ty) * m}px) scale(${zoom})`, transformOrigin: `${tx}px ${ty}px` }}>
+            <Img src={staticFile(`posen/${pose}`)} style={{ width: gr, height: gr, objectFit: "cover" }} />
+          </AbsoluteFill>
+        );
+      })()}
+      <AbsoluteFill style={{ boxShadow: `inset 0 0 ${200 + stufe * 80}px rgba(0,0,0,0.9)` }} />
+      <AbsoluteFill style={{ background: NOIR_ROT, opacity: blitz * 0.35 }} />
+      {text && stufe >= 3 ? <div style={{ ...MEME_TEXT, position: "absolute", left: 40, right: 40, bottom: hoch ? 380 : 70, fontSize: hoch ? 100 : 104, transform: `scale(${Math.min(1.08, schwung(s, ab + 1.05))})` }}>{text}</div> : null}
+    </AbsoluteFill>
+  );
+};
+
 /* ───────── Chat-Verlauf (nachgestellt) ───────── */
 export type ChatNachricht = { ab: number; text: string; ich?: boolean; name?: string };
 export const ChatVerlauf: React.FC<{ s: number; ab: number; titel: string; nachrichten: ChatNachricht[]; hinweis?: string }> = ({ s, ab, titel, nachrichten, hinweis = "nachgestellt" }) => {

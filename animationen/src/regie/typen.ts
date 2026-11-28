@@ -32,6 +32,10 @@ export type Szene = Basis &
     | { typ: "bauplan"; titel?: string; knoten: BauplanKnoten[]; linien: BauplanLinie[]; messwert?: { ab: number; text: string; rotAb?: number; rotText?: string } }
     | { typ: "meme"; pose: string; oben?: string; unten?: string; untenAb?: number }
     | { typ: "memeZwei"; nein: { pose: string; text: string }; ja: { pose: string; text: string; ab: number } }
+    | { typ: "memeStufen"; stufen: { pose: string; text: string; ab: number }[] } // Eskalation/„Galaxy Brain“, 3–4 Stufen
+    | { typ: "memeErwartung"; erwartung: { pose: string; text?: string }; realitaet: { pose: string; text?: string; ab: number } }
+    | { typ: "memeChaos"; pose: string; oben?: string; unten?: string; untenAb?: number; art?: "feuer" | "glitch" } // „alles in Ordnung“
+    | { typ: "memeZoom"; pose: string; text?: string; ziel?: [x: number, y: number] } // dramatischer Dreifach-Zoom
     | { typ: "chat"; titel: string; nachrichten: { ab: number; text: string; ich?: boolean; name?: string }[] }
     | { typ: "terminal"; titel?: string; zeilen: { ab: number; text: string; befehl?: boolean; rot?: boolean }[] }
     | { typ: "akte"; aktenzeichen: string; titel: string; zeilen: { text: string; schwaerzen?: [von: number, bis: number, ab: number][] }[]; stempel?: { text: string; ab: number }; lupe?: { ab: number; bis: number; zeile: number } }
@@ -47,4 +51,4 @@ export type PlanInfo = { titel: string; format: Format; ende: number };
 
 // Kategorien für die Abwechslungsregeln
 export const BELEG: SzenenTyp[] = ["artikel", "browser", "pinnwand"];
-export const FIGUR: SzenenTyp[] = ["figur", "meme", "memeZwei"];
+export const FIGUR: SzenenTyp[] = ["figur", "meme", "memeZwei", "memeStufen", "memeErwartung", "memeChaos", "memeZoom"];
