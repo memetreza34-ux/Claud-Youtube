@@ -1,11 +1,11 @@
 # Regeln für Reels (und Erklärteile in langen Videos)
 
-Der technische Ablauf steht in `PRODUKTION.md`, diese Datei regelt Stil und Inhalt.
+Der technische Ablauf steht in `PRODUKTION.md`, diese Datei regelt Stil und Inhalt. **Jede Szene so gut wie möglich, ohne Grenzen (`planung/regie-system.md`)**: Bausteine sind Startpunkte, eigens gebaute Lösungen erwünscht; Plan technisch mit `tools/regie-pruefen.mjs` prüfen. Belege für Reels im Hochformat aufnehmen (`shot.py … --breite 540 --hoehe 960`).
 
 Gelernt aus dem Feedback zu Reel 02–04 und der Analyse von Hood Informatik (Outlook- und Nvidia-Short, 14.11.2026). Diese Datei gilt; ältere Notizen in den Reel-Dateien sind Geschichte.
 
 ## Aufbau
-1. **Hook (unter 7 s):** Neuigkeit + Grund in einem Satz, dann eine Frage. Beispiel: „Hacker brechen bei einem KI-Anbieter ein, den kaum jemand kennt, und erbeuten Daten von Uber und Notion. Wie geht das?“ Keine gespielte Szene („Du öffnest Outlook …“).
+1. **Hook (unter 7 s):** Neuigkeit + Grund in einem Satz, dann eine Frage. Beispiel: „Hacker brechen bei einem KI-Anbieter ein, den kaum jemand kennt, und erbeuten Daten von Uber und Notion. Wie geht das?“ Keine gespielte Szene („Du öffnest Outlook …“). **Bild:** ab Frame 1 Bewegung und die Sache selbst (App, Gerät, Logo), nie ein stehendes Figur-Bild mit Titel. Die Figur kommt erst zur Frage als Reaktion (siehe „Motion-Standard 2.0“).
 2. **Begrüßung:** „Willkommen beim Strichermittler.“ mit der Noir-Intro (`animationen/src/intro-noir.tsx`): Lampe flackert an, orangefarbener Strich legt den Namen frei. Die Ballon-Animation ist abgelöst.
 3. **Fakten:** wann, wer, was betroffen ist.
 4. **Das Warum:** Überleitung mit Neugier („Interessant ist …“), Fachwörter sofort im Satz erklären („Das nennt man …“, „also …“), Ursache als Kette.
@@ -33,9 +33,19 @@ Gelernt aus dem Feedback zu Reel 02–04 und der Analyse von Hood Informatik (Ou
     - **Nie die abgeschnittene Hintergrund-Figur (`FigurStill`) hinter Animationen oder Motion Graphics legen!** Erklär-Animationen laufen auf eigenem sauberem dunklen Grund; die Figur erscheint nur gezielt (Hook, `NoirBegruessung`, Schluss oder eigene Pose).
     - **Exaktes Start- und End-Timing:** Jede Animation beginnt exakt zum passenden Satz/Wort und schließt sauber vor dem Szenenwechsel ab (nie mitten im Flug abbrechen oder leer nachlaufen).
     - Oben im Bild nur wenig Schutz-Luft (~140–150 px) lassen und die **komplette Fläche bis direkt über die Untertitel** (~1.200 px Höhe) für Animationen und Belege nutzen – nie alles tief unten auf einen schmalen Streifen quetschen.
+- **Motion-Standard 2.0 (Reel 08 neu gebaut, 28.11.2026 – gilt ab jetzt, Vorlage: `animationen/src/ProbeTodoist.tsx` + `probe-todoist-teil2.tsx`):** Gelernt aus Armans Kritik an Reel 08 („Einstieg komisch, Animation zu einfach, KI-Slop“) und den Vorbildern des Denkwürfel-Kanals (schraffuren, scroll.engineer).
+  - **Ein Held pro Abschnitt, der sich verwandelt:** z. B. das Handy mit der App (Riss → Scanner → Funde springen heraus) oder ein Schlüssel, der durchs Bild reist (gestohlen → Code-Abläufe → Admin → Cloud). Lieber eine Bühne mit Verwandlung als fünf Kästen nacheinander.
+  - **Jedes Schlüsselwort = ein sichtbares Ereignis, genau auf dem Wort** (Wortzeiten aus `untertitel.json`, ±3 Frames).
+  - **Zustand über Farbe, Größe, Lage zeigen, nicht über Text:** Rot = betroffen, Grün = gesichert, Gold = Admin; Unwichtiges wird dunkel, das Wichtige springt heraus.
+  - **Keine Dashboard-Kästen mit Glow-Rand** und keine kleinen Erklärtexte darin. Objekte mit Licht, Verlauf und Tiefe (Zahnräder, Schlösser, Geräte, Wolke).
+  - **Kamera fährt mit:** große Welt (z. B. 1080 × 3200), Kamera folgt dem Helden und zoomt auf das, worüber gesprochen wird; kurz eine Gesamtübersicht, dann nah ran.
+  - **Belege groß mit Kamerafahrt (`BelegFahrt`):** Screenshot füllt das Bild, Kamera fährt sanft zur gesprochenen Stelle. **Nur so weit zoomen, dass nichts abgeschnitten wirkt** (Überschrift und Zeile bleiben ganz im Bild). **Eine Markierung reicht:** entweder die gelbe Markierung aus dem Screenshot oder ein Rahmen auf dem Wort, nie beides (Arman, 28.11.2026). Bei der Pointe („beim Täter“) wird alles dunkel bis auf die markierte Zeile. Keine Überschrift über dem Beleg, Quelle winzig unten links. **Deutsche Quellen bevorzugen**, englische nur ohne deutsche Alternative.
+  - **Text im Bild:** höchstens eine große Zahl pro Abschnitt (z. B. Jahreszahl 2016) und kleine Beschriftungen in Großbuchstaben (~30 px). Keine Dauer-Überschrift oben über den Szenen.
+  - **Rückgriff statt neuer Bilder:** Der Held vom Hook kommt später wieder (Handy bei der Schlüssel-Suche und beim Schluss-Tipp). Das gibt dem Reel einen roten Faden.
+  - **Figur gezielt:** Reaktion auf die Hook-Frage (schneller Zoom), Begrüßung, Schluss-Appell und „Ich bleibe dran“. Nie als Dauer-Hintergrund.
 - **Bildarten:** echte Schlagzeilen und Artikelzeilen mit gelber Markierung und rotem Rahmen, echte Fotos (Wikimedia Commons, Lizenz prüfen), echte Webseiten, App-Icons und Logos.
-- **Erklärgrafik schlicht:** dunkler Grund, dünne Linien, Icons, wenig Farbe (Orange = Akzent, Grün = läuft, Rot = Fehler). Bausteine: `animationen/src/ruhig.tsx` (Bühne, Beleg, Foto), `outlook.tsx`, `fireworks.tsx`.
-- **Reaktionen:** eigene Posen der Figur statt fremder Memes, ganzflächig (sonst steht die Figur doppelt im Bild). Posen: `figur/posen/` (Stil B passt zur Master-Figur).
+- **Erklärgrafik schlicht:** dunkler Grund, wenig Farbe (Orange = Akzent, Grün = gesichert, Rot = betroffen/Fehler), Objekte statt Kästen (siehe Motion-Standard 2.0). Bausteine: `animationen/src/ProbeTodoist.tsx` (Hook-Handy, `BelegFahrt`, Schlüssel-Weg), `probe-todoist-teil2.tsx` (Altlast-Karten, Suche, offene Frage, Schluss); ältere: `ruhig.tsx`, `outlook.tsx`, `fireworks.tsx`.
+- **Reaktionen und Memes:** Memes sind erwünscht (Arman, 28.11.2026), aber nur mit eigenen Posen der Figur, nie mit fremden Meme-Bildern. Bausteine: `MemeKlassisch`, `MemeZweiFelder`, `ReaktionsPop` (`animationen/src/doku-bausteine2.tsx`). Ganzflächig, sonst steht die Figur doppelt im Bild. Posen: `figur/posen/` (Stil B passt zur Master-Figur).
 - **Nachgestellt** (z. B. Fehlerseite im Browser) nur, wenn es nichts Echtes gibt – in der Beschreibung so benennen.
 - **KI-Bilder (Google Flow):** für Posen, Cover und illustrative Szenen ohne echtes Material, immer mit `figur/master.jpg` als Referenz (siehe `PRODUKTION.md`, Schritt 4–5). Fakten und Belege bleiben echt.
 

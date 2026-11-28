@@ -8,10 +8,12 @@ Diese Datei ist der Einstieg für **jeden** Agenten, der hier Shorts/Reels oder 
 3. [`planung/kanal.md`](planung/kanal.md) – Kanal, Themen, Haltung.
 4. [`figur/MASTER.md`](figur/MASTER.md) – die Figur und fertige Prompts.
 5. [`planung/stimme.md`](planung/stimme.md) – Stimme und Aussprache.
+6. [`planung/regie-system.md`](planung/regie-system.md) – **jede Szene so gut wie möglich, ohne Grenzen**; Szenenplan, Werkzeugkasten, Prüfer.
+7. [`planung/langvideo-regeln.md`](planung/langvideo-regeln.md) und [`planung/visuelle-techniken.md`](planung/visuelle-techniken.md) – lange Videos, Bildtechniken der Vorbilder.
 
 Widersprüche nicht mit neuen Notizdateien lösen, sondern in diesen Dateien beheben.
 
-In Antigravity kannst du die Produktion mit `/strichermittler-video` im lokalen Projekt starten. Der [Projekt-Skill](.agents/skills/strichermittler-video/SKILL.md) prüft die Werkzeuge und verweist auf die Stilreferenz.
+In Claude stehen Skills und ein Kritiker-Agent in `.claude/` bereit: `video-produzieren`, `szene-gestalten`, `vorbild-analyse`, Agent `video-kritiker` (Übersicht in `CLAUDE.md`). In Antigravity startet `/strichermittler-video` die Produktion; der [Projekt-Skill](.agents/skills/strichermittler-video/SKILL.md) prüft die Werkzeuge und verweist auf dieselben Anleitungen.
 
 ## 2. Speicherorte – alles auf der SSD T7, nie auf dem Mac-Speicher
 | Was | Wo |
@@ -50,26 +52,32 @@ HF_HOME=/Volumes/T7/strichermittler-modelle HF_HUB_OFFLINE=1 .venv-mlx/bin/pytho
 Danach `pausen_und_untertitel.py` für Pausen und Wortzeiten, Whisper-Abschrift auf Hörfehler prüfen. Läuft 5–20 Minuten: im Hintergrund starten.
 
 ### Schnitt und Render: Remotion (`animationen/`)
-- Neue Reels nach Vorlage `animationen/src/ReelFireworks.tsx` bauen und in `src/Root.tsx` eintragen. Bausteine: `animationen/README.md`.
-- **Begrüßung:** `NoirBegruessung` aus `src/intro-noir.tsx` (Bild `public/figur/intro-noir.jpg`). Die alte Ballon-Animation nicht mehr verwenden.
+- Videos entstehen als **Szenenplan** (`src/plaene/<video>.ts`) und werden mit `<Regie>` (`src/regie/Regie.tsx`) gerendert – Reels und lange Videos. Jede Szene so gut wie möglich; eigene Szenen in `src/szenen/`, Werkzeugkasten `src/doku-bausteine*.tsx`. Plan prüfen: `node tools/regie-pruefen.mjs <plan>`. Ältere Reels (`ReelFireworks.tsx` usw.) sind nur noch Nachschlagewerk.
+- Alle Bausteine passen sich über `useFlaeche()` (`src/format.ts`) an 16:9 und 9:16 an.
+- **Begrüßung:** `NoirBegruessung` aus `src/intro-noir.tsx` (9:16) bzw. `Begruessung16` in `src/video02-teil1.tsx` (16:9).
 - Prüfen: `cd animationen && npx tsc --noEmit`
 - Rendern: `npx remotion render <Composition> ../video-<n>/FINAL-VIDEO.mp4 --concurrency=2`
 - Einzelbild: `npx remotion still <Composition> /Volumes/T7/strichermittler-tmp/bild.png --frame=<n>`
+- **Eine Szene schnell prüfen:** `tools/szene.sh <Composition> <von_s> <bis_s>` (Video + Kontaktbogen mit Zeitstempeln)
+- **Kontaktbogen:** `tools/kontaktbogen.sh <video.mp4> [alle_s] [spalten]`
+- **Endkontrolle:** `tools/endkontrolle.sh <video.mp4>` (Auflösung, Länge, −14 LUFS, schwarze/stille Stellen)
+- **Zeitmarken:** `python3 tools/zeitmarken.py <untertitel.json> <marken.txt> <zeiten.ts>`
+- Rendern bricht mit Zeitüberschreitung ab? `--concurrency=3 --timeout=400000` (Bilder laden langsam von der SSD).
 
 ### Belege: Screenshots (`tools/screenshots/shot.py`)
 ```bash
-tools/screenshots/.venv/bin/python tools/screenshots/shot.py URL ZIEL.png --breite 540 --hoehe 960 --text "Kernsatz"
+tools/screenshots/.venv/bin/python tools/screenshots/shot.py URL ZIEL.png --breite 540 --hoehe 960 --text "Kernsatz" --overlays-weg
 ```
-Seiten mit Bot-Sperre, Login oder Zustimm-Wand verwerfen. Fotos nur von Wikimedia Commons mit Lizenz.
+Reels: `--breite 540 --hoehe 960`, lange Videos: `--breite 960 --hoehe 540`, ganze Seite: `--voll`. `--overlays-weg` blendet übrig gebliebene Banner nur aus (keine Zustimmung). Deutsche Quellen zuerst. Seiten mit Bot-Sperre, Login oder Zustimm-Wand verwerfen. Fotos nur von Wikimedia Commons mit Lizenz.
 
 ## 5. Ein Short von A bis Z (Kurzfassung von `PRODUKTION.md`)
 1. Thema recherchieren (mind. 2 Quellen) → `skripte/reel-<nr>-<name>.md`
 2. Sprechtext mit Hook unter 7 s → `skripte/sprechtexte/reel-<nr>-<name>.txt`
 3. Stimme erzeugen, Wortzeiten holen → `animationen/public/reel-<name>/audio.wav` + `untertitel.json`
-4. Cover (3 Kandidaten, besten behalten) und fehlende Posen/Szenen mit Flow
-5. Echte Belege als Screenshots
-6. Komposition in Remotion bauen, rendern
-7. Endkontrolle: Kontaktbogen alle 2–4 s, -14 LUFS, Untertitel gegenlesen → Ablage in `video-<n>/` (`FINAL-VIDEO.mp4`, `cover.png`, `caption.txt`, `untertitel.srt`)
+4. Zeitmarken, echte Belege (Hochformat), fehlende Bilder/Ebenen mit Flow
+5. Szenenplan: jede Szene so gut wie möglich (Skill `szene-gestalten`), `tools/regie-pruefen.mjs`
+6. Szene für Szene mit `tools/szene.sh` prüfen und verbessern, `video-kritiker`, dann rendern
+7. Endkontrolle mit `tools/endkontrolle.sh`, genau EIN Cover mit erklärendem Text, Caption mit Tipps und Frage → Ablage in `reels/<Jahr>-KW<WW>/<name>/` bzw. `video-<n>/` (`FINAL-VIDEO.mp4`, `cover.png`, `caption.txt`, `untertitel.srt`)
 
 ## 6. Git
 - Vor der Arbeit `git pull`, damit Codex und Claude nicht gegeneinander arbeiten.

@@ -1,6 +1,6 @@
 # Reel 08 – Todoist gehackt: Passwörter in Aufgaben gesucht
 
-**Format:** Reel 9:16, ca. 65 s · **Stand der Fakten:** 27.11.2026 · **Remotion:** `ReelTodoist` · **Sprechtext:** `sprechtexte/reel-08-todoist.txt` · **Video:** `reels/2026-KW48/reel-08-todoist/FINAL-VIDEO.mp4`
+**Format:** Reel 9:16, ca. 65 s · **Stand der Fakten:** 27.11.2026 · **Remotion:** `ProbeTodoist` (neu, 28.11.2026; alt: `ReelTodoist`) · **Sprechtext:** `sprechtexte/reel-08-todoist.txt` · **Video:** `reels/2026-KW48/reel-08-todoist/FINAL-VIDEO.mp4`
 
 ## Gesicherte Fakten (mit Quelle)
 - **Zeitraum (22.–23. November 2026):** Ein Unbekannter nutzte zwischen dem 22. und 23. November einen gestohlenen Entwickler-Zugang zur Versionsverwaltung von Todoist (wahrscheinlich über Infostealer-Malware auf einem Mitarbeitergerät), manipulierte automatisierte Code-Workflows in **drei Repositories** und erbeutete darüber Admin-Zugangsdaten für interne Systeme und die Cloud-Infrastruktur (Todoist Security Advisory, CyberSecurityNews, TechCrunch).

@@ -8,3 +8,6 @@ out
 
 # Stimmaufnahmen und Reel-Daten (öffentliches Repo)
 public/reel-*/
+
+# Figur-Posen (Kopie von figur/posen, nicht öffentlich)
+public/posen/

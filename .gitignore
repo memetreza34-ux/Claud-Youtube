@@ -5,3 +5,6 @@ __pycache__/
 *.pyc
 .venv/
 figur/posen/
+
+# Skill-Ordner trotz video-*/ aufnehmen
+!.claude/skills/video-produzieren/

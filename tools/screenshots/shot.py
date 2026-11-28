@@ -84,6 +84,21 @@ VERPIXELN = """(begriffe) => {
   return n; }"""
 
 
+OVERLAYS_WEG = """() => {
+  let n = 0;
+  for (const el of document.querySelectorAll('body *')) {
+    const st = getComputedStyle(el);
+    if ((st.position === 'fixed' || st.position === 'sticky') && parseInt(st.zIndex || '0') > 100) {
+      const r = el.getBoundingClientRect();
+      if (r.width * r.height > window.innerWidth * window.innerHeight * 0.15) { el.style.display = 'none'; n++; }
+    }
+  }
+  for (const f of document.querySelectorAll('iframe[id^="sp_message"], div[id^="sp_message"]')) { f.style.display = 'none'; n++; }
+  document.documentElement.style.overflow = 'auto'; document.body.style.overflow = 'auto';
+  document.documentElement.classList.remove('sp-message-open');
+  return n; }"""
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("url")
@@ -93,6 +108,7 @@ def main():
     p.add_argument("--breite", type=int, default=1920)
     p.add_argument("--hoehe", type=int, default=1080)
     p.add_argument("--verpixeln", action="append", default=[], help="Begriff unkenntlich machen (mehrfach möglich)")
+    p.add_argument("--overlays-weg", action="store_true", help="Übrig gebliebene Banner/Pop-ups nur ausblenden (keine Zustimmung)")
     a = p.parse_args()
     with sync_playwright() as pw:
         browser = pw.chromium.launch(channel="chrome", headless=True)
@@ -110,6 +126,9 @@ def main():
             print("Text gefunden:", page.evaluate(MARKIEREN, a.text))
             time.sleep(1)
         banner_ablehnen(page)  # letzte Prüfung direkt vor dem Bild
+        if a.overlays_weg:
+            print("Ausgeblendet:", page.evaluate(OVERLAYS_WEG), "Overlays")
+            time.sleep(0.5)
         page.screenshot(path=a.ziel, full_page=a.voll)
         print("gespeichert:", a.ziel)
         browser.close()

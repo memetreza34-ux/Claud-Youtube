@@ -1,0 +1,43 @@
+In der Nacht zum zwölften Oktober werden in Frankreich rund siebenhundert Supermärkte gleichzeitig angegriffen. Nicht die Kassen. Nicht die Kundendaten. Sondern die Kühlregale. Am Morgen stehen Tiefkühltruhen auf fünfzig Grad, Lebensmittel für Millionen Euro sind verdorben, und in mehreren Märkten brennt es. Drei Wochen später passiert dasselbe in halb Europa. Auch in Deutschland. Wer macht so etwas? Und vor allem: warum?
+---
+Willkommen beim Strichermittler.
+---
+Fangen wir mit dem Ablauf an, denn der erzählt schon die halbe Geschichte. Die erste Welle trifft Frankreich in der Nacht vom elften auf den zwölften Oktober. Betroffen sind große Ketten wie Carrefour, Intermarché und Leclerc, aber auch kleine Metzgereien und sogar ein Schlachthof. Laut französischer Regierung sind es rund siebenhundert Standorte. Die Täter schalten die Kühlanlagen in den Abtaumodus, ohne Zeitlimit. Und sie schalten die Alarme der Temperaturfühler ab. Also genau die Warnung, die sonst nachts jemanden aus dem Bett klingeln würde.
+---
+Abtauen kennst du von deinem Gefrierschrank zu Hause. Ein kleines Heizelement schmilzt das Eis weg. Normalerweise dauert das ein paar Minuten. Hier lief es die ganze Nacht. Das Ergebnis: Kühlregale mit fünfzig Grad, Lebensmittel im Wert von mehreren zehn Millionen Euro im Müll, und laut Pariser Staatsanwaltschaft rund zwanzig Brände.
+---
+Und dann wird es richtig ernst. In der Nacht zum dritten November heizen sich wieder Kühlregale auf. Diesmal in Belgien, Schweden, Irland, Luxemburg, Estland, den Niederlanden. Und in Deutschland. Das BSI bestätigt die Fälle. Im niederbayerischen Reisbach stehen die Anlagen eines Supermarkts auf bis zu fünfzig Grad. In Lilienthal bei Bremen wirft ein Händler Ware im Wert von über dreihundertsechzigtausend Euro weg. Weitere Meldungen kommen aus Wuppertal, Wetter, dem Münsterland und der Westpfalz.
+---
+Spätestens hier merkt man: Das ist kein dummer Streich. In Frankreich hatten die Täter sogar die Kühlung einer Blutbank im Visier. Zieltemperatur: einhundertzehn Grad. Das wurde zum Glück rechtzeitig entdeckt. In Deutschland ermittelt inzwischen nicht mehr nur die Polizei, sondern auch der Verfassungsschutz. Und das Zentrum gegen hybride Bedrohungen, in dem auch der Bundesnachrichtendienst mitarbeitet.
+---
+Bleibt die Frage, die mich am meisten interessiert hat: Wie hackt man überhaupt eine Kühltruhe? Die Antwort ist fast schon peinlich einfach. Die Kühlanlagen in einem Supermarkt hängen an einer zentralen Steuerung. Das ist ein kleiner Computer, der alle Regale überwacht, die Temperaturen regelt und Alarm schlägt. Damit die Kältefirma nicht für jede Kleinigkeit vorbeifahren muss, hängt diese Steuerung oft direkt am Internet. Mit einer Weboberfläche, einem Benutzernamen und einem Passwort. Fertig.
+---
+Betroffen sind vor allem Steuerungen des dänischen Herstellers Danfoss, dazu Geräte von Copeland und Dixell. Und viele davon sind alt. Danfoss sagt selbst: Die meisten gehackten Geräte sind Altmodelle, für die es gar keine Updates mehr gibt.
+---
+Und jetzt wird es spannend. Denn es gibt gleich drei offene Türen. Tür Nummer eins: Werkspasswörter. Ab Werk haben diese Steuerungen ein Admin-Passwort, und das steht öffentlich im Handbuch. Sicherheitsfirmen haben Köder-Geräte ins Netz gestellt, also Fallen, die wie echte Kühlsteuerungen aussehen. Ab dem zwanzigsten Oktober haben Angreifer versucht, sich dort mit genau diesen Werkspasswörtern einzuloggen.
+---
+Tür Nummer zwei: bekannte Sicherheitslücken. Für eine Danfoss-Steuerung waren schon zweitausendfünfundzwanzig Lücken bekannt, mit denen man die Anmeldung einfach umgehen konnte. Es gab Updates. Aber wer sie nicht eingespielt hat, stand weiter offen. Ob die Täter genau diese Lücken genutzt haben, ist allerdings nicht bestätigt.
+---
+Tür Nummer drei: Wartungsfirmen. In mindestens einem Fall kamen die Angreifer über den Zugang eines externen Dienstleisters rein. Und so ein Dienstleister hat oft Zugriff auf viele Märkte gleichzeitig.
+---
+Und wie findet man diese Geräte? Mit Suchmaschinen für vernetzte Geräte. Die durchsuchen ständig das ganze Internet und listen jedes Gerät, das antwortet. Forscher von Forescout haben fast dreizehntausend erreichbare Kühlsteuerungen in neunundneunzig Ländern gezählt. Allein in Frankreich standen vor den Angriffen über achtzehnhundert Danfoss-Oberflächen offen im Netz.
+---
+Jetzt könnte man sagen: Gut, Danfoss bringt ein Update, alle spielen es ein, Problem gelöst. Aber so einfach ist es nicht. Mitte November haben Forscher der niederländischen Firma Midnight Blue sich die bereits reparierte Version angeschaut. Innerhalb einer Stunde fanden sie sechs neue Lücken, mit denen man das Gerät komplett übernehmen kann. Ohne sich überhaupt anzumelden. Dem Gerät fehlen Schutzmechanismen, die bei normaler Software seit Jahren Standard sind. Das BSI warnt deshalb: Auch das neueste Update ist keine Garantie. Die einzige echte Lösung ist, diese Geräte gar nicht erst ans offene Internet zu hängen.
+---
+Und damit zur eigentlichen Frage: Wer war das? Es gab keine Lösegeldforderung. Keine geklauten Daten, die verkauft werden. Keinen Erpresserbrief. Wer so etwas macht, will kein Geld. Er will Schaden anrichten.
+---
+Am neunten November legt sich Frankreich fest. Ein Krisenzentrum, in dem die französische Cyberbehörde und die Geheimdienste zusammenarbeiten, macht eine Einheit der iranischen Revolutionsgarde verantwortlich. Sie heißt Shahid Kaveh. Öffentlich tritt sie unter Tarnnamen auf, zum Beispiel als Cyber Avengers. Also als angebliche Hacktivisten.
+---
+Die Belege laut Frankreich: Dieselbe Infrastruktur wurde zur gleichen Zeit benutzt, um Anlagen in kleinen Wasser- und Wasserkraftwerken auszuspähen. Die Angreifer nutzten ein Suchwerkzeug, das typisch für diese Gruppe ist. Ein Propagandakanal der Einheit berichtete schon am dreizehnten Oktober über den Angriff. Und auf den Servern fanden die Ermittler Spuren auf Persisch und Adressen, die in den Iran führen.
+---
+Frankreich spricht von der ersten Cyberkampagne auf französischem Boden, die nur der Sabotage diente. Die Pariser Staatsanwaltschaft ermittelt gegen den Chef der Einheit und zwei Stellvertreter und beantragt internationale Haftbefehle. Der Iran bestreitet alles. Und ganz wichtig: Diese Zuordnung gilt bisher nur für die französische Welle im Oktober. Wer hinter den Angriffen vom dritten November steckt, auch in Deutschland, ist offiziell noch nicht geklärt.
+---
+Aber warum ausgerechnet Kühlregale? Weil sie perfekt für so einen Angriff sind. Sie sind schlecht geschützt. Sie fallen nicht unter die strengen Regeln für kritische Infrastruktur. Und der Schaden ist für jeden sichtbar. Leere Regale, Lebensmittel im Müll, Brände. Das verunsichert Menschen viel mehr als ein Datenleck, von dem man nur in der Zeitung liest. Der EU-Agrarkommissar nennt es einen gezielten Versuch, die Lebensmittelkette zu stören und das Vertrauen der Verbraucher zu erschüttern.
+---
+Genau das ist der Kern von hybrider Kriegsführung. Nicht ein großer Schlag, sondern viele kleine Nadelstiche. Und jeder davon sagt: Wir kommen an euren Alltag ran.
+---
+Was heißt das jetzt für dich? Erst die gute Nachricht: Die Lebensmittelversorgung ist laut BSI und EU-Kommission nicht in Gefahr. Und verdorbene Ware muss vernichtet werden, sie landet also nicht in deinem Einkaufswagen.
+---
+Aber die eigentliche Lehre geht weit über Supermärkte hinaus. Dasselbe Problem steckt in Heizungen, Kameras, Routern und Solaranlagen. Alles, was zur Fernwartung am Internet hängt, ist eine mögliche Tür. Deshalb: Werkspasswörter sofort ändern. Updates einspielen. Und Geräte, die nicht aus dem Internet erreichbar sein müssen, auch nicht ans Internet hängen.
+---
+Ein Gefrierschrank auf fünfzig Grad klingt erst mal wie ein Witz. Aber dahinter steckt laut Frankreich eine Einheit eines fremden Militärs, die ausprobiert, wie leicht man Europas Alltag stören kann. Und die Antwort ist leider: ziemlich leicht. Ich bleibe dran.

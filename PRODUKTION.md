@@ -4,7 +4,7 @@
 Investigativer YouTube- und Erklärkanal für **News, Politik, KI, Tech-Skandale, Betrugsfälle und Enthüllungen** als **16:9-Videos (1920×1080)** und **9:16-Reels/Shorts (1080×1920)**.
 Es gibt **keine getrennten Nutzer-Phasen, keine manuellen Zwischenfragen und keine Freigabestopps mehr**. Der Agent führt jedes Video in **einem einzigen, durchgehenden Autopilot-Durchlauf** von der Themenwahl bis zur fertigen MP4-Datei komplett autonom aus und trifft alle kreativen und technischen Entscheidungen (Thema, Bildwelt, Referenzen, Cover-Auswahl, Bild-Nachbesserung, Schnitt) selbstständig.
 
-**Stil und Inhalt** (Hook, Aufbau, Bildregeln, Untertitel) stehen verbindlich in `planung/reel-regeln.md`. Kanal, Figur und Themen: `planung/kanal.md`.
+**Stil und Inhalt** (Hook, Aufbau, Bildregeln, Untertitel) stehen verbindlich in `planung/reel-regeln.md`. **Jede Szene wird so gut wie möglich dargestellt, ohne Grenzen** (`planung/regie-system.md`): Bausteine sind nur Startpunkte, eigene Lösungen sind ausdrücklich erwünscht. Geplant als Szenenplan, technisch geprüft mit `node tools/regie-pruefen.mjs`, für Reels und lange Videos. Für lange Videos (16:9) zusätzlich `planung/langvideo-regeln.md` (Aufbau nach Hood-Analyse, Kapitel, Zeitmarken mit `tools/zeitmarken.py`). Kanal, Figur und Themen: `planung/kanal.md`.
 
 ---
 
@@ -40,7 +40,7 @@ Es gibt **keine getrennten Nutzer-Phasen, keine manuellen Zwischenfragen und kei
   - **Stil-Signatur:** Glatter weißer Kugel-Kopf (Sphere), schwarze ovale Augen, schwarzer Fedora mit glänzendem orangefarbenem Band, hoher schwarzer Mantelkragen, schwarze Handschuhe, tiefschwarzer Hintergrund mit starkem orangefarbenem Kantenlicht (Rim Light). **NIEMALS ein Mensch, niemals kitschiger Cartoon.**
   - Fertige Posen liegen schon in `figur/posen/` (Stil B passt zur Master-Figur) – erst dort suchen, dann neu erzeugen.
 - Der Agent öffnet über **Flow MCP** (`flow_new_project`) ein Projekt in Google Flow:
-  1. **3 Cover-Kandidaten (`A`, `B`, `C`) → Autonome Auswahl:** Der Agent generiert 3 Cover-Varianten mit dem Strichermittler, **schaut sie sich selbst per `read_file` an**, wählt eigenständig das klickstärkste Cover als finales `cover.png` aus und **löscht die 2 anderen Kandidaten sofort und restlos**.
+  1. **Genau EIN Cover (Arman, 28.11.2026 – keine 3 Varianten mehr):** Bildgrundlage ist eine Flow-Szene mit dem Strichermittler und dem Thema (z. B. Figur mit der gehackten App), darüber setzt Remotion **erklärenden Text**: große Schlagzeile (wer/was ist passiert) + eine Zeile, warum es den Zuschauer betrifft. Man muss die Story auf dem Cover in 2 Sekunden verstehen. Der Agent prüft das Cover selbst per `read_file` und bessert nach, statt Alternativen zu bauen.
 
 ### 5. Vollautomatische Szenen-Produktion & Strenge Eigenkontrolle (`flow-mcp`)
 - Der Agent übergibt alle benötigten Posen und illustrativen Szenen mit der angehängten Referenz `figur/master.jpg` an Flow MCP (`flow_agent_images` / `flow_generate`) und lädt sie per `flow_download` herunter. Bilder kosten 0 Credits; Videoclips kosten Credits und brauchen vorher die Zustimmung von Arman.
@@ -64,8 +64,8 @@ Es gibt **keine getrennten Nutzer-Phasen, keine manuellen Zwischenfragen und kei
 ```text
 reels/<Jahr>-KW<WW>/<reel-name>/    (bzw. video-<n>/ für lange Videos)
   FINAL-VIDEO.mp4       (Fertig gerendertes & geprüftes Video)
-  cover.png             (Vom Agenten ausgewähltes Sieger-Cover, Verlierer gelöscht)
-  caption.txt           (Titel, Beschreibung, Quellen, Bildnachweise, Hashtags)
+  cover.png             (Das eine Cover: Flow-Bild + erklärender Text)
+  caption.txt           (Titel, was passiert ist, was es für dich heißt + Tipp, Frage an die Community, Quellen, Bildnachweise, Hashtags)
   untertitel.srt        (Exakte deutsche Untertitel)
   _intern/              (Unsichtbar: Rohaufnahmen, Einzelbilder, Prompts)
 ```

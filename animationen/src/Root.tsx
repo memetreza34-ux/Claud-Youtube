@@ -14,6 +14,11 @@ import { REEL_OPTIMIZELY_SEK, ReelOptimizely } from "./ReelOptimizely";
 import { REEL_KASSENHACK_SEK, ReelKassenhack } from "./ReelKassenhack";
 import { REEL_KI_PROMPTS_SEK, ReelKiPrompts } from "./ReelKiPrompts";
 import { REEL_TODOIST_SEK, ReelTodoist } from "./ReelTodoist";
+import { CoverTodoist, PROBE_TODOIST_SEK, ProbeTodoist } from "./ProbeTodoist";
+import { CoverVideo02, Video02, VIDEO02_SEK } from "./Video02";
+import { DOKU_DEMO_SEK, DokuDemo } from "./DokuDemo";
+import { DOKU_DEMO2_SEK, DokuDemo2 } from "./DokuDemo2";
+import { REGIE_DEMO_LANG_SEK, REGIE_DEMO_SHORT_SEK, RegieDemoLang, RegieDemoShort } from "./RegieDemos";
 import { NoirBegruessung } from "./intro-noir";
 
 // Start im Voiceover (voiceover-01-mlx-1.7B-8bit.wav): BkaZahlen 0:36.5, Eisberg 0:47.2, McAfeeBalken 1:08.4,
@@ -96,6 +101,18 @@ export const RemotionRoot: React.FC = () => {
         <Composition id="ReelKiPrompts" component={ReelKiPrompts} durationInFrames={Math.round(REEL_KI_PROMPTS_SEK * 30)} fps={30} width={1080} height={1920} />
         {/* Reel 08: Todoist gehackt – Passwörter in Aufgaben gesucht */}
         <Composition id="ReelTodoist" component={ReelTodoist} durationInFrames={Math.round(REEL_TODOIST_SEK * 30)} fps={30} width={1080} height={1920} />
+        {/* Probe: Reel 08 neu (0–35 s) nach Vorbild-Regeln */}
+        <Composition id="ProbeTodoist" component={ProbeTodoist} durationInFrames={Math.round(PROBE_TODOIST_SEK * 30)} fps={30} width={1080} height={1920} />
+        <Composition id="CoverTodoist" component={CoverTodoist} durationInFrames={1} fps={30} width={1080} height={1920} />
+        {/* Video 02 (16:9): Kühlanlagen-Sabotage */}
+        <Composition id="Video02Kuehlanlagen" component={Video02} durationInFrames={Math.round(VIDEO02_SEK * 30)} fps={30} width={1920} height={1080} />
+        <Composition id="CoverVideo02" component={CoverVideo02} durationInFrames={1} fps={30} width={1920} height={1080} />
+        {/* Vorführung der Doku-Bausteine (planung/visuelle-techniken.md) */}
+        <Composition id="DokuDemo" component={DokuDemo} durationInFrames={DOKU_DEMO_SEK * 30} fps={30} width={1920} height={1080} />
+        <Composition id="DokuDemo2" component={DokuDemo2} durationInFrames={DOKU_DEMO2_SEK * 30} fps={30} width={1920} height={1080} />
+        {/* Regie-System: Szenenplan → Video, beide Formate */}
+        <Composition id="RegieDemoShort" component={RegieDemoShort} durationInFrames={Math.round(REGIE_DEMO_SHORT_SEK * 30)} fps={30} width={1080} height={1920} />
+        <Composition id="RegieDemoLang" component={RegieDemoLang} durationInFrames={Math.round(REGIE_DEMO_LANG_SEK * 30)} fps={30} width={1920} height={1080} />
       </Folder>
       <Folder name="Bausteine">
         {/* Begrüßung im Noir-Stil, Zeiten wie in Reel 04 */}
