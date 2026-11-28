@@ -32,6 +32,20 @@ const mod = { exports: {} };
 new Function("module", "exports", "require", ergebnis.outputFiles[0].text)(mod, mod.exports, require);
 const { info, plan, befunde } = mod.exports.out;
 
+// Klang-Dateien müssen existieren, sonst bricht das Rendern ab
+const fs = require("node:fs");
+plan.forEach((s) => {
+  const namen = [...(s.klaenge ?? []).map((k) => k.name), ...(s.atmo ? [s.atmo.name] : [])];
+  namen.forEach((n) => {
+    if (!fs.existsSync(path.join(anim, "public", "klang", `${n}.wav`)))
+      befunde.push({ stufe: "FEHLER", zeit: s.ab, text: `Klang „${n}“ fehlt in public/klang/ (tools/klang.py ${n} …)` });
+  });
+  (s.klaenge ?? []).forEach((k) => {
+    if (k.ab < s.ab - 0.05 || k.ab > s.bis) befunde.push({ stufe: "HINWEIS", zeit: k.ab, text: `Klang „${k.name}“ liegt außerhalb seiner Szene` });
+  });
+});
+befunde.sort((a, b) => a.zeit - b.zeit);
+
 const zeit = (t) => `${String(Math.floor(t / 60)).padStart(2, "0")}:${(t % 60).toFixed(1).padStart(4, "0")}`;
 console.log(`\n${info.titel} (${info.format}, ${info.ende.toFixed(1)} s) – ${plan.length} Szenen\n`);
 const typen = {};

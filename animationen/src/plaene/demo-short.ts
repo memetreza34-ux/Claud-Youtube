@@ -5,12 +5,14 @@ export const INFO: PlanInfo = { titel: "Regie-Demo Short – Kühlregale", forma
 const V = "video-02";
 
 export const PLAN: Szene[] = [
-  { typ: "zahl", ab: 0, bis: 3.5, wert: 700, label: "SUPERMÄRKTE IN EINER NACHT GEHACKT", bild: `${V}/szene-1.jpeg`, rot: true, notiz: "Hook: die Zahl, nicht die Figur" },
+  { typ: "zahl", ab: 0, bis: 3.5, wert: 700, label: "SUPERMÄRKTE IN EINER NACHT GEHACKT", bild: `${V}/szene-1.jpeg`, rot: true, notiz: "Hook: die Zahl, nicht die Figur", klaenge: [{ name: "einschlag", ab: 0.15, laut: 0.5 }] },
   { typ: "artikel", ab: 3.5, bis: 7, bild: `${V}/beleg-deutschland-hoch.png`, verhaeltnis: 9 / 16, quelle: "Telepolis, 04.11.2026", fokusY: 0.6, notiz: "deutscher Beleg, im Hochformat aufgenommen" },
   {
     typ: "bauplan",
     ab: 7,
     bis: 11,
+    atmo: { name: "brummen", laut: 0.14 },
+    klaenge: [{ name: "alarm", ab: 9.8, laut: 0.3 }, { name: "glitch", ab: 8.6, laut: 0.35 }],
     titel: "SCHEMA · KÜHLSTEUERUNG",
     knoten: [
       { id: "k", label: "KÜHLREGALE", icon: "Store", x: 0.27, y: 0.3, ab: 7.2, alarmAb: 9.8 },

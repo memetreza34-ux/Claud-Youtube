@@ -58,7 +58,9 @@ Danach `pausen_und_untertitel.py` für Pausen und Wortzeiten, Whisper-Abschrift 
 - Prüfen: `cd animationen && npx tsc --noEmit`
 - Rendern: `npx remotion render <Composition> ../video-<n>/FINAL-VIDEO.mp4 --concurrency=2`
 - Einzelbild: `npx remotion still <Composition> /Volumes/T7/strichermittler-tmp/bild.png --frame=<n>`
-- **Eine Szene schnell prüfen:** `tools/szene.sh <Composition> <von_s> <bis_s>` (Video + Kontaktbogen mit Zeitstempeln)
+- **Eine Szene schnell prüfen:** `tools/szene.sh <Composition> <von_s> <bis_s>` (Video + Kontaktbogen + Bewegungsbild/-bericht)
+- **Bewegung prüfen:** `python3 tools/bewegung.py <video.mp4> [--von S --bis S]` (Stillstand, harte Starts, Sprünge, Ruckeln)
+- **Eigene Klänge:** `python3 tools/klang.py --liste` / `python3 tools/klang.py <art> [--name --dauer --hoehe --hall]` → `animationen/public/klang/`, im Szenenplan `klaenge`/`atmo`; Ton ansehen mit `--ansehen <wav>`
 - **Kontaktbogen:** `tools/kontaktbogen.sh <video.mp4> [alle_s] [spalten]`
 - **Endkontrolle:** `tools/endkontrolle.sh <video.mp4>` (Auflösung, Länge, −14 LUFS, schwarze/stille Stellen)
 - **Zeitmarken:** `python3 tools/zeitmarken.py <untertitel.json> <marken.txt> <zeiten.ts>`

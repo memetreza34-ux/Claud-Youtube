@@ -26,7 +26,7 @@ Für die Szene schriftlich (im Plan als `notiz`) festhalten:
 | Flow-Clips | kosten Credits → nur nach Armans OK |
 | Figur & Memes | 56 Posen in `animationen/public/posen/` (Kopie von `figur/posen/`), nur eigene Posen, nie fremde Meme-Bilder |
 | Bausteine | `animationen/src/doku-bausteine.tsx`, `doku-bausteine2.tsx`, Regie-Typen in `animationen/src/regie/typen.ts` |
-| Sound | `sfx(...)` aus `noir-buehne.tsx` auf jedes sichtbare Ereignis |
+| Sound | eigene Klänge mit `tools/klang.py` (whoosh, riser, einschlag, brummen, alarm, tippen, glitch, herzschlag, kasse, spannung …), im Plan `klaenge` (auf Wortzeiten) und `atmo` (Teppich); in eigenen Komponenten `klang("name")` aus `noir-buehne.tsx`. ElevenLabs nur mit OK (kostet Geld) |
 
 Für eine eigene Szene: Komponente schreiben (`animationen/src/szenen/<video>-<szene>.tsx`), Bildfläche über `useFlaeche()` (`src/format.ts`), im Plan als `{ typ: "eigen", komponente: "…" }` eintragen und der `Regie` über `eigeneSzenen` geben.
 
@@ -39,7 +39,7 @@ Für eine eigene Szene: Komponente schreiben (`animationen/src/szenen/<video>-<s
 - Figur immer on-model (weißer Kugelkopf, Fedora mit orangem Band, hoher Kragen, Handschuhe, oranges Kantenlicht, nie menschlich).
 
 ## 4. Bauen → ansehen → besser machen
-1. Szene einzeln rendern: `tools/szene.sh <Komposition> <von_s> <bis_s>` → Kontaktbogen mit Read ansehen.
-2. Selbstkritik gegen die Vorbilder: Ist das die stärkste mögliche Darstellung? Lebt jedes Schlüsselwort? Ist die Fläche voll? Liest man alles auf dem Handy?
+1. Szene einzeln rendern: `tools/szene.sh <Komposition> <von_s> <bis_s>` → Kontaktbogen **und** Bewegungsbild (`…-bewegung.jpg`, 10 Bilder/s) mit Read ansehen, Bewegungsbericht abarbeiten (STILL, HARTSTART, RUCKELN …). Ton als Bild prüfen: `python3 tools/klang.py --ansehen <ton.wav>`.
+2. Selbstkritik gegen die Vorbilder: Ist das die stärkste mögliche Darstellung? **Passt jedes Bild genau zu dem Satz, der in dem Moment fällt?** Lebt jedes Schlüsselwort (Bild **und** Klang)? Ist die Fläche voll? Liest man alles auf dem Handy? Fließt die Bewegung?
 3. Für einen unabhängigen Blick den Agenten `video-kritiker` mit Kontaktbogen und Szenen-Aussage starten.
 4. Nachbessern, bis die Szene überzeugt. Erst dann zur nächsten.

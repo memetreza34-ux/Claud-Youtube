@@ -35,9 +35,26 @@ Gilt für **alle** Videos: lange Videos (16:9) und Reels/Shorts (9:16).
 
 Code: `animationen/src/regie/` (Typen, Renderer `Regie`, Prüfer), Bausteine `animationen/src/doku-bausteine*.tsx`, Pläne `animationen/src/plaene/<video>.ts`. Eigene Szenen werden der Regie über `eigeneSzenen` übergeben.
 
+## Klang – jede Szene wird auch gehört
+Ich höre nicht, darum: Klänge auf exakte Wortzeiten setzen und das Ergebnis als Bild prüfen.
+- **Eigene Klänge** (kostenlos, eigene Rechte): `python3 tools/klang.py --liste`, dann z. B. `python3 tools/klang.py brummen --dauer 8 --name kuehlregal`. Arten: whoosh, riser, einschlag, brummen, alarm, piepen, klick, tippen, glitch, herzschlag, kasse, spannung, raum, zischen, papier, kamera, stempel. Regler: `--dauer`, `--hoehe` (Tonhöhe), `--hall`, `--seed` (andere Variante). Alle Klänge sind gleich laut eingepegelt (−20 dBFS Mittel), `laut` im Plan bedeutet also überall dasselbe.
+- **Im Plan:** `klaenge: [{ name: "einschlag", ab: <Wortzeit>, laut: 0.4 }]` für Ereignisse, `atmo: { name: "brummen", laut: 0.12 }` als Teppich unter der ganzen Szene (Schleife, weich ein/aus), `stumm: true` schaltet den automatischen Wechsel-Klang ab.
+- **Faustregeln:** Klang auf das Wort, nicht davor. Atmo leise (0,08–0,15), Ereignisse 0,25–0,5, harte Klänge (alarm, glitch) eher 0,2–0,3. Nicht jede Sekunde klingeln: ein starker Klang pro Aussage.
+- **Prüfen:** Ton der gerenderten Szene als Bild: `ffmpeg -i <szene.mp4> -vn <ton.wav>` und `python3 tools/klang.py --ansehen <ton.wav>` (Wellenform + Spektrum: sitzt der Klang an der richtigen Stelle, übertönt er die Stimme?). Am Ende `tools/endkontrolle.sh` (−14 LUFS).
+- **ElevenLabs** (`generate_sound_effect`) klingt realistischer, **kostet aber Geld** → nur mit Armans OK.
+
+## Bewegung prüfen
+`tools/szene.sh` erstellt neben dem Kontaktbogen automatisch `…-bewegung.jpg` (10 Bilder je Sekunde + Kurve der bewegten Fläche) und einen Bericht (`python3 tools/bewegung.py <video> [--von --bis]` geht auch für ganze Videos):
+- **STILL** – Bild steht > 2 s → Kamera-Drift, Akzent oder neues Bild.
+- **HARTSTART / HARTSTOPP** – Bewegung ohne Anlauf/Auslauf → `spring`/Easing.
+- **SPRUNG** – 1–3 Bilder komplett neu → nur ok als geplanter Schnitt.
+- **SCHWENK** – schneller Übergang → Tempo passend zum Satz?
+- **HEKTIK** – zu viel Bewegung, Text nicht lesbar. **RUCKELN** – Werte springen statt zu gleiten.
+Das sind Hinweise: Jede Stelle im Bewegungsbild ansehen und entscheiden.
+
 ## Technische Prüfung
 `node tools/regie-pruefen.mjs animationen/src/plaene/<video>.ts`
-- **FEHLER** (muss behoben werden): Lücken oder Überlappungen, Plan endet vor dem Ton.
+- **FEHLER** (muss behoben werden): Lücken oder Überlappungen, Plan endet vor dem Ton, Klang-Datei fehlt.
 - **HINWEISE** (nur zum Nachdenken, keine Grenze): sehr lange oder sehr kurze Szenen, gleiche Darstellung oft hintereinander, lange ohne Figur oder Beleg, Video beginnt mit stehender Figur.
 
 ## Format

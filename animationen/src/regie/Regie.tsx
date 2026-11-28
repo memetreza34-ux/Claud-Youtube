@@ -5,7 +5,7 @@ import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, 
 import { ArtikelSchraeg, BauplanBox, BauplanGrund, DatenPaket, FilmLook, GluehLinie, Pinnwand } from "../doku-bausteine";
 import { BrowserFenster, ChatVerlauf, Fallakte, KarteRaum, ladeLand, MemeKlassisch, MemeZweiFelder, ReaktionsPop, Terminal } from "../doku-bausteine2";
 import { useFlaeche } from "../format";
-import { klemm, NOIR_ORANGE, NOIR_ROT, rein, SANFT, sfx } from "../noir-buehne";
+import { klang, klemm, NOIR_ORANGE, NOIR_ROT, rein, SANFT, sfx } from "../noir-buehne";
 import { TEXT_SCHRIFT, ZAHLEN_SCHRIFT } from "../stil";
 import { Untertitel } from "../Untertitel";
 import { KapitelTitel } from "../video02-bausteine";
@@ -155,9 +155,23 @@ export const Regie: React.FC<{
     <AbsoluteFill style={{ backgroundColor: "#050506" }}>
       {audio ? <Audio src={staticFile(audio)} /> : null}
       {plan.map((p, i) =>
-        KLANG[p.typ] ? (
+        KLANG[p.typ] && !p.stumm ? (
           <Sequence key={`k${i}`} from={Math.round(p.ab * fps)} durationInFrames={30}>
             <Audio src={sfx(KLANG[p.typ]!)} volume={0.28} />
+          </Sequence>
+        ) : null,
+      )}
+      {plan.flatMap((p, i) =>
+        (p.klaenge ?? []).map((k, j) => (
+          <Sequence key={`e${i}-${j}`} from={Math.round(k.ab * fps)}>
+            <Audio src={klang(k.name)} volume={k.laut ?? 0.4} />
+          </Sequence>
+        )),
+      )}
+      {plan.map((p, i) =>
+        p.atmo ? (
+          <Sequence key={`a${i}`} from={Math.round(p.ab * fps)} durationInFrames={Math.max(1, Math.round((p.bis - p.ab) * fps))}>
+            <AtmoKlang name={p.atmo.name} laut={p.atmo.laut ?? 0.12} dauer={p.bis - p.ab} />
           </Sequence>
         ) : null,
       )}
@@ -168,6 +182,18 @@ export const Regie: React.FC<{
       </FilmLook>
       {untertitel ? <Untertitel datei={untertitel.datei} top={hoch ? H - 420 : H - 180} wechselMs={1080} groesse={hoch ? 60 : 46} saetze ohne={untertitel.ohne} /> : null}
     </AbsoluteFill>
+  );
+};
+
+// Klangteppich: läuft in Schleife, blendet 0,4 s ein und aus, damit Szenenwechsel nicht klicken
+const AtmoKlang: React.FC<{ name: string; laut: number; dauer: number }> = ({ name, laut, dauer }) => {
+  const { fps } = useVideoConfig();
+  return (
+    <Audio
+      src={klang(name)}
+      loop
+      volume={(f) => laut * interpolate(f / fps, [0, 0.4, Math.max(0.41, dauer - 0.4), Math.max(0.42, dauer)], [0, 1, 1, 0], klemm)}
+    />
   );
 };
 

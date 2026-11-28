@@ -13,6 +13,9 @@ export const NOIR_WEISS = "#f8fafc";
 
 export const sfx = (name: "ding" | "minus" | "pop" | "schnipp" | "stempel" | "tick" | "whoosh") =>
   staticFile(`klang/${name}.wav`);
+// Jeder Klang aus public/klang/ (eigene aus tools/klang.py: whoosh-weich, riser, einschlag, brummen, alarm, piepen,
+// klick, tippen, glitch, herzschlag, kasse, spannung, raum, zischen, papier, kamera, stempel-dumpf …)
+export const klang = (name: string) => staticFile(`klang/${name}.wav`);
 
 export const klemm = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
 export const EXPO = Easing.bezier(0.16, 1, 0.3, 1);

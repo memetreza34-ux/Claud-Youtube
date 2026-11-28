@@ -13,7 +13,12 @@ type Basis = {
   kapitel?: Kapitel; // Kapitel-Titel am Szenenanfang (nur lange Videos)
   reaktion?: Reaktion; // Figur springt kurz rein (ReaktionsPop)
   notiz?: string; // warum diese Szene (für den Prüfer/Menschen)
+  klaenge?: Klang[]; // eigene Klänge genau auf Wortzeiten/Ereignisse (Dateien in public/klang/, siehe tools/klang.py)
+  atmo?: { name: string; laut?: number }; // Klangteppich unter der ganzen Szene, läuft in Schleife (brummen, spannung, raum)
+  stumm?: boolean; // automatischen Standard-Klang beim Szenenwechsel weglassen
 };
+
+export type Klang = { name: string; ab: number; laut?: number };
 
 export type BauplanKnoten = { id: string; label: string; icon: string; x: number; y: number; ab: number; alarmAb?: number; rot?: boolean };
 export type BauplanLinie = { von: string; nach: string; ab: number; rot?: boolean; daten?: [ab: number, bis: number] };

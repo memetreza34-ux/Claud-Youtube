@@ -20,6 +20,10 @@ export const pruefePlan = (plan: Szene[], info: PlanInfo): Befund[] => {
     if (d < -0.05) add("FEHLER", p[i].ab, `Szenen überlappen (${(-d).toFixed(2)} s)`);
   }
   if (p[p.length - 1].bis < info.ende - 0.05) add("FEHLER", p[p.length - 1].bis, `Plan endet vor dem Ton (${info.ende} s)`);
+  p.forEach((sz) => {
+    if (sz.bis - sz.ab > 6 && !sz.klaenge?.length && !sz.atmo)
+      add("HINWEIS", sz.ab, `${(sz.bis - sz.ab).toFixed(1)} s ohne eigenen Klang – gibt es ein Ereignis/Wort, das man hören sollte (klaenge/atmo)?`);
+  });
 
   // 2. Dauer pro Szene
   const [min, max] = kurz ? [1.5, 7] : [2.5, 10];

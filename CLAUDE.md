@@ -17,7 +17,7 @@
 | Agent `video-kritiker` | strenger unabhängiger Blick auf Kontaktbögen vor der Abgabe |
 
 ## Wichtigste Regeln
-1. **Jede Szene so gut wie möglich, ohne Grenzen** (`planung/regie-system.md`): Bausteine sind Startpunkte, eigene Lösungen erwünscht. Schleife: bauen → `tools/szene.sh` → ansehen/`video-kritiker` → besser machen.
+1. **Jede Szene so gut wie möglich, ohne Grenzen** (`planung/regie-system.md`): Bausteine sind Startpunkte, eigene Lösungen erwünscht. Schleife: bauen → `tools/szene.sh` (Standbilder, Bewegung, Ton) → ansehen/`video-kritiker` → besser machen. Klänge mit `tools/klang.py` auf die Wortzeiten. Arman sieht nur das fertige Video.
 2. **Autopilot:** Keine Zwischenstopps – außer für Flow-Videoclips (Credits), fremde Downloads und Veröffentlichen: dafür Armans OK.
 3. **Figur-Konsistenz:** Jede Flow-Generierung mit dem Detektiv bekommt `figur/master.jpg` als Referenz. Nie Menschengesichter, nie bunte Kinder-Cartoons. Jedes erzeugte Bild selbst ansehen; weicht die Figur ab, verwerfen und neu erzeugen. Memes nur mit eigenen Posen.
 4. **Stimme zuerst:** Voiceover mit MLX Qwen3-TTS vor dem Schnitt, Wortzeiten mit `tools/zeitmarken.py`.
