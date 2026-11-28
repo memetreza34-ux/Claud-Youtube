@@ -5,6 +5,7 @@ import { AbsoluteFill, Img, interpolate, Sequence, staticFile, useCurrentFrame, 
 import { ArtikelSchraeg, BauplanBox, BauplanGrund, DatenPaket, FilmLook, GluehLinie, Pinnwand } from "../doku-bausteine";
 import { BrowserFenster, ChatVerlauf, Fallakte, KarteRaum, ladeLand, MemeChaos, MemeErwartung, MemeKlassisch, MemeStufen, MemeZoom, MemeZweiFelder, ReaktionsPop, Terminal } from "../doku-bausteine2";
 import { useFlaeche } from "../format";
+import { Foto3D } from "../foto3d";
 import { klang, klemm, NOIR_ORANGE, NOIR_ROT, rein, SANFT, sfx } from "../noir-buehne";
 import { TEXT_SCHRIFT, ZAHLEN_SCHRIFT } from "../stil";
 import { Untertitel } from "../Untertitel";
@@ -96,6 +97,7 @@ const KLANG: Partial<Record<Szene["typ"], Parameters<typeof sfx>[0]>> = {
   memeStufen: "pop",
   memeErwartung: "pop",
   memeZoom: "whoosh",
+  foto3d: "whoosh",
   chat: "pop",
   terminal: "tick",
   akte: "schnipp",
@@ -158,6 +160,13 @@ export const Regie: React.FC<{
         return <FigurSzene s={s} ab={sz.ab} bis={sz.bis} bild={sz.bild} ursprung={sz.ursprung} zoomVon={sz.zoomVon} zoomBis={sz.zoomBis} />;
       case "zahl":
         return <ZahlSzene s={s} ab={sz.ab} wert={sz.wert} vorsilbe={sz.vorsilbe} einheit={sz.einheit} label={sz.label} bild={sz.bild} rot={sz.rot} />;
+      case "foto3d":
+        return (
+          <AbsoluteFill>
+            <Foto3D s={s} ab={sz.ab} bis={sz.bis} bild={sz.bild} tiefe={sz.tiefe} bewegung={sz.bewegung} staerke={sz.staerke} hell={sz.hell} vorne={sz.vorne} fokus={sz.fokus} />
+            {sz.titel ? <FotoTitel s={s} ab={sz.ab} text={sz.titel} /> : null}
+          </AbsoluteFill>
+        );
       case "eigen":
         return eigeneSzenen[sz.komponente]?.(s, sz) ?? null;
     }
@@ -195,6 +204,18 @@ export const Regie: React.FC<{
       </FilmLook>
       {untertitel ? <Untertitel datei={untertitel.datei} top={hoch ? H - 420 : H - 180} wechselMs={1080} groesse={hoch ? 60 : 46} saetze ohne={untertitel.ohne} /> : null}
     </AbsoluteFill>
+  );
+};
+
+// Ortsmarke unten links über einem Foto (z. B. „Rechenzentrum, Hannover“)
+const FotoTitel: React.FC<{ s: number; ab: number; text: string }> = ({ s, ab, text }) => {
+  const { hoch } = useFlaeche();
+  const k = rein(s, ab + 0.4, 0.5);
+  return (
+    <div style={{ position: "absolute", left: hoch ? 50 : 90, bottom: hoch ? 520 : 90, opacity: k, transform: `translateY(${(1 - k) * 20}px)`, display: "flex", alignItems: "center", gap: 18 }}>
+      <div style={{ width: 8, height: hoch ? 60 : 54, background: NOIR_ORANGE }} />
+      <div style={{ fontFamily: TEXT_SCHRIFT, fontWeight: 800, fontSize: hoch ? 46 : 42, color: "#fff", textShadow: "0 2px 18px rgba(0,0,0,0.9)", letterSpacing: 1 }}>{text}</div>
+    </div>
   );
 };
 

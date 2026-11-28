@@ -64,6 +64,8 @@ Danach `pausen_und_untertitel.py` für Pausen und Wortzeiten, Whisper-Abschrift 
 - **Kontaktbogen:** `tools/kontaktbogen.sh <video.mp4> [alle_s] [spalten]`
 - **Tonprüfung:** `python3 tools/tonpruefung.py <video.mp4> <sprechtext.txt> [--stimme audio.wav]` (Whisper-Abschrift gegen Skript: Aussprache, überdeckte Wörter)
 - **Fotos/Clips mit Lizenz:** `python3 tools/bilder.py suche "<begriff>" [--video] [--quelle wikimedia|pexels|pixabay]`, dann `hole <nr> --ziel …` (schreibt `bildnachweise.txt`)
+- **2,5D-Foto:** `tools/tiefe.sh <foto>` (Tiefenkarte) → Szenentyp `foto3d` / `<Foto3D>` (`animationen/src/foto3d.tsx`)
+- **Freistellen:** `tools/freistellen.sh <bild> <ziel.png> --zuschneiden` (macOS Vision)
 - **Musik unter die Stimme:** `python3 tools/musik.py <stück> <audio.wav> <ziel.wav> [--laut -24]` (automatisches Ducking), in `<Regie musik=…>`
 - **Faktencheck:** Agent `faktenpruefer` (Claude) – jede Behauptung des Skripts gegen Quellen, vor der Vertonung
 - **Endkontrolle:** `tools/endkontrolle.sh <video.mp4>` (Auflösung, Länge, −14 LUFS, schwarze/stille Stellen)

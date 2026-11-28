@@ -42,6 +42,7 @@ export type Szene = Basis &
     | { typ: "karte"; mitte: [lon: number, lat: number]; massstab: number; orte: { name: string; lon: number; lat: number; ab: number; rot?: boolean }[]; routen?: { von: number; nach: number; ab: number }[]; kamera?: [t: number, lon: number, lat: number, zoom: number][] }
     | { typ: "figur"; bild: string; ursprung?: string; zoomVon?: number; zoomBis?: number }
     | { typ: "zahl"; wert: number; vorsilbe?: string; einheit?: string; label: string; bild?: string; rot?: boolean }
+    | { typ: "foto3d"; bild: string; tiefe: string; bewegung?: "rein" | "raus" | "links" | "rechts" | "hoch" | "kreisen"; staerke?: number; hell?: number; fokus?: [x: number, y: number]; vorne?: { bild: string; hoehe: number; x?: number; y?: number }; titel?: string } // 2,5D-Kamerafahrt ins Foto (tools/tiefe.sh, tools/freistellen.sh)
     | { typ: "eigen"; komponente: string } // videospezifischer Held (z. B. Kühltruhe), wird über eigeneSzenen übergeben
   );
 

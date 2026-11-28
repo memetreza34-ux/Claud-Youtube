@@ -30,6 +30,7 @@ Gilt für **alle** Videos: lange Videos (16:9) und Reels/Shorts (9:16).
 | `akte` | Täter, Ermittlung, Geheimes |
 | `karte` | Orte, Länder, Wege |
 | `meme`, `memeZwei`, `reaktion` | Humor, falsch gegen richtig, kurze Reaktion |
+| `foto3d` | **Foto wird räumlich:** echte 3D-Kamera fährt ins Foto (Tiefenkarte), optional ein freigestelltes Motiv (z. B. die Figur) davor – für jedes echte Foto statt Standbild |
 | `memeStufen` | Eskalation/„Galaxy Brain“: 3–4 Stufen, jede glüht stärker (vom Harmlosen zum Absurden) |
 | `memeErwartung` | Erwartung vs. Realität: Erwartung füllt erst alles, dann knallt die Realität rein |
 | `memeChaos` | „Alles in Ordnung“: ruhige Pose, drumherum Feuer (`art: "feuer"`) oder Störung (`"glitch"`) |
@@ -50,8 +51,15 @@ Ich höre nicht, darum: Klänge auf exakte Wortzeiten setzen und das Ergebnis al
 ## Memes
 Nur eigene Posen (`animationen/public/posen/`, 56 Stück, z. B. `b-kaffee-alles-brennt`, `b-mind-blown`, `b-panik`, `b-mic-drop`, `b-aktie-steigt`). Bekannte Meme-**Formate** nachbauen ist erlaubt, fremde Meme-**Bilder** nie (Urheberrecht, echte Gesichter). Fehlt eine Pose: mit Flow (0 Credits, `figur/master.jpg` als Referenz) eine neue erzeugen, selbst prüfen, nach `figur/posen/` und `animationen/public/posen/`. Vorführung: Kompositionen `MemeDemoShort`/`MemeDemoLang`.
 
+## 2,5D-Fotos und Freisteller
+- **Tiefenkarte:** `tools/tiefe.sh <foto> [ziel.png]` (Depth Anything V2, lokal, ~2 s) → `<foto>-tiefe.png` (weiß = nah).
+- **Freistellen:** `tools/freistellen.sh <bild> <ziel.png> --zuschneiden` (macOS Vision, lokal) → Objekt oder Figur mit transparentem Hintergrund. Klappt sehr sauber mit unseren Posen: so steht der Detektiv vor jedem echten Foto.
+- **Im Plan:** `{ typ: "foto3d", bild, tiefe, bewegung: "rein"|"raus"|"links"|"rechts"|"hoch"|"kreisen", fokus: [x, y], staerke: 0.22, hell: 1, titel: "Ort (Symbolbild)", vorne: { bild: "<freisteller.png>", hoehe: 0.8, x: 0.7, y: 1.04 } }`. `fokus` rückt einen Bildpunkt in die Mitte (wichtig, wenn ein Querformat-Foto im Hochformat läuft). `staerke` höher = mehr Raum, aber mehr Verzerrung an harten Kanten (0,15–0,3).
+- Für eigene Szenen: `<Foto3D …>` aus `animationen/src/foto3d.tsx`. Vorführung: `Foto3DDemoLang`/`Foto3DDemoShort`.
+- Freisteller auch ohne 3D nutzen: Objekt (Serverrack, Handy, Gebäude) als `<Img>` einzeln einfliegen, drehen, leuchten lassen.
+
 ## Echte Fotos, Clips und Musik
-- **Fotos/Clips:** `python3 tools/bilder.py suche "<begriff>" [--video]` → Vorschau ansehen → `python3 tools/bilder.py hole <nr> --ziel animationen/public/<ordner>/<name>.jpg` (Nachweis landet in `bildnachweise.txt` → Caption). Wikimedia ohne Schlüssel; Pexels/Pixabay mit kostenlosem Schlüssel in `/Volumes/T7/strichermittler-schluessel/`. Nur Orte, Technik, Gebäude, Objekte – keine Gesichter als Hauptmotiv. Downloads nur von diesen Quellen und nur mit Armans (Dauer-)OK.
+- **Fotos/Clips:** `python3 tools/bilder.py suche "<begriff>" [--video]` → Vorschau ansehen → `python3 tools/bilder.py hole <nr> --ziel animationen/public/<ordner>/<name>.jpg` (Nachweis landet in `bildnachweise.txt` → Caption). Wikimedia ohne Schlüssel; Pexels/Pixabay mit kostenlosem Schlüssel in `/Volumes/T7/strichermittler-schluessel/`. Nur Orte, Technik, Gebäude, Objekte – keine Gesichter als Hauptmotiv. Downloads von diesen drei Quellen (nur Bilder/Videos) hat Arman am 28.11.2026 dauerhaft erlaubt, alle anderen Downloads nur mit OK.
 - **Musik:** `python3 tools/musik.py <stück> <stimme audio.wav> animationen/public/<ordner>/musik.wav` → Musik passt sich der Länge an und wird unter der Stimme automatisch leiser; in der Komposition `<Regie … musik="<ordner>/musik.wav" />`. Stücke: YouTube Audio Library (Arman lädt nach `/Volumes/T7/strichermittler-musik/`) oder eigener Teppich `tools/klang.py spannung --dauer 60`.
 
 ## Bewegung prüfen

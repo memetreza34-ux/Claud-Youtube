@@ -12,7 +12,7 @@ Quellen:
   wikimedia  ohne Schlüssel. Lizenz je Bild (CC0/CC BY/CC BY-SA): Nachweis Pflicht bei BY/BY-SA.
   pexels     Schlüssel in /Volumes/T7/strichermittler-schluessel/pexels.txt (kostenloses Konto). Pexels-Lizenz, Nachweis freiwillig.
   pixabay    Schlüssel in /Volumes/T7/strichermittler-schluessel/pixabay.txt. Pixabay-Lizenz, Nachweis freiwillig.
-Downloads nur von diesen Quellen und nur Bilder/Videos (Armans Dauer-OK nötig, siehe planung/regie-system.md).
+Downloads nur von diesen Quellen und nur Bilder/Videos (Armans Dauer-OK vom 28.11.2026).
 Keine Menschengesichter in Großaufnahme als Hauptmotiv (Kanalregel) – Orte, Technik, Gebäude, Hände, Objekte.
 """
 import argparse

@@ -21,6 +21,7 @@ Für die Szene schriftlich (im Plan als `notiz`) festhalten:
 |---|---|
 | Eigene Animation | Remotion: SVG-Pfade (`@remotion/paths`), CSS-3D (`perspective`, `rotateX/Y`), Masken, Partikel, `spring`/`interpolate`, `@remotion/motion-blur`, `@remotion/transitions` |
 | Echtes 3D | `@remotion/three` / `@react-three/fiber` + `drei` (Licht, Bloom, Modelle) |
+| Echte Fotos räumlich | `tools/bilder.py` holen → `tools/tiefe.sh` → Szenentyp `foto3d` (3D-Kamerafahrt ins Foto); Objekte/Figur mit `tools/freistellen.sh` ausschneiden und als eigene Ebene davor oder einzeln animieren |
 | Echte Belege | `tools/screenshots/shot.py` (deutsche Quellen zuerst; Shorts `--breite 540 --hoehe 960`; ganze Seite `--voll`; `--overlays-weg`), Fotos Wikimedia Commons mit Lizenz |
 | Flow-Bilder (0 Credits) | eigens für die Szene, immer `figur/master.jpg` als Referenz. Für Parallaxe: Figur vor reinem Schwarz und Hintergrund ohne Figur getrennt erzeugen, in Ebenen bewegen |
 | Flow-Clips | kosten Credits → nur nach Armans OK |
