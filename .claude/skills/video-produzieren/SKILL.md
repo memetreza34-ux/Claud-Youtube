@@ -21,6 +21,12 @@ Verbindlich: `PRODUKTION.md`, `planung/reel-regeln.md`, `planung/langvideo-regel
 10. **Cover:** genau EIN Cover, Flow-Bild + erklärender Text (wer/was, warum es mich betrifft). **Caption:** Titel, was passiert ist, was es für dich heißt + Tipps, Frage an die Community, (lang: Kapitel-Zeitmarken), Quellen, Bildnachweise, Hashtags.
 11. **Ablage:** Reel `reels/<Jahr>-KW<WW>/<name>/`, lang `video-<n>/`: `FINAL-VIDEO.mp4`, `cover.png`, `caption.txt`, `untertitel.srt`, Altes nach `_intern/`. Ordner im Finder öffnen (`open <ordner>`) und Arman zeigen.
 
+12. **Lernen (immer, nach jeder Ablage):** Alles einsammeln, was bei diesem Video aufgefallen ist – Bewegungsberichte, Tonprüfung, Faktenprüfer, `video-kritiker`, Armans Rückmeldung, was lange gedauert oder nicht geklappt hat. Daraus:
+    - Fehler, die schon einmal vorkamen → als feste Regel in `planung/kanal-lernen.md` (Abschnitt „Aus der Produktion“) bzw. `reel-regeln.md`/`langvideo-regeln.md`.
+    - Wiederkehrende Handarbeit → Werkzeug oder Baustein verbessern (`tools/`, `animationen/src/`).
+    - Armans Rückmeldungen → zusätzlich als Erinnerung (Memory) speichern.
+    - Eine Zeile ins Produktionstagebuch `/Volumes/T7/strichermittler-auswertung/tagebuch.md`: Datum, Video, was gut lief, was beim nächsten Mal anders.
+
 ## Grenzen, die bleiben
 - Flow-Videoclips, Downloads fremder Dateien, Hochladen/Posten nur nach Armans ausdrücklichem OK.
 - Öffentliches Repo: nie Stimme, Videos, Posen, Screenshots committen (`.gitignore` prüfen).

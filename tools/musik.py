@@ -7,8 +7,9 @@
 - Unter der Stimme duckt sie sich zusätzlich (Sidechain), in Sprechpausen kommt sie hoch.
 - --laut: Grundlautstärke der Musik in LUFS (−24 bis −28 passt unter Sprache bei −14 LUFS Gesamt).
 Ergebnis in der Komposition: <Regie … musik="<ordner>/musik-fertig.wav" />
-Musikquellen: YouTube Audio Library (Arman lädt, Lizenz „kein Nachweis nötig“ wählen) nach
-/Volumes/T7/strichermittler-musik/, oder eigener Teppich: python3 tools/klang.py spannung --dauer 60.
+Musikquellen: /Volumes/T7/strichermittler-musik/ – incompetech/ (Kevin MacLeod, CC BY 4.0: investigations,
+hidden-agenda, lightless-dawn, the-descent, darkness-speaks, ossuary-6---air, long-note-four, dark-fog; Nachweis
+wird automatisch in bildnachweise.txt geschrieben → Caption), oder eigener Teppich: tools/klang.py spannung --dauer 60.
 """
 import argparse
 import json
@@ -43,6 +44,15 @@ def main():
                           capture_output=True, text=True).stderr
     zeile = [z for z in mess.splitlines() if z.strip().startswith("I:")]
     print(f"{a.ziel}  ({d:.1f} s)  Mix mit Stimme: {zeile[-1].strip() if zeile else '?'}")
+    # Nachweis (CC BY verlangt Namensnennung in der Caption) neben das Ziel schreiben
+    from pathlib import Path
+    lizenz = Path(a.musik).with_name("LIZENZ.txt")
+    if lizenz.exists():
+        for z in lizenz.read_text(encoding="utf-8").splitlines():
+            if z.startswith(Path(a.musik).name + ":"):
+                with open(Path(a.ziel).with_name("bildnachweise.txt"), "a", encoding="utf-8") as f:
+                    f.write("Musik: " + z.split(":", 1)[1].strip() + "\n")
+                print("Nachweis: " + z.split(":", 1)[1].strip())
 
 
 if __name__ == "__main__":
